@@ -21,5 +21,7 @@ def secure_token
     token = SecureRandom.hex(64)
     File.write(token_file, token)
     token
-  endend
+  end
+end
+
 SafetyCar::Application.config.secret_key_base = secure_token
