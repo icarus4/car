@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608040258) do
+ActiveRecord::Schema.define(version: 20140608093256) do
 
   create_table "car_brands", force: true do |t|
     t.string   "brand"
@@ -58,9 +58,11 @@ ActiveRecord::Schema.define(version: 20140608040258) do
     t.boolean  "has_isofix"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "car_brand_id"
   end
 
   add_index "cars", ["airbag_num"], name: "index_cars_on_airbag_num"
+  add_index "cars", ["car_brand_id"], name: "index_cars_on_car_brand_id"
   add_index "cars", ["displacement"], name: "index_cars_on_displacement"
   add_index "cars", ["door_num"], name: "index_cars_on_door_num"
   add_index "cars", ["generation"], name: "index_cars_on_generation"
