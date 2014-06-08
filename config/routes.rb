@@ -1,4 +1,11 @@
 SafetyCar::Application.routes.draw do
+
+  namespace :admin do
+    resources :brands
+    resources :cars
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
