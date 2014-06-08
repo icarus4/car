@@ -1,8 +1,8 @@
 class Car < ActiveRecord::Base
 
-  belongs_to :car_brands
+  belongs_to :brands
 
-  validates :car_brand_id, presence: true
+  validates :brand_id, presence: true
   validates :model, presence: true
   validates :submodel, presence: true
   validates :made_in, presence: true, inclusion: { in: %w(Taiwan Japan U.S. India) }

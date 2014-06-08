@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608093256) do
+ActiveRecord::Schema.define(version: 20140608143819) do
 
-  create_table "car_brands", force: true do |t|
+  create_table "brands", force: true do |t|
     t.string   "brand"
     t.string   "parent_company"
     t.string   "website_tw"
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20140608093256) do
     t.datetime "updated_at"
   end
 
-  add_index "car_brands", ["brand"], name: "index_car_brands_on_brand", unique: true
-  add_index "car_brands", ["headquarters"], name: "index_car_brands_on_headquarters"
-  add_index "car_brands", ["parent_company"], name: "index_car_brands_on_parent_company"
+  add_index "brands", ["brand"], name: "index_brands_on_brand", unique: true
+  add_index "brands", ["headquarters"], name: "index_brands_on_headquarters"
+  add_index "brands", ["parent_company"], name: "index_brands_on_parent_company"
 
   create_table "cars", force: true do |t|
     t.string   "model"
@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 20140608093256) do
     t.boolean  "has_isofix"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "car_brand_id"
+    t.integer  "brand_id"
   end
 
   add_index "cars", ["airbag_num"], name: "index_cars_on_airbag_num"
-  add_index "cars", ["car_brand_id"], name: "index_cars_on_car_brand_id"
+  add_index "cars", ["brand_id"], name: "index_cars_on_brand_id"
   add_index "cars", ["displacement"], name: "index_cars_on_displacement"
   add_index "cars", ["door_num"], name: "index_cars_on_door_num"
   add_index "cars", ["generation"], name: "index_cars_on_generation"
