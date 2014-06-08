@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608143819) do
+ActiveRecord::Schema.define(version: 20140608153448) do
 
   create_table "brands", force: true do |t|
-    t.string   "brand"
+    t.string   "name"
     t.string   "parent_company"
     t.string   "website_tw"
     t.string   "website_global"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20140608143819) do
     t.datetime "updated_at"
   end
 
-  add_index "brands", ["brand"], name: "index_brands_on_brand", unique: true
   add_index "brands", ["headquarters"], name: "index_brands_on_headquarters"
+  add_index "brands", ["name"], name: "index_brands_on_name", unique: true
   add_index "brands", ["parent_company"], name: "index_brands_on_parent_company"
 
   create_table "cars", force: true do |t|

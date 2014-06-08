@@ -2,7 +2,7 @@ class Brand < ActiveRecord::Base
 
   has_many :cars
 
-  validates :brand, presence: true, uniqueness: true,
+  validates :name, presence: true, uniqueness: true,
             inclusion: { in: %w(BMW
                                 Ford
                                 Honda Hyundai
