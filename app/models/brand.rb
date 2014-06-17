@@ -15,4 +15,8 @@ class Brand < ActiveRecord::Base
                                 Tobe Toyota
                                 Volkswagen Volvo) }
 
+  validates :headquarters, allow_nil: true,
+            inclusion: { in: %w(Japan
+                                Taiwan
+                                U.S.) }
 end

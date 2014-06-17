@@ -1,0 +1,10 @@
+<div>
+</div>
+
+<h2><%= link_to 'Back', admin_brands_path %></h2>
+<h2><%= @brand.name %> (<%= link_to "Edit", edit_admin_brand_path(@brand), class: "btn btn-mini btn-primary" %>)</h2>
+
+<ul>
+  <li><%= @brand.parent_company %></li>
+  <li><%= @brand.website_tw %></li>
+</ul>
