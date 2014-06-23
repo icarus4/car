@@ -1,6 +1,6 @@
 class Car < ActiveRecord::Base
 
-  belongs_to :brands
+  belongs_to :brand
 
   validates :brand_id, presence: true
   validates :model, presence: true
