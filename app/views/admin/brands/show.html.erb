@@ -8,3 +8,10 @@
   <li><%= @brand.parent_company %></li>
   <li><%= @brand.website_tw %></li>
 </ul>
+
+<h2>List of <%= @brand.name %> Cars</h2>
+<ul>
+<% @cars.each do |car| %>
+  <li><%= link_to "#{car.model} #{car.submodel} #{car.year}", admin_brand_car_path(@brand, car) %></li>
+<% end %>
+</ul>

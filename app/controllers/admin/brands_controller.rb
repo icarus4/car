@@ -10,6 +10,7 @@ class Admin::BrandsController < ApplicationController
 
   def show
     @brand = Brand.find(params[:id])
+    @cars = Car.where("brand_id = ?", params[:id])
   end
 
   def create
