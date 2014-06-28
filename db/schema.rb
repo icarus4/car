@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608153448) do
+ActiveRecord::Schema.define(version: 20140628054244) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20140608153448) do
     t.string   "generation"
     t.string   "made_in"
     t.integer  "year"
-    t.integer  "displacement"
+    t.float    "displacement"
     t.integer  "door_num"
     t.boolean  "is_hybrid"
     t.boolean  "is_electric_vehicle"

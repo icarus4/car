@@ -14,6 +14,16 @@ class Admin::CarsController < ApplicationController
     @car = @brand.cars.build
   end
 
+  def create
+    @car = @brand.cars.new(car_params)
+
+    if @car.save
+      redirect_to admin_brand_car_path(@brand, @car)
+    else
+      redirect_to new_admin_brand_car_path
+    end
+  end
+
   def edit
     @car = @brand.cars.find(params[:id])
   end
