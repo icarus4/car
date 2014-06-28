@@ -1,3 +1,9 @@
-<h2><%= @car.model %> <%= @car.submodel %> (<%= link_to "edit", edit_admin_brand_car_path %>)</h2>
+<h2><%= link_to "Back to #{@car.brand.name}", admin_brand_path(@car.brand) %></h2>
+<h2><%= @car.model %> <%= @car.submodel %> (<%= link_to "edit", edit_admin_brand_car_path(@car.brand, @car) %>)</h2>
 
+<ul>
+  <% for attribute in @car.attributes.keys %>
+    <li><div class='key'><%= attribute.humanize %>: </div><div class='value'><%= @car.attributes[attribute].to_s %></div></li>
+  <% end %>
+</ul>
 

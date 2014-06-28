@@ -1,4 +1,7 @@
 class Admin::CarsController < ApplicationController
+
+  before_action :find_brand
+
   def index
     @cars = Car.where("brand_id = ?", params[:brand_id])
   end
@@ -8,19 +11,18 @@ class Admin::CarsController < ApplicationController
   end
 
   def new
-    @brand = Brand.find(params[:brand_id])
     @car = @brand.cars.build
   end
 
   def edit
-    @car = Car.find(params[:id])
+    @car = @brand.cars.find(params[:id])
   end
 
   def update
-    @car = Car.find(params[:id])
+    @car = @brand.cars.find(params[:id])
 
     if @car.update(car_params)
-      redirect_to admin_brand_cars_path
+      redirect_to admin_brand_car_path(@brand, @car)
     else
       render :edit
     end
@@ -29,7 +31,11 @@ class Admin::CarsController < ApplicationController
   private
 
   def car_params
-    # todo: don't user permit!
+    # todo: don't use permit!
     params.require(:car).permit!
+  end
+
+  def find_brand
+    @brand = Brand.find(params[:brand_id])
   end
 end
