@@ -1,9 +1,7 @@
 <div class="container">
 	<h3><%= link_to "< Back to #{@brand.name}", admin_brand_path(@brand) %></h3>
 	<h2>Add a new car</h2>
-
-	<div class="col-md-12">
-	<%= simple_form_for([:admin, @brand, @car], html: { class: 'form-horizontal' }) do |f| %>
+	<%= simple_form_for([:admin, @brand, @car]) do |f| %>
 		<%= f.error_notification %>
 		<%= f.input :model, label: 'Model name: ' %>
 		<%= f.input :chinese_model %>
@@ -35,5 +33,4 @@
 		<%= f.input :has_isofix %>
 		<%= f.submit "Submit", disable_with: "Submiting...", class: "btn btn-primary" %>
 	<% end %>
-	</div>
 </div>
