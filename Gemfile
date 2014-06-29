@@ -46,7 +46,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'bootstrap-sass', '~> 2.3.2.0'
+gem 'bootstrap-sass', '~> 3.2.0'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.13.1'
@@ -54,3 +54,5 @@ group :development, :test do
 end
 
 gem 'simple_form'
+
+# gem 'autoprefixer-rails'
