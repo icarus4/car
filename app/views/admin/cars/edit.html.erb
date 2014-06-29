@@ -1,6 +1,6 @@
-<h2><%= link_to "Back to #{@brand.name}", admin_brand_path(@brand) %></h2>
-
-<div>
+<div class="container">
+  <h2><%= link_to "Back to #{@brand.name}", admin_brand_path(@brand) %></h2>
+  <div>
   <%= simple_form_for([:admin, @brand, @car]) do |f| %>
     <%= f.input :model, label: 'Model name: ' %>
     <%= f.input :chinese_model %>
@@ -30,6 +30,7 @@
     <%= f.input :has_eba %>
     <%= f.input :has_ebd %>
     <%= f.input :has_isofix %>
-    <%= f.submit "Submit", disable_with: "Submiting..." %>
+    <%= f.submit "Submit", disable_with: "Submiting...", class: 'btn btn-primary' %>
   <% end %>
+  </div>
 </div>

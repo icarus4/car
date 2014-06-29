@@ -1,12 +1,13 @@
-<h2><%= link_to "Back to brand list", admin_brands_path %></h2>
-
-<div>
-  <%= simple_form_for([:admin, @brand]) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :parent_company %>
-    <%= f.input :website_tw, required: false %>
-    <%= f.input :website_global, required: false %>
-    <%= f.input :headquarters, required: false %>
-    <%= f.submit "Submit", disable_with: 'Submiting...' %>
-  <% end %>
+<div class="container">
+  <h2><%= link_to "Back to brand list", admin_brands_path %></h2>
+  <div>
+    <%= simple_form_for([:admin, @brand]) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :parent_company %>
+      <%= f.input :website_tw, required: false %>
+      <%= f.input :website_global, required: false %>
+      <%= f.input :headquarters, required: false %>
+      <%= f.submit "Submit", disable_with: 'Submiting...', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>

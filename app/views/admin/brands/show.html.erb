@@ -1,17 +1,16 @@
-<div>
+<div class="container">
+  <h3><%= link_to 'Back', admin_brands_path %></h3>
+  <h2>Information of <%= @brand.name %> (<%= link_to "edit", edit_admin_brand_path(@brand) %>)</h2>
+
+  <ul>
+    <li><%= @brand.parent_company %></li>
+    <li><%= @brand.website_tw %></li>
+  </ul>
+
+  <h2>List of <%= @brand.name %> Cars (<%= link_to "add a new car", new_admin_brand_car_path(@brand) %>)</h2>
+  <ul>
+  <% @cars.each do |car| %>
+    <li><%= link_to "#{car.model} #{car.submodel} #{car.year}", admin_brand_car_path(@brand, car) %></li>
+  <% end %>
+  </ul>
 </div>
-
-<h2><%= link_to 'Back', admin_brands_path %></h2>
-<h2><%= @brand.name %> (<%= link_to "Edit", edit_admin_brand_path(@brand), class: "btn btn-mini btn-primary" %>)</h2>
-
-<ul>
-  <li><%= @brand.parent_company %></li>
-  <li><%= @brand.website_tw %></li>
-</ul>
-
-<h2>List of <%= @brand.name %> Cars (<%= link_to "add a new car", new_admin_brand_car_path(@brand) %>)</h2>
-<ul>
-<% @cars.each do |car| %>
-  <li><%= link_to "#{car.model} #{car.submodel} #{car.year}", admin_brand_car_path(@brand, car) %></li>
-<% end %>
-</ul>

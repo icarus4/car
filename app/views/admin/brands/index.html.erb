@@ -1,20 +1,11 @@
-<div class="span12">
-  <div class="brand">
-    <h2><%= link_to 'New brand', new_admin_brand_path, class: "btn btn-mini btn-primary pull-right" %></h2>
+<div class="container">
+  <h2>Brand list</h2>
+  <h2><%= link_to 'New brand', new_admin_brand_path, class: "btn btn-mini btn-success" %></h2>
+  <div>
+    <ul>
+      <% @brands.each do |brand| %>
+      <li><%= link_to brand.name, admin_brand_path(brand) %></li>
+      <% end %>
+    </ul>
   </div>
-</div>
-
-<div>
-  <ul>
-    <% @brands.each do |brand| %>
-    <li> <%= link_to brand.name, admin_brand_path(brand) %> (<%= link_to 'edit', edit_admin_brand_path(brand) %>)
-      <ul>
-        <li><%= brand.parent_company %></li>
-        <li><%= brand.website_tw %></li>
-        <li><%= brand.website_global %></li>
-        <li><%= brand.headquarters %></li>
-      </ul>
-    </li>
-    <% end %>
-  </ul>
 </div>
