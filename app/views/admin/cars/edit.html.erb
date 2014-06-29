@@ -1,5 +1,5 @@
 <div class="container">
-  <h2><%= link_to "Back to #{@brand.name}", admin_brand_path(@brand) %></h2>
+  <h3><%= link_to "< Back to #{@brand.name}", admin_brand_path(@brand) %></h3>
   <div>
   <%= simple_form_for([:admin, @brand, @car]) do |f| %>
     <%= f.input :model, label: 'Model name: ' %>

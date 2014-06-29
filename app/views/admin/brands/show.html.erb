@@ -1,10 +1,11 @@
 <div class="container">
-  <h3><%= link_to 'Back', admin_brands_path %></h3>
+  <h3><%= link_to '< Back', admin_brands_path %></h3>
   <h2>Information of <%= @brand.name %> (<%= link_to "edit", edit_admin_brand_path(@brand) %>)</h2>
 
   <ul>
-    <li><%= @brand.parent_company %></li>
-    <li><%= @brand.website_tw %></li>
+  <% for attribute in @brand.attributes.keys %>
+    <li><div class="key"><%= attribute.humanize %>: </div><div class="value"><%= @brand.attributes[attribute].to_s %></div></li>
+  <% end %>
   </ul>
 
   <h2>List of <%= @brand.name %> Cars (<%= link_to "add a new car", new_admin_brand_car_path(@brand) %>)</h2>
