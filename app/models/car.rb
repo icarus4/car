@@ -8,5 +8,6 @@ class Car < ActiveRecord::Base
   validates :made_in, presence: true, inclusion: { in: %w(Taiwan Japan U.S. India) }
   validates :year, presence: true, numericality: { greater_than_or_equal_to: 2000 }
   validates_uniqueness_of :submodel, scope: [:model, :made_in, :year]
+  validates :price, numericality: { greater_than: 0 }
 
 end
