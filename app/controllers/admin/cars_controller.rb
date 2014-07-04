@@ -20,7 +20,8 @@ class Admin::CarsController < ApplicationController
     if @car.save
       redirect_to admin_brand_car_path(@brand, @car)
     else
-      redirect_to new_admin_brand_car_path
+      # redirect_to new_admin_brand_car_path
+      render :new
     end
   end
 
