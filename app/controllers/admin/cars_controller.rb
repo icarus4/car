@@ -1,6 +1,6 @@
 class Admin::CarsController < ApplicationController
 
-  before_action :find_brand
+  before_action :find_brand, only: [:new, :create, :edit, :update]
 
   def index
     @cars = Car.where("brand_id = ?", params[:brand_id])
