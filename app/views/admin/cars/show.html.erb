@@ -1,6 +1,13 @@
 <div class="container">
   <h3><%= link_to "< Back to #{@car.brand.name}", admin_brand_path(@car.brand) %></h3>
-  <h2><%= "#{@car.model} #{@car.submodel} #{@car.displacement}" %> (<%= link_to "edit", edit_admin_brand_car_path(@car.brand, @car) %>)</h2>
+  <h2>
+    <%= "#{@car.model} #{@car.submodel} #{@car.displacement}" %> (<%= link_to "edit", edit_admin_brand_car_path(@car.brand, @car) %>)
+    <%= link_to '(delete)',
+        admin_brand_car_path(@car.brand, @car),
+        method: :delete,
+        class: 'admin-delete',
+        confirm: 'are you sure?' %>
+  </h2>
 
   <ul>
     <% for attribute in @car.attributes.keys %>
