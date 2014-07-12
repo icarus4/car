@@ -55,4 +55,6 @@ end
 
 gem 'simple_form'
 
+gem 'guard-livereload'
+
 # gem 'autoprefixer-rails'
