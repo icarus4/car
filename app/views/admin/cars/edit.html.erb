@@ -3,6 +3,7 @@
   <h2>Edit <%= "#{@car.model} #{@car.displacement} #{@car.submodel}" %></h2>
   <%= simple_form_for([:admin, @brand, @car]) do |f| %>
     <%= f.error_notification %>
+    <%= f.input :brand_name, label: 'Brand name: ' %>
     <%= f.input :model, label: 'Model name: ' %>
     <%= f.input :chinese_model %>
     <%= f.input :submodel %>

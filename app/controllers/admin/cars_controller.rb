@@ -16,6 +16,7 @@ class Admin::CarsController < ApplicationController
 
   def create
     @car = @brand.cars.new(car_params)
+    @car.brand_name ||= @brand.name
 
     if @car.save
       redirect_to admin_brand_car_path(@brand, @car)
