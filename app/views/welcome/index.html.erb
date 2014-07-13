@@ -1,29 +1,5 @@
-<div class="site-container">
-  <div id="header">
-    <h1>site name</h1>
+<div id="content-container">
+  <div id="content">
+    content
   </div>
-  <div id="middle-container">
-    <div id="middle-inner-container">
-      <div id="side-nav-container">
-        <div id="side-nav">
-          <ul class='ul-brands'>
-          <% @brands_and_cars.each do |brand, cars| %>
-            <li class='li-brand'><%= brand %></li>
-            <ul class='ul-cars'>
-            <% cars.each do |car| %>
-              <li class='li-car'><%= render_full_car_name(brand, car) %></li>
-            <% end %>
-            </ul>
-          <% end %>
-          </ul>
-        </div>
-      </div>
-      <div id="content-container">
-        <div id="content">
-          content
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="footer"></div>
 </div>

@@ -1,0 +1,14 @@
+<div id="side-nav-container">
+  <div id="side-nav">
+    <ul class='ul-brands'>
+    <% @brands_and_cars.each do |brand, cars| %>
+      <li class='li-brand'><%= brand %></li>
+      <ul class='ul-cars'>
+      <% cars.each do |car| %>
+        <li class='li-car'><%= render_full_car_name(brand, car) %></li>
+      <% end %>
+      </ul>
+    <% end %>
+    </ul>
+  </div>
+</div>
