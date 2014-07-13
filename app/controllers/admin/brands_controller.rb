@@ -1,5 +1,7 @@
 class Admin::BrandsController < ApplicationController
 
+  layout "admin"
+
   def index
     @brands = Brand.all
   end
