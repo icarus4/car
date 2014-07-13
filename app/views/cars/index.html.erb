@@ -3,18 +3,12 @@
     <p>car controller content</p>
     <div id="car-data">
       <table id="car-data-table">
-        <tr>
-          <th></th>
-          <th><%= @car_data.model %></th>
-        </tr>
-        <tr>
-          <th>安全氣囊數</th>
-          <th><%= @car_data.airbag_num %></th>
-        </tr>
-        <tr>
-          <th>ESP</th>
-          <th><%= @car_data.has_esp %></th>
-        </tr>
+        <% @car_data.each do |key, value| %>
+          <tr>
+            <td><%= key %></td>
+            <td><%= value %></td>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>

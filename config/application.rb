@@ -21,5 +21,8 @@ module SafetyCar
     # config.i18n.default_locale = :de
 
     config.sass.preferred_syntax = :sass
+
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end
