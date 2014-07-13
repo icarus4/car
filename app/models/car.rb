@@ -19,6 +19,12 @@ class Car < ActiveRecord::Base
   validates_uniqueness_of :year,          scope: [:submodel, :model, :made_in, :displacement], case_sensitive: false
   validates_uniqueness_of :displacement,  scope: [:submodel, :model, :year, :made_in], case_sensitive: false
 
+  # Pick a random car
+  def self.random
+    # FIXME: make sure whether this way causes performance issue or not
+    self.first(order: 'RANDOM()')
+  end
+
 
   private
 

@@ -4,9 +4,7 @@ class CarsController < ApplicationController
 
   def index
     @brands_and_cars = get_brands_and_cars_for_welcome_page
-    car = Car.find(1)
-    @car_data = format_car_data(car)
-
+    @car_data = format_car_data(Car.random)
   end
 
 
