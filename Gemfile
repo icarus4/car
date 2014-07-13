@@ -57,4 +57,11 @@ gem 'simple_form'
 
 gem 'guard-livereload'
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
 # gem 'autoprefixer-rails'
+
+
