@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SafetyCar</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="site-container">
+  <%= render 'layouts/header' %>
+  <div id="middle-container">
+    <div id="middle-inner-container">
+      <%= render 'layouts/car_list_sidebar' %>
+      <%= yield %>
+    </div>
+  </div>
+  <%= render 'layouts/footer' %>
+</div>
+
+</body>
+</html>

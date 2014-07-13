@@ -1,6 +1,6 @@
 class Admin::CarsController < ApplicationController
 
-  layout "admin"
+  layout 'admin'
   before_action :find_brand, only: [:new, :create, :edit, :update, :destroy]
 
   def index

@@ -1,0 +1,21 @@
+<div id="content-container">
+  <div id="content">
+    <p>car controller content</p>
+    <div id="car-data">
+      <table id="car-data-table">
+        <tr>
+          <th></th>
+          <th><%= @car_data.model %></th>
+        </tr>
+        <tr>
+          <th>安全氣囊數</th>
+          <th><%= @car_data.airbag_num %></th>
+        </tr>
+        <tr>
+          <th>ESP</th>
+          <th><%= @car_data.has_esp %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
