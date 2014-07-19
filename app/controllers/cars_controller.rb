@@ -13,18 +13,18 @@ class CarsController < ApplicationController
   def format_car_data(car)
     car_data = {}
 
-    car_data['車款'] = "#{car.model} #{car.displacement} #{car.submodel}"
-    # car_data.chinese_model = car.chinese_model
-    # car_data.submodel = car.submodel
-    # car_data.chinese_submodel = car.chinese_submodel
-    car_data['Generation'] = car.generation ? "第 #{car.generation} 代" : 'N/A'
+    car_data['車款'] = "#{car.brand_name} #{car.model} #{car.displacement} #{car.submodel}"
     car_data['產地'] = formatter car.made_in
     car_data['年份'] = formatter car.year
     car_data['排氣量'] = formatter car.displacement
     car_data['車門數'] = "#{car.door_num} 門"
-    car_data['油電車?'] = formatter car.is_hybrid
-    car_data['電動車?'] = formatter car.is_electric_vehicle
+    car_data['建議售價'] = "#{car.retail_price.to_f / 10000} 萬"
     car_data['氣囊數'] = formatter car.airbag_num
+    car_data['車側氣廉'] = formatter car.has_airbags_at_side_curtain
+    car_data['ABS'] = formatter car.has_abs
+    car_data['緊急剎車輔助系統 (EBA)'] = formatter car.has_eba
+    car_data['電子制動力分配系統 (EBD)'] = formatter car.has_ebd
+    car_data['電子車身穩定系統 (ESP/VSC/...)'] = formatter car.has_esp
     return car_data
   end
 

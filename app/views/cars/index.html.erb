@@ -5,8 +5,8 @@
       <table id="car-data-table">
         <% @car_data.each do |key, value| %>
           <tr>
-            <td><%= key %></td>
-            <td><%= value %></td>
+            <td class='equip-name'><%= key %></td>
+            <td class='equip-value'><%= value %></td>
           </tr>
         <% end %>
       </table>
