@@ -1,3 +1,15 @@
-<ul>
-  <li><%= "#{@brand.inspect}" %></li>
-</ul>
+<div id="content-container">
+  <div id="content">
+    <p>car controller content</p>
+    <div id="car-data">
+      <table id="car-data-table">
+        <% @car_data.each do |key, value| %>
+          <tr>
+            <td class='equip-name'><%= key %></td>
+            <td class='equip-value'><%= value %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

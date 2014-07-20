@@ -7,6 +7,11 @@ class CarsController < ApplicationController
     @car_data = format_car_data(Car.random)
   end
 
+  def show
+    @brands_and_cars = get_brands_and_cars_for_welcome_page
+    car = Car.find(params[:id])
+    @car_data = format_car_data(car)
+  end
 
   private
 

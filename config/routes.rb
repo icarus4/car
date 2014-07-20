@@ -1,8 +1,7 @@
 SafetyCar::Application.routes.draw do
 
   root "cars#index"
-
-  # get 'cars/:brand', to: 'cars#show'
+  get 'cars/:id', to: 'cars#show'
 
   namespace :admin do
     resources :brands do
