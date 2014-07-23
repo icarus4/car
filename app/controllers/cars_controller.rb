@@ -3,7 +3,7 @@ class CarsController < ApplicationController
   layout 'cars'
 
   def index
-    @brands_and_cars = get_brands_and_cars_list
+    @brand_and_model_list = get_brand_and_model_list
     @car_data = format_car_data(Car.random)
   end
 
@@ -43,6 +43,22 @@ class CarsController < ApplicationController
 
   def translate_false_to_not_available(data)
     return data ? data : 'N/A'
+  end
+
+  def get_brand_and_model_list
+    list = {}
+    brands = Brand.select(:id, :name).order(:name).all
+
+    brands.each do |brand|
+      list[brand.name.to_s] = [] unless list.has_key?(brand.name.to_s)
+
+      models = brand.models.order(:name).select(:name, :id)
+      models.each do |model|
+        list[brand.name.to_s] << model
+      end
+    end
+
+    return list
   end
 
   def get_brands_and_cars_list
