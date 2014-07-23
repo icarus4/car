@@ -65,4 +65,5 @@ end
 
 # gem 'autoprefixer-rails'
 
+gem 'rails_admin'
 

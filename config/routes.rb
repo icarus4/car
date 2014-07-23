@@ -1,15 +1,16 @@
 SafetyCar::Application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root "cars#index"
   get 'cars/:id', to: 'cars#show'
 
-  namespace :admin do
-    resources :brands do
-      resources :models do
-        resources :cars
-      end
-    end
-  end
+  # namespace :admin do
+  #   resources :brands do
+  #     resources :models do
+  #       resources :cars
+  #     end
+  #   end
+  # end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
