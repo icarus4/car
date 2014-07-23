@@ -3,12 +3,12 @@ class CarsController < ApplicationController
   layout 'cars'
 
   def index
-    @brands_and_cars = get_brands_and_cars_for_welcome_page
+    @brands_and_cars = get_brands_and_cars_list
     @car_data = format_car_data(Car.random)
   end
 
   def show
-    @brands_and_cars = get_brands_and_cars_for_welcome_page
+    @brands_and_cars = get_brands_and_cars_list
     car = Car.find(params[:id])
     @car_data = format_car_data(car)
   end
@@ -45,7 +45,7 @@ class CarsController < ApplicationController
     return data ? data : 'N/A'
   end
 
-  def get_brands_and_cars_for_welcome_page
+  def get_brands_and_cars_list
     cars = Car.select(:model, :submodel, :id, :brand_name, :brand_id, :displacement).order(:brand_name, :model).all
     ret = {}
     cars.each do |car|
