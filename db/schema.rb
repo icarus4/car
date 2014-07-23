@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723080731) do
+ActiveRecord::Schema.define(version: 20140723081345) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -28,8 +28,6 @@ ActiveRecord::Schema.define(version: 20140723080731) do
   add_index "brands", ["parent_company"], name: "index_brands_on_parent_company"
 
   create_table "cars", force: true do |t|
-    t.string   "model"
-    t.string   "chinese_model"
     t.string   "submodel"
     t.string   "chinese_submodel"
     t.string   "generation"
@@ -58,13 +56,12 @@ ActiveRecord::Schema.define(version: 20140723080731) do
     t.boolean  "has_isofix"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "brand_id"
     t.integer  "retail_price"
     t.string   "brand_name"
+    t.integer  "model_id"
   end
 
   add_index "cars", ["airbag_num"], name: "index_cars_on_airbag_num"
-  add_index "cars", ["brand_id"], name: "index_cars_on_brand_id"
   add_index "cars", ["brand_name"], name: "index_cars_on_brand_name"
   add_index "cars", ["displacement"], name: "index_cars_on_displacement"
   add_index "cars", ["door_num"], name: "index_cars_on_door_num"
@@ -78,7 +75,7 @@ ActiveRecord::Schema.define(version: 20140723080731) do
   add_index "cars", ["is_electric_vehicle"], name: "index_cars_on_is_electric_vehicle"
   add_index "cars", ["is_hybrid"], name: "index_cars_on_is_hybrid"
   add_index "cars", ["made_in"], name: "index_cars_on_made_in"
-  add_index "cars", ["model"], name: "index_cars_on_model"
+  add_index "cars", ["model_id"], name: "index_cars_on_model_id"
   add_index "cars", ["submodel"], name: "index_cars_on_submodel"
   add_index "cars", ["year"], name: "index_cars_on_year"
 
