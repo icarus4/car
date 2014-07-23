@@ -2,7 +2,7 @@ class ModelsController < ApplicationController
 
   layout 'models'
 
-  before_action :get_brand_and_model_list, only: [:index, :show]
+  before_action :get_brand_name_id, only: [:index, :show]
 
 
   def index
@@ -51,19 +51,8 @@ class ModelsController < ApplicationController
     return data ? data : 'N/A'
   end
 
-
-  def get_brand_and_model_list
-    @brand_and_model_list = {}
-    brands = Brand.select(:id, :name).order(:name).all
-
-    brands.each do |brand|
-      @brand_and_model_list[brand.name.to_s] = [] unless @brand_and_model_list.has_key?(brand.name.to_s)
-
-      models = brand.models.order(:name).select(:name, :id)
-      models.each do |model|
-        @brand_and_model_list[brand.name.to_s] << model
-      end
-    end
+  def get_brand_name_id
+    @brands = Brand.select(:name, :id).order(:name).all
   end
 
 end
