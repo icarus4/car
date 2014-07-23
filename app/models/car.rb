@@ -40,7 +40,6 @@
 
 class Car < ActiveRecord::Base
 
-  belongs_to :brand
   belongs_to :model
 
   validates :brand_name,    presence: true
