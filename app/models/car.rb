@@ -3,8 +3,6 @@
 # Table name: cars
 #
 #  id                              :integer          not null, primary key
-#  model                           :string(255)
-#  chinese_model                   :string(255)
 #  submodel                        :string(255)
 #  chinese_submodel                :string(255)
 #  generation                      :string(255)
@@ -33,9 +31,9 @@
 #  has_isofix                      :boolean
 #  created_at                      :datetime
 #  updated_at                      :datetime
-#  brand_id                        :integer
 #  retail_price                    :integer
 #  brand_name                      :string(255)
+#  model_id                        :integer
 #
 
 class Car < ActiveRecord::Base
