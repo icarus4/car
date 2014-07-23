@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723054620) do
+ActiveRecord::Schema.define(version: 20140723080731) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 20140723054620) do
   add_index "cars", ["year"], name: "index_cars_on_year"
 
   create_table "models", force: true do |t|
-    t.string   "brand_name"
     t.integer  "brand_id"
     t.string   "name"
     t.string   "chinese_name"
@@ -92,7 +91,6 @@ ActiveRecord::Schema.define(version: 20140723054620) do
   end
 
   add_index "models", ["brand_id"], name: "index_models_on_brand_id"
-  add_index "models", ["brand_name"], name: "index_models_on_brand_name"
   add_index "models", ["chinese_name"], name: "index_models_on_chinese_name"
   add_index "models", ["name"], name: "index_models_on_name"
 

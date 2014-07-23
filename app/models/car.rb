@@ -46,7 +46,7 @@ class Car < ActiveRecord::Base
   validate  :validate_brand_name
 
   validates :brand_id,      presence: true
-  validates :model,         presence: true
+  # validates :model,         presence: true
   validates :submodel,      presence: true
   validates :displacement,  presence: true
   validates :made_in,       presence: true, inclusion: { in: %w(Taiwan Japan U.S. India) }

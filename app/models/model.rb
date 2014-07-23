@@ -3,7 +3,6 @@
 # Table name: models
 #
 #  id           :integer          not null, primary key
-#  brand_name   :string(255)
 #  brand_id     :integer
 #  name         :string(255)
 #  chinese_name :string(255)
