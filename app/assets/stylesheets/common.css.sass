@@ -1,5 +1,5 @@
 $header-line-height: 50px
-$min-middle-inner-container-width: 800px
+$max-middle-inner-container-width: 800px
 $side-nav-container-width: 150px
 
 #header
@@ -16,7 +16,7 @@ $side-nav-container-width: 150px
   margin-top: 60px
 
 #middle-inner-container
-  max-width: $min-middle-inner-container-width
+  max-width: $max-middle-inner-container-width
   margin: auto
 
 #side-nav-container
@@ -29,7 +29,7 @@ $side-nav-container-width: 150px
 
 #content-container
   display: inline-block
-  min-width: $min-middle-inner-container-width - $side-nav-container-width
+  min-width: $max-middle-inner-container-width - $side-nav-container-width
   // float: right
   // width: 100%
   // border-style: solid
