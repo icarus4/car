@@ -6,7 +6,8 @@ class ModelsController < ApplicationController
 
 
   def index
-    @car_data = format_car_data(Car.random)
+    @model = Model.random
+    @cars = @model.cars
   end
 
 

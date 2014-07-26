@@ -19,4 +19,10 @@ class Model < ActiveRecord::Base
 
   validates_uniqueness_of :name, scope: [:brand_id], case_sensitive: false
 
+  # Pick a random model
+  def self.random
+    # FIXME: make sure whether this way causes performance issue or not
+    self.first(order: 'RANDOM()')
+  end
+
 end

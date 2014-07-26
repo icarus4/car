@@ -2,7 +2,10 @@ SafetyCar::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root "models#index"
+
   get 'models/:id', to: 'models#show'
+
+  resources :models, only: [:index, :show]
 
   # namespace :admin do
   #   resources :brands do

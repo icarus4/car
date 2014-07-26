@@ -1,14 +1,13 @@
 <div id="content-container">
+
   <div id="content">
+
     <div id="car-data">
-      <table id="car-data-table">
-        <% @car_data.each do |key, value| %>
-          <tr>
-            <td class='equip-name'><%= key %></td>
-            <td class='equip-value'><%= value %></td>
-          </tr>
-        <% end %>
-      </table>
+
+      <%= render partial: 'common/cars_data_table', locals: {cars: @cars} %>
+
     </div>
+
   </div>
+
 </div>
