@@ -3,6 +3,9 @@
 // You can use Sass here: http://sass-lang.com/
 
 $header-line-height: 50px
+$link-hover-color: #5f8bfa
+$model-name-color: #666666
+$brand-name-color: #555555
 
 #header
   height: $header-line-height
@@ -27,26 +30,41 @@ $header-line-height: 50px
 
 #side-nav
   margin: 20px 0 20px 0
-  // background-color: #DDD
 
   .ul-brands
     list-style-type: none
-    line-height: 150%
-    font-weight: bold
-    font-size: 16px
 
     .li-brand
 
-      &:hover
-        cursor: pointer
+      .span-brand
+        line-height: 150%
+        font-family: "Arial Black"
+        // font-family: "Avant Garde"
+        font-weight: bold
+        font-size: 16px
+        color: $brand-name-color
+
+        &:hover
+          cursor: pointer
+          // color: $link-hover-color
+
 
     .ul-models
       padding-left: 16px
       margin-left: 0
       line-height: 150%
       list-style-type: none
+      // font-family: "Avant Garde"
+      font-family: "sans-serif"
+      letter-spacing: 1px
       font-size: 14px
-      font-weight: normal
+
+      .li-model
+        a
+          color: $model-name-color
+        a:hover
+          color: $link-hover-color
+          text-decoration: none
 
     hr
       width: 80%
@@ -70,9 +88,6 @@ $header-line-height: 50px
   padding: 20px 20px 20px 20px
   border-color: #DDD
   // background-color: #CCF
-
-.side-nav-car-link
-  font-size: 12px
 
 table#car-data-table
   td, th
