@@ -24,10 +24,10 @@ module ModelsHelper
 
   def render_external_link(link)
     content_tag(:td) do
-      if link.nil?
+      if link.blank?
         content_tag(:span, 'N/A')
       else
-        content_tag(:a, _link)
+        content_tag(:a, link_to('連結', link))
       end
     end
   end

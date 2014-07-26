@@ -1,4 +1,4 @@
-<table id="car-data-table" class="table table-striped table-bordered">
+<table id="car-data-table" class="table table-striped table-bordered table-hover">
 <thead>
   <tr>
     <th>車款</th>
@@ -35,7 +35,7 @@
   </tr>
 
   <tr>
-    <th>ABS</th>
+    <th>ABS 防鎖死煞車系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_abs)} %>
   </tr>
 
