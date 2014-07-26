@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723081345) do
+ActiveRecord::Schema.define(version: 20140726112424) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -59,6 +59,20 @@ ActiveRecord::Schema.define(version: 20140723081345) do
     t.integer  "retail_price"
     t.string   "brand_name"
     t.integer  "model_id"
+    t.boolean  "has_tpms"
+    t.boolean  "has_ldws"
+    t.boolean  "has_cruise_control"
+    t.boolean  "has_afs"
+    t.boolean  "has_pretension_seat_belt"
+    t.boolean  "has_attention_assist"
+    t.boolean  "has_child_safety_lock"
+    t.boolean  "has_blind_spot_monitor_system"
+    t.boolean  "has_hill_start_assist"
+    t.string   "iihs_crash_test_link"
+    t.string   "ncap_crash_test_link"
+    t.integer  "ncap_rating"
+    t.string   "spec_url"
+    t.boolean  "is_all_data_ready"
   end
 
   add_index "cars", ["airbag_num"], name: "index_cars_on_airbag_num"
@@ -67,15 +81,26 @@ ActiveRecord::Schema.define(version: 20140723081345) do
   add_index "cars", ["door_num"], name: "index_cars_on_door_num"
   add_index "cars", ["generation"], name: "index_cars_on_generation"
   add_index "cars", ["has_abs"], name: "index_cars_on_has_abs"
+  add_index "cars", ["has_afs"], name: "index_cars_on_has_afs"
   add_index "cars", ["has_airbags_at_side_curtain"], name: "index_cars_on_has_airbags_at_side_curtain"
+  add_index "cars", ["has_attention_assist"], name: "index_cars_on_has_attention_assist"
+  add_index "cars", ["has_blind_spot_monitor_system"], name: "index_cars_on_has_blind_spot_monitor_system"
+  add_index "cars", ["has_child_safety_lock"], name: "index_cars_on_has_child_safety_lock"
+  add_index "cars", ["has_cruise_control"], name: "index_cars_on_has_cruise_control"
   add_index "cars", ["has_eba"], name: "index_cars_on_has_eba"
   add_index "cars", ["has_ebd"], name: "index_cars_on_has_ebd"
   add_index "cars", ["has_esp"], name: "index_cars_on_has_esp"
+  add_index "cars", ["has_hill_start_assist"], name: "index_cars_on_has_hill_start_assist"
   add_index "cars", ["has_isofix"], name: "index_cars_on_has_isofix"
+  add_index "cars", ["has_ldws"], name: "index_cars_on_has_ldws"
+  add_index "cars", ["has_pretension_seat_belt"], name: "index_cars_on_has_pretension_seat_belt"
+  add_index "cars", ["has_tpms"], name: "index_cars_on_has_tpms"
+  add_index "cars", ["is_all_data_ready"], name: "index_cars_on_is_all_data_ready"
   add_index "cars", ["is_electric_vehicle"], name: "index_cars_on_is_electric_vehicle"
   add_index "cars", ["is_hybrid"], name: "index_cars_on_is_hybrid"
   add_index "cars", ["made_in"], name: "index_cars_on_made_in"
   add_index "cars", ["model_id"], name: "index_cars_on_model_id"
+  add_index "cars", ["ncap_rating"], name: "index_cars_on_ncap_rating"
   add_index "cars", ["submodel"], name: "index_cars_on_submodel"
   add_index "cars", ["year"], name: "index_cars_on_year"
 

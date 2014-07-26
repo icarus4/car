@@ -34,6 +34,20 @@
 #  retail_price                    :integer
 #  brand_name                      :string(255)
 #  model_id                        :integer
+#  has_tpms                        :boolean
+#  has_ldws                        :boolean
+#  has_cruise_control              :boolean
+#  has_afs                         :boolean
+#  has_pretension_seat_belt        :boolean
+#  has_attention_assist            :boolean
+#  has_child_safety_lock           :boolean
+#  has_blind_spot_monitor_system   :boolean
+#  has_hill_start_assist           :boolean
+#  iihs_crash_test_link            :string(255)
+#  ncap_crash_test_link            :string(255)
+#  ncap_rating                     :integer
+#  spec_url                        :string(255)
+#  is_all_data_ready               :boolean
 #
 
 class Car < ActiveRecord::Base
