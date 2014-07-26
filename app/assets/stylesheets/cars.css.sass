@@ -20,47 +20,60 @@ $header-line-height: 50px
 
 #side-nav-container
   float: left
-  width: 250px
-  border-style: solid
-  border-width: 1px
+  width: 120px
+  // border-style: solid
+  // border-width: 1px
   // background-color: #EEE
 
 #side-nav
-  margin: 10px
+  margin: 20px 0 20px 0
   // background-color: #DDD
 
   .ul-brands
     list-style-type: none
+    line-height: 150%
+    font-weight: bold
+    font-size: 16px
 
-    .ul-cars
+    .li-brand
+
+      &:hover
+        cursor: pointer
+
+    .ul-models
+      padding-left: 16px
       margin-left: 0
+      line-height: 150%
       list-style-type: none
+      font-size: 14px
+      font-weight: normal
+
+    hr
+      width: 80%
+      align: left
+      margin: 10px 20px 10px 0
 
 
 #content-container
   display: inline-block
+  min-width: 600px
   // float: right
   // width: 100%
-  border-style: solid
-  border-width: 1px
+  // border-style: solid
+  // border-width: 1px
   // background-color: #DDF
 
 #content
   margin: 20px
   border-style: solid
   border-width: 1px
+  padding: 20px 20px 20px 20px
+  border-color: #DDD
   // background-color: #CCF
 
 .side-nav-car-link
   font-size: 12px
 
-// table#car-data-table
-//   border: 1px solid black
-//   th, td
-//     padding: 5px 10px 5px 10px
-//   .equip-name
-//     max-width: 150px
-//     text-align: right
-//   .equip-value
-//     width: 200px
-//     text-align: center
+table#car-data-table
+  td, th
+    text-align: center
