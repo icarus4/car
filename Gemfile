@@ -67,3 +67,4 @@ end
 
 gem 'rails_admin'
 
+gem 'font-awesome-sass'
