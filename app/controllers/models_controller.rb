@@ -11,8 +11,8 @@ class ModelsController < ApplicationController
 
 
   def show
-    car = Car.find(params[:id])
-    @car_data = format_car_data(car)
+    @model = Model.find(params[:id])
+    @cars = @model.cars
   end
 
 

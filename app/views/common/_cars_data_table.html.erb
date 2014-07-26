@@ -1,0 +1,43 @@
+<table id="car-data-table" class="table table-striped">
+<thead>
+  <tr>
+    <th>車款</th>
+
+    <% cars.each do |car| %>
+    <th><%= "#{car.model.name} #{car.submodel} #{car.displacement}" %></th>
+    <% end %>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th>年份</th>
+    <% cars.each {|c| concat content_tag(:td, c.year)} %>
+  </tr>
+
+  <tr>
+    <th>製造地</th>
+    <% cars.each {|c| concat content_tag(:td, c.made_in)} %>
+  </tr>
+
+  <tr>
+    <th>安全氣囊</th>
+    <% cars.each {|c| concat render_airbag_field_with_color(c.airbag_num)} %>
+  </tr>
+
+  <tr>
+    <th>ABS</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_abs)} %>
+  </tr>
+
+  <tr>
+    <th>ESP</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_esp)} %>
+  </tr>
+
+  <tr>
+    <th>ISOFIX</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_isofix)} %>
+  </tr>
+</tbody>
+
+</table>

@@ -15,6 +15,7 @@
 class Brand < ActiveRecord::Base
 
   has_many :models
+  has_many :cars, through: :models
 
   validates :name,  presence: true, uniqueness: true,
                     inclusion: {
