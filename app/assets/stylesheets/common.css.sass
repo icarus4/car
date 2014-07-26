@@ -1,22 +1,35 @@
 $header-line-height: 50px
+$min-middle-inner-container-width: 800px
+$side-nav-container-width: 150px
 
 #header
-  height: $header-line-height
-  text-align: center
-  background-color: #CCC
+  // height: $header-line-height
+  // text-align: center
+  // background-color: #CCC
 
-  h1
-    margin: auto
-    vertical-align: middle
-    line-height: $header-line-height
+  // h1
+  //   margin: auto
+  //   vertical-align: middle
+  //   line-height: $header-line-height
+
+#middle-container
+  margin-top: 60px
 
 #middle-inner-container
-  max-width: 800px
+  max-width: $min-middle-inner-container-width
   margin: auto
+
+#side-nav-container
+  float: left
+  width: $side-nav-container-width
+  // border-style: solid
+  // border-width: 1px
+  // background-color: #EEE
+
 
 #content-container
   display: inline-block
-  min-width: 600px
+  min-width: $min-middle-inner-container-width - $side-nav-container-width
   // float: right
   // width: 100%
   // border-style: solid
