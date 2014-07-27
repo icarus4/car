@@ -1,10 +1,19 @@
 SafetyCar::Application.routes.draw do
 
-  namespace :admin do
-    resources :brands do
-      resources :cars
-    end
-  end
+
+  root "models#index"
+  resources :models, only: [:index, :show]
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :users
+
+  # namespace :admin do
+  #   resources :brands do
+  #     resources :models do
+  #       resources :cars
+  #     end
+  #   end
+  # end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

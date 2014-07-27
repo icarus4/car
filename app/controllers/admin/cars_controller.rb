@@ -1,6 +1,7 @@
 class Admin::CarsController < ApplicationController
 
-  before_action :find_brand
+  layout 'admin'
+  before_action :find_brand, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @cars = Car.where("brand_id = ?", params[:brand_id])
@@ -16,11 +17,13 @@ class Admin::CarsController < ApplicationController
 
   def create
     @car = @brand.cars.new(car_params)
+    @car.brand_name ||= @brand.name
 
     if @car.save
       redirect_to admin_brand_car_path(@brand, @car)
     else
-      redirect_to new_admin_brand_car_path
+      # redirect_to new_admin_brand_car_path
+      render :new
     end
   end
 
@@ -36,6 +39,13 @@ class Admin::CarsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @car = @brand.cars.find(params[:id])
+    @car.destroy
+
+    redirect_to admin_brand_path(@brand)
   end
 
   private

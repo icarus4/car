@@ -28,3 +28,5 @@ bundler_stubs/
 # database
 config/database.yml
 
+# sublime text
+*.sublime-*

@@ -1,0 +1,28 @@
+<div id="header" class='navbar navbar-default'>
+<div class="container">
+
+<!--   <div class="navbar-header">
+    <a href="#" class="navbar-brand">Buy a Safe Car</a>
+  </div>
+ -->
+  <div class="navbar-collapse collapse">
+
+    <ul class="nav navbar-nav">
+      <li><%= link_to '查配備', models_path %></li>
+      <li><%= link_to '篩選', '#' %></li>
+      <li></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+<!--       <li><%#= link_to 'Edit Profile', edit_user_registration_path %></li> -->
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+    <% else %>
+      <li><%#= link_to 'Login', new_user_session_path %></li>
+      <li><%#= link_to 'Sign Up', new_user_registration_path %></li>
+    <% end %>
+    </ul>
+  </div>
+
+</div>
+</div>
