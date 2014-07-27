@@ -27,7 +27,7 @@ module ModelsHelper
       if link.blank?
         content_tag(:span, 'N/A')
       else
-        content_tag(:a, link_to('連結', link))
+        content_tag(:a, link_to('連結', link, target: '_blank'))
       end
     end
   end
