@@ -35,6 +35,11 @@
   </tr>
 
   <tr>
+    <th>ISOFIX</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_isofix)} %>
+  </tr>
+
+  <tr>
     <th>ABS 防鎖死煞車系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_abs)} %>
   </tr>
@@ -77,11 +82,6 @@
   <tr>
     <th>官方規格表</th>
     <% cars.each {|c| concat render_external_link(c.spec_url)} %>
-  </tr>
-
-  <tr>
-    <th>ISOFIX</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_isofix)} %>
   </tr>
 
   <tr>
