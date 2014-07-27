@@ -1,2 +1,0 @@
-class CarFiltersController < ApplicationController
-end

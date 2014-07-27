@@ -3,6 +3,9 @@ SafetyCar::Application.routes.draw do
 
   root "models#index"
   resources :models, only: [:index, :show]
+
+  get 'search' => 'search#index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
