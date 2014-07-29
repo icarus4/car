@@ -66,6 +66,10 @@ class Car < ActiveRecord::Base
   validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement], case_sensitive: false
   validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in], case_sensitive: false
 
+
+  # scope :ensures, -> (value) {where}
+
+
   # Pick a random car
   def self.random
     # FIXME: make sure whether this way causes performance issue or not
@@ -76,4 +80,15 @@ class Car < ActiveRecord::Base
     [['台灣'],['日本'],['美國'],['印度']]
   end
 
+  def year_enum
+    [[2014]]
+  end
+
+  def airbag_num_enum
+    [[0],[1],[2],[3],[4],[5],[6],[7],[8]]
+  end
+
+  def esp_name_enum
+    [['ESP'],['VSA']]
+  end
 end

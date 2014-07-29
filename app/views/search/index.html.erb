@@ -1,0 +1,26 @@
+<div>
+<h3>我想要查有以下配備的車：</h3>
+<%= form_tag({controller: 'search', action: 'search'}, method: 'get', id: 'search-form') do %>
+
+
+  <div class="form-group checkbox">
+    <span class='control-label'>最低氣囊數：</span>
+    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '0', checked: true) %>不限</label>
+    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '2') %>2</label>
+    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '4', true) %>4</label>
+    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '6') %>6</label>
+  </div>
+
+  <div class="checkbox-group">
+    <label><%= check_box_tag(:has_airbags_at_side_curtain) %> 車側氣簾</label>
+    <label><%= check_box_tag(:has_isofix) %> ISOFIX</label>
+    <label><%= check_box_tag(:has_abs, 1, true) %> ABS 防鎖死煞車系統</label>
+    <label><%= check_box_tag(:has_ebd, 1, true) %> EBD 煞車力道分配系統</label>
+    <label><%= check_box_tag(:has_eba, 1, true) %> EBA 煞車力道輔助系統</label>
+    <label><%= check_box_tag(:has_esp, 1, true) %> ESP 車身動態穩定系統</label>
+    <label><%= check_box_tag(:has_cruise_control) %> 定速巡航系統</label>
+    <label><%= check_box_tag(:has_blind_spot_monitor_system) %> 車側盲點偵測系統</label>
+  </div>
+  <%= submit_tag('搜尋', class: 'btn btn-default btn-sm') %>
+<% end %>
+</div>
