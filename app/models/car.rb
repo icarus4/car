@@ -70,7 +70,6 @@ class Car < ActiveRecord::Base
 
   # scope :ensures, -> (value) {where}
 
-
   # Pick a random car
   def self.random
     # FIXME: make sure whether this way causes performance issue or not

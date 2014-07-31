@@ -1,4 +1,8 @@
-<table id="car-data-table" class="table table-striped table-bordered table-hover">
+<% if table_class %>
+<table class='table table-striped table-bordered table-hover car-data <%= table_class %>'>
+<% else %>
+<table class='table table-striped table-bordered table-hover car-data %>'>
+<% end %>
 <thead>
   <tr>
     <th class='data-name'>車款</th>
