@@ -22,7 +22,7 @@
   <div class="checkbox-group">
     <label><%= check_box_tag(:has_airbags_at_side_curtain) %> 車側氣簾</label>
     <label><%= check_box_tag(:has_pretension_seat_belt) %> 預束式安全帶</label>
-    <label><%= check_box_tag(:has_isofix) %> ISOFIX</label>
+    <label><%= check_box_tag(:has_isofix) %> ISOFIX 安全座椅固定裝置</label>
     <label><%= check_box_tag(:has_cruise_control) %> 定速巡航系統</label>
     <hr>
     <label><%= check_box_tag(:has_abs, 1, true) %> ABS 防鎖死煞車系統</label>
@@ -34,6 +34,8 @@
     <label><%= check_box_tag(:has_afs) %> AFS 主動式轉向頭燈</label>
     <label><%= check_box_tag(:has_blind_spot_monitor_system) %> 車側盲點偵測系統</label>
     <label><%= check_box_tag(:has_ldws) %> LDWS 車道偏離警示系統</label>
+    <hr>
+    <label>售價低於：<%= number_field_tag(:max_price, 100, in: 50..1000, step: 10) %> 萬</label>
   </div>
   <%= submit_tag('搜尋', class: 'btn btn-default btn-sm') %>
 <% end %>

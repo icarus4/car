@@ -1,3 +1,5 @@
+<div><p><%= link_to '回上一頁', controller: 'search', action: 'index' %></p></div>
+
 <div class="alert alert-success">
   <%= flash[:success] if flash[:success] %>
 </div>
@@ -5,3 +7,5 @@
 <div>
   <%= render partial: 'common/cars_data_table', locals: {cars: @cars} %>
 </div>
+
+<div><p><%= link_to '回上一頁', controller: 'search', action: 'index' %></p></div>

@@ -19,6 +19,7 @@ class SearchController < ApplicationController
     @cars = @cars.where(has_blind_spot_monitor_system: true) if params[:has_blind_spot_monitor_system] == '1'
     @cars = @cars.where(has_tpms: true) if params[:has_tpms] == '1'
     @cars = @cars.where(has_afs: true) if params[:has_afs] == '1'
+    @cars = @cars.where('retail_price <= ?', params[:max_price].to_i*10000) if params[:max_price].to_i > 0
 
     if @cars.empty?
       flash[:warning] = '沒有符合條件的車子哦！請減少一些條件再試試看'
