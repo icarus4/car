@@ -22,11 +22,13 @@ class SearchController < ApplicationController
     _cars = _cars.where(has_afs: true) if params[:has_afs] == '1'
     _cars = _cars.where('retail_price <= ?', params[:max_price].to_i*10000) if params[:max_price].to_i > 0
 
+    _cars = _cars.order(:retail_price)
+
     if _cars.empty?
       flash[:warning] = '沒有符合條件的車子哦！請減少一些條件再試試看'
       redirect_to action: 'index'
     else
-      flash[:success] = '符合條件的車子如下：'
+      flash[:success] = '符合條件的車子如下（按照售價排序）：'
       @cars_group = _cars.each_slice(6).to_a
     end
   end
