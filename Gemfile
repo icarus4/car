@@ -71,4 +71,4 @@ gem 'font-awesome-sass'
 
 gem 'devise'
 
-# gem 'will_paginate', '~> 3.0'
+# gem 'squeel', '~> 1.2.1'

@@ -24,5 +24,4 @@ class Model < ActiveRecord::Base
     # FIXME: make sure whether this way causes performance issue or not
     self.first(order: 'RANDOM()')
   end
-
 end
