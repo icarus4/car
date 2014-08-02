@@ -8,7 +8,7 @@
     <th class='data-name'>車款</th>
 
     <% cars.each do |car| %>
-    <th><%= "#{car.model.name} #{car.submodel} #{car.displacement}" %></th>
+    <th><%= "#{car.model.name} #{car.displacement} #{car.submodel}" %></th>
     <% end %>
   </tr>
 </thead>
@@ -81,6 +81,11 @@
   <tr>
     <th class='data-name'>LDWS 車道偏離警示系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_ldws)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>斜坡起步輔助系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_hill_start_assist)} %>
   </tr>
 
   <tr>
