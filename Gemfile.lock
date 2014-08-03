@@ -159,8 +159,6 @@ GEM
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    rdoc (4.1.1)
-      json (~> 1.4)
     ref (1.0.5)
     remotipart (1.2.1)
     rspec (2.13.0)
@@ -185,9 +183,6 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    sdoc (0.4.0)
-      json (~> 1.8)
-      rdoc (~> 4.0, < 5.0)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -242,7 +237,6 @@ DEPENDENCIES
   rails_admin (~> 0.6.2)
   rspec-rails (~> 2.13.1)
   sass-rails (~> 4.0.2)
-  sdoc
   simple_form
   sqlite3
   therubyracer
