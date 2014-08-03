@@ -34,12 +34,9 @@ class Brand < ActiveRecord::Base
       )
     }
 
-  validates :headquarters,  allow_nil: true,
-    inclusion: {
-      in: %w(
-        Japan
-        Taiwan
-        U.S.
-      )
-    }
+  validates :headquarters,  allow_nil: true
+
+  def headquarters_enum
+    [['台灣'],['日本'],['美國'],['印度'],['德國'],['義大利'],['法國'],['中國'],['捷克']]
+  end
 end
