@@ -225,14 +225,14 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
-  devise
-  font-awesome-sass
+  devise (~> 3.2.4)
+  font-awesome-sass (~> 4.1.0)
   guard-livereload
   guard-rspec (= 2.5.0)
   jbuilder (~> 1.2)
   jquery-rails
   rails (= 4.0.5)
-  rails_admin
+  rails_admin (~> 0.6.2)
   rspec-rails (~> 2.13.1)
   sass-rails (~> 4.0.2)
   sdoc

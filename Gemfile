@@ -65,10 +65,10 @@ end
 
 # gem 'autoprefixer-rails'
 
-gem 'rails_admin'
+gem 'rails_admin', '~> 0.6.2'
 
-gem 'font-awesome-sass'
+gem 'font-awesome-sass', '~> 4.1.0'
 
-gem 'devise'
+gem 'devise', '~> 3.2.4'
 
 # gem 'squeel', '~> 1.2.1'
