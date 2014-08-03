@@ -74,3 +74,4 @@ gem 'font-awesome-sass', '~> 4.1.0'
 gem 'devise', '~> 3.2.4'
 
 # gem 'squeel', '~> 1.2.1'
+gem 'therubyracer'
