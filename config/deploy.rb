@@ -15,6 +15,9 @@ set :deploy_to, '/var/www/car-safety.tw'
 set :repository, 'git@github.com:icarus4/car.git'
 set :branch, 'develop'
 
+# For password prompt in mina doesn't work
+set :term_mode, nil
+
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
 set :shared_paths, ['config/database.yml', 'log']
