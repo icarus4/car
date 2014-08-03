@@ -20,11 +20,12 @@ class ModelsController < ApplicationController
   private
 
   def get_brand_name_id(show_brands_has_no_car = false)
-    if show_brands_has_no_car
-      @brands = Brand.select(:name, :id).order(:name).all
-    else
-      @brands = Brand.select('brands.id, brands.name').includes(:models).group('brands.id').having('count(models.id) > ?', 0)
-    end
+    # if show_brands_has_no_car
+    #   @brands = Brand.select(:name, :id).order(:name).all
+    # else
+    #   @brands = Brand.includes(:models).select('brands.id, brands.name').group('brands.id').having('count(models.id) > ?', 0)
+    # end
+    @brands = Brand.select(:name, :id).order(:name).all
   end
 
 end
