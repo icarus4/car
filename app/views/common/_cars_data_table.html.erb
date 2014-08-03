@@ -59,6 +59,11 @@
   </tr>
 
   <tr>
+    <th class='data-name'>BOS 煞車優先系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_brake_override_system)} %>
+  </tr>
+
+  <tr>
     <th class='data-name'>ESP 車身動態穩定系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_esp)} %>
   </tr>

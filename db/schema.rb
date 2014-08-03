@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140726132449) do
+ActiveRecord::Schema.define(version: 20140803141800) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20140726132449) do
     t.integer  "ncap_rating"
     t.string   "spec_url"
     t.boolean  "is_all_data_ready"
+    t.boolean  "has_brake_override_system"
   end
 
   add_index "cars", ["airbag_num"], name: "index_cars_on_airbag_num"
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 20140726132449) do
   add_index "cars", ["has_airbags_at_side_curtain"], name: "index_cars_on_has_airbags_at_side_curtain"
   add_index "cars", ["has_attention_assist"], name: "index_cars_on_has_attention_assist"
   add_index "cars", ["has_blind_spot_monitor_system"], name: "index_cars_on_has_blind_spot_monitor_system"
+  add_index "cars", ["has_brake_override_system"], name: "index_cars_on_has_brake_override_system"
   add_index "cars", ["has_child_safety_lock"], name: "index_cars_on_has_child_safety_lock"
   add_index "cars", ["has_cruise_control"], name: "index_cars_on_has_cruise_control"
   add_index "cars", ["has_eba"], name: "index_cars_on_has_eba"

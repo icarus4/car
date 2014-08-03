@@ -15,6 +15,7 @@ class SearchController < ApplicationController
     _cars = _cars.where(has_abs: true) if params[:has_abs] == '1'
     _cars = _cars.where(has_ebd: true) if params[:has_ebd] == '1'
     _cars = _cars.where(has_eba: true) if params[:has_eba] == '1'
+    _cars = _cars.where(has_brake_override_system: true) if params[:has_brake_override_system] == '1'
     _cars = _cars.where(has_esp: true) if params[:has_esp] == '1'
     _cars = _cars.where(has_cruise_control: true) if params[:has_cruise_control] == '1'
     _cars = _cars.where(has_blind_spot_monitor_system: true) if params[:has_blind_spot_monitor_system] == '1'
