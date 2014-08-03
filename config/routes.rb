@@ -7,7 +7,7 @@ SafetyCar::Application.routes.draw do
   get 'search' => 'search#index'
   get 'search/search' => 'search#search'
 
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/adminqq', as: 'rails_admin'
   devise_for :users
 
   # namespace :admin do
