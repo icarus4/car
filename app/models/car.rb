@@ -89,6 +89,6 @@ class Car < ActiveRecord::Base
   end
 
   def esp_name_enum
-    [['ESP'],['VSA']]
+    [['ESP'],['VSC'],['VSA']]
   end
 end
