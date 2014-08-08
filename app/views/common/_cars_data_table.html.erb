@@ -24,6 +24,11 @@
   </tr>
 
   <tr>
+    <th class='data-name'>排氣量</th>
+    <% cars.each {|c| concat content_tag(:td, "#{c.displacement} L")} %>
+  </tr>
+
+  <tr>
     <th class='data-name'>安全氣囊數</th>
     <% cars.each {|c| concat render_airbag_field_with_color(c.airbag_num)} %>
   </tr>
