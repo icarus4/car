@@ -29,6 +29,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (4.0.2)
+    awesome_print (1.2.0)
     bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -84,6 +85,10 @@ GEM
     haml (4.0.5)
       tilt
     hike (1.2.3)
+    hirb (0.7.2)
+    hirb-unicode (0.0.5)
+      hirb (~> 0.5)
+      unicode-display_width (~> 0.1.1)
     http_parser.rb (0.6.0)
     i18n (0.6.11)
     jbuilder (1.5.3)
@@ -213,6 +218,7 @@ GEM
     uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicode-display_width (0.1.1)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -221,6 +227,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  awesome_print
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
@@ -230,6 +237,7 @@ DEPENDENCIES
   font-awesome-sass (~> 4.1.0)
   guard-livereload
   guard-rspec (= 2.5.0)
+  hirb-unicode
   jbuilder (~> 1.2)
   jquery-rails
   pg (~> 0.17.1)
