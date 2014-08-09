@@ -57,6 +57,7 @@ class Car < ActiveRecord::Base
   validates :model_id,      presence: true
   validates :submodel,      presence: true
   validates :displacement,  presence: true
+  validates :airbag_num,    presence: true
   validates :made_in,       presence: true, inclusion: { in: %w(台灣 日本 美國 印度) }
   validates :year,          presence: true, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
@@ -65,6 +66,9 @@ class Car < ActiveRecord::Base
   validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement], case_sensitive: false
   validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement], case_sensitive: false
   validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in], case_sensitive: false
+
+
+  # scope :ensures, -> (value) {where}
 
   # Pick a random car
   def self.random
@@ -76,4 +80,15 @@ class Car < ActiveRecord::Base
     [['台灣'],['日本'],['美國'],['印度']]
   end
 
+  def year_enum
+    [[2014]]
+  end
+
+  def airbag_num_enum
+    [[0],[1],[2],[3],[4],[5],[6],[7],[8]]
+  end
+
+  def esp_name_enum
+    [['ESP'],['VSC'],['VSA']]
+  end
 end

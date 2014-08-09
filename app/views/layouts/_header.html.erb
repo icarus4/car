@@ -1,16 +1,15 @@
 <div id="header" class='navbar navbar-default'>
 <div class="container">
 
-<!--   <div class="navbar-header">
-    <a href="#" class="navbar-brand">Buy a Safe Car</a>
+  <div class="navbar-header">
+    <%= link_to '安心上路', root_path, class: 'navbar-brand' %>
   </div>
- -->
+
   <div class="navbar-collapse collapse">
 
     <ul class="nav navbar-nav">
       <li><%= link_to '查配備', models_path %></li>
-      <li><%= link_to '篩選', '#' %></li>
-      <li></li>
+      <li><%= link_to '篩選', controller: '/search', action: 'index' %></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
