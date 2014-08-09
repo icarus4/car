@@ -74,16 +74,6 @@
   </tr>
 
   <tr>
-    <th class='data-name'>TPMS 胎壓偵測系統</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_tpms)} %>
-  </tr>
-
-  <tr>
-    <th class='data-name'>AFS 主動式轉向頭燈</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_afs)} %>
-  </tr>
-
-  <tr>
     <th class='data-name'>車側盲點偵測系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_blind_spot_monitor_system)} %>
   </tr>
@@ -96,6 +86,21 @@
   <tr>
     <th class='data-name'>斜坡起步輔助系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_hill_start_assist)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>定速巡航系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_cruise_control)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>TPMS 胎壓偵測系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_tpms)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>AFS 主動式轉向頭燈</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_afs)} %>
   </tr>
 
   <tr>
