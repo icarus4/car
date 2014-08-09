@@ -13,7 +13,7 @@ class ModelsController < ApplicationController
 
   def show
     @model = Model.find(params[:id])
-    @cars = @model.cars
+    @cars = @model.cars.order(:retail_price)
   end
 
 
