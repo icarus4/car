@@ -54,10 +54,11 @@ class Car < ActiveRecord::Base
 
   belongs_to :model
 
+  before_save :calculate_airbag_number
+
   validates :model_id,      presence: true
   validates :submodel,      presence: true
   validates :displacement,  presence: true
-  validates :airbag_num,    presence: true
   validates :made_in,       presence: true, inclusion: { in: %w(台灣 日本 美國 印度) }
   validates :year,          presence: true, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
@@ -90,5 +91,21 @@ class Car < ActiveRecord::Base
 
   def esp_name_enum
     [['AdvanceTrac'],['ASC'],['DSC'],['DSTC'],['ESP'],['MSP'],['S-VSC'],['StabiliTrak'],['VDC'],['VDCS'],['VSA'],['VSC']]
+  end
+
+
+  private
+
+  def calculate_airbag_number
+    self.airbag_num = 0
+    self.airbag_num += 1 if self.has_airbag_at_driver_front
+    self.airbag_num += 1 if self.has_airbag_at_passenger_front
+    self.airbag_num += 1 if self.has_airbag_at_driver_knee
+    self.airbag_num += 1 if self.has_airbag_at_passenger_knee
+    self.airbag_num += 1 if self.has_airbag_at_center
+    self.airbag_num += 1 if self.has_airbag_for_pedestrian
+    self.airbag_num += 2 if self.has_airbags_at_front_side_torso
+    self.airbag_num += 2 if self.has_airbags_at_rear_side_torso
+    self.airbag_num += 2 if self.has_airbags_at_side_curtain
   end
 end

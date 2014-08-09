@@ -13,8 +13,10 @@ module ModelsHelper
       'label-danger'
     elsif value < 6
       'label-warning'
-    else
+    elsif value < 8
       'label-success'
+    else
+      'label-info'
     end
 
     content_tag(:td) do
