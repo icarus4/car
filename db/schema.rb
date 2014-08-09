@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803141800) do
+ActiveRecord::Schema.define(version: 20140809092028) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140803141800) do
     t.boolean  "has_isofix"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "retail_price"
+    t.float    "retail_price"
     t.string   "brand_name"
     t.integer  "model_id"
     t.boolean  "has_tpms"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20140803141800) do
   add_index "cars", ["made_in"], name: "index_cars_on_made_in"
   add_index "cars", ["model_id"], name: "index_cars_on_model_id"
   add_index "cars", ["ncap_rating"], name: "index_cars_on_ncap_rating"
+  add_index "cars", ["retail_price"], name: "index_cars_on_retail_price"
   add_index "cars", ["submodel"], name: "index_cars_on_submodel"
   add_index "cars", ["year"], name: "index_cars_on_year"
 

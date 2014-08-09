@@ -38,7 +38,7 @@ module ModelsHelper
         content_tag(:span, 'N/A')
       end
     else
-      _price = price.to_f / 10000
+      _price = number_with_precision(price, precision: 1)
       content_tag(:td) do
         content_tag(:span, "#{_price} 萬")
       end

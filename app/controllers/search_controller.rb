@@ -21,7 +21,7 @@ class SearchController < ApplicationController
     _cars = _cars.where(has_blind_spot_monitor_system: true) if params[:has_blind_spot_monitor_system] == '1'
     _cars = _cars.where(has_tpms: true) if params[:has_tpms] == '1'
     _cars = _cars.where(has_afs: true) if params[:has_afs] == '1'
-    _cars = _cars.where('retail_price <= ?', params[:max_price].to_i*10000) if params[:max_price].to_i > 0
+    _cars = _cars.where('retail_price <= ?', params[:max_price].to_f) if params[:max_price].to_f > 0
 
     # Ordered by price, max result: 60
     _cars = _cars.order(:retail_price).limit(60)
