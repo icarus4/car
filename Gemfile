@@ -59,6 +59,8 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "annotate"
+  gem 'hirb-unicode'
+  gem 'awesome_print'
 end
 
 group :production do
@@ -75,6 +77,3 @@ gem 'devise', '~> 3.2.4'
 
 # gem 'squeel', '~> 1.2.1'
 
-gem 'hirb-unicode'
-
-gem 'awesome_print'
