@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809092028) do
+ActiveRecord::Schema.define(version: 20140810124522) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -38,11 +38,10 @@ ActiveRecord::Schema.define(version: 20140809092028) do
     t.boolean  "is_hybrid"
     t.boolean  "is_electric_vehicle"
     t.integer  "airbag_num"
-    t.boolean  "has_airbag_at_driver_front"
-    t.boolean  "has_airbag_at_passenger_front"
+    t.boolean  "has_airbags_at_front"
     t.boolean  "has_airbag_at_driver_knee"
     t.boolean  "has_airbag_at_passenger_knee"
-    t.boolean  "has_airbag_at_center"
+    t.boolean  "has_airbag_at_front_center"
     t.boolean  "has_airbag_for_pedestrian"
     t.boolean  "has_airbags_at_front_side_torso"
     t.boolean  "has_airbags_at_rear_side_torso"

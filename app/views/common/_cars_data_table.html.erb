@@ -34,8 +34,43 @@
   </tr>
 
   <tr>
-    <th class='data-name'>車側氣簾</th>
+    <th class='data-name'>雙前座氣囊</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_front)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>雙前座車側氣囊</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_front_side_torso)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>雙後座車側氣囊</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_rear_side_torso)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>雙側邊簾幕式氣囊</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_side_curtain)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>駕駛座膝部氣囊</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_at_driver_knee)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>前座乘客膝部氣囊</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_at_passenger_knee)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>前座中央氣囊</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_at_front_center)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>行人防護氣簾</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_for_pedestrian)} %>
   </tr>
 
   <tr>

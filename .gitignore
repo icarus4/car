@@ -30,3 +30,5 @@ config/database.yml
 
 # sublime text
 *.sublime-*
+
+*.TODO

@@ -13,11 +13,10 @@
 #  is_hybrid                       :boolean
 #  is_electric_vehicle             :boolean
 #  airbag_num                      :integer
-#  has_airbag_at_driver_front      :boolean
-#  has_airbag_at_passenger_front   :boolean
+#  has_airbags_at_front            :boolean
 #  has_airbag_at_driver_knee       :boolean
 #  has_airbag_at_passenger_knee    :boolean
-#  has_airbag_at_center            :boolean
+#  has_airbag_at_front_center      :boolean
 #  has_airbag_for_pedestrian       :boolean
 #  has_airbags_at_front_side_torso :boolean
 #  has_airbags_at_rear_side_torso  :boolean
@@ -31,7 +30,7 @@
 #  has_isofix                      :boolean
 #  created_at                      :datetime
 #  updated_at                      :datetime
-#  retail_price                    :integer
+#  retail_price                    :float
 #  brand_name                      :string(255)
 #  model_id                        :integer
 #  has_tpms                        :boolean
@@ -48,6 +47,7 @@
 #  ncap_rating                     :integer
 #  spec_url                        :string(255)
 #  is_all_data_ready               :boolean
+#  has_brake_override_system       :boolean
 #
 
 class Car < ActiveRecord::Base
@@ -98,11 +98,10 @@ class Car < ActiveRecord::Base
 
   def calculate_airbag_number
     self.airbag_num = 0
-    self.airbag_num += 1 if self.has_airbag_at_driver_front
-    self.airbag_num += 1 if self.has_airbag_at_passenger_front
+    self.airbag_num += 2 if self.has_airbags_at_front
     self.airbag_num += 1 if self.has_airbag_at_driver_knee
     self.airbag_num += 1 if self.has_airbag_at_passenger_knee
-    self.airbag_num += 1 if self.has_airbag_at_center
+    self.airbag_num += 1 if self.has_airbag_at_front_center
     self.airbag_num += 1 if self.has_airbag_for_pedestrian
     self.airbag_num += 2 if self.has_airbags_at_front_side_torso
     self.airbag_num += 2 if self.has_airbags_at_rear_side_torso
