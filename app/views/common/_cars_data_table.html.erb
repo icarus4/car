@@ -43,10 +43,10 @@
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_front_side_torso)} %>
   </tr>
 
-  <tr>
+<!--   <tr>
     <th class='data-name'>雙後座車側氣囊</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_rear_side_torso)} %>
-  </tr>
+    <%# cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_rear_side_torso)} %>
+  </tr> -->
 
   <tr>
     <th class='data-name'>雙側邊簾幕式氣囊</th>
@@ -58,25 +58,26 @@
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_at_driver_knee)} %>
   </tr>
 
-  <tr>
+<!--   <tr>
     <th class='data-name'>前座乘客膝部氣囊</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_at_passenger_knee)} %>
-  </tr>
+    <%# cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_at_passenger_knee)} %>
+  </tr> -->
 
-  <tr>
+<!--   <tr>
     <th class='data-name'>前座中央氣囊</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_at_front_center)} %>
-  </tr>
+    <%# cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_at_front_center)} %>
+  </tr> -->
 
-  <tr>
+<!--   <tr>
     <th class='data-name'>行人防護氣囊</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_for_pedestrian)} %>
-  </tr>
+    <%# cars.each {|c| concat render_to_yes_no_with_color(c.has_airbag_for_pedestrian)} %>
+  </tr> -->
 
-  <tr>
+<!--   <tr>
     <th class='data-name'>預束式安全帶</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_pretension_seat_belt)} %>
+    <%# cars.each {|c| concat render_to_yes_no_with_color(c.has_pretension_seat_belt)} %>
   </tr>
+ -->
 
   <tr>
     <th class='data-name'>ISOFIX 安全座椅固定裝置</th>
@@ -84,19 +85,19 @@
   </tr>
 
   <tr>
-    <th class='data-name'>ABS 防鎖死煞車系統</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_abs)} %>
+    <th class='data-name small-font'>ABS / EBD / EBA 煞車輔助系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_abs && c.has_ebd && c.has_eba)} %>
   </tr>
 
-  <tr>
+<!--   <tr>
     <th class='data-name'>EBD 煞車力道分配系統</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_ebd)} %>
+    <%# cars.each {|c| concat render_to_yes_no_with_color(c.has_ebd)} %>
   </tr>
 
   <tr>
     <th class='data-name'>EBA 煞車力道輔助系統</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_eba)} %>
-  </tr>
+    <%# cars.each {|c| concat render_to_yes_no_with_color(c.has_eba)} %>
+  </tr> -->
 
   <tr>
     <th class='data-name'>BOS 煞車優先系統</th>
@@ -109,13 +110,18 @@
   </tr>
 
   <tr>
-    <th class='data-name'>車側盲點偵測系統</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_blind_spot_monitor_system)} %>
+    <th class='data-name'>定速巡航系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_cruise_control)} %>
   </tr>
 
   <tr>
-    <th class='data-name'>LDWS 車道偏離警示系統</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_ldws)} %>
+    <th class='data-name'>主動車距控制巡航系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_adaptive_cruise_control)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>AFS 主動式轉向頭燈</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_afs)} %>
   </tr>
 
   <tr>
@@ -124,18 +130,33 @@
   </tr>
 
   <tr>
-    <th class='data-name'>定速巡航系統</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_cruise_control)} %>
+    <th class='data-name'>車側盲點偵測系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_blind_spot_monitor_system)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>都會行車防護系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_city_safety_system)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>車道偏移警示系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_lane_departure_warning_system)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>車道偏移輔助系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_lane_keeping_assist)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>碰撞警示暨主動煞車系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_collision_warning_and_auto_brake)} %>
   </tr>
 
   <tr>
     <th class='data-name'>TPMS 胎壓偵測系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_tpms)} %>
-  </tr>
-
-  <tr>
-    <th class='data-name'>AFS 主動式轉向頭燈</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_afs)} %>
   </tr>
 
   <tr>
