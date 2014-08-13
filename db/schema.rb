@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813121733) do
+ActiveRecord::Schema.define(version: 20140813140208) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -80,11 +80,13 @@ ActiveRecord::Schema.define(version: 20140813121733) do
     t.text     "note"
     t.boolean  "is_published",                         default: true
     t.boolean  "is_locked",                            default: false
+    t.string   "display_name",                         default: ""
   end
 
   add_index "cars", ["airbag_num"], name: "index_cars_on_airbag_num"
   add_index "cars", ["brand_name"], name: "index_cars_on_brand_name"
   add_index "cars", ["displacement"], name: "index_cars_on_displacement"
+  add_index "cars", ["display_name"], name: "index_cars_on_display_name"
   add_index "cars", ["door_num"], name: "index_cars_on_door_num"
   add_index "cars", ["generation"], name: "index_cars_on_generation"
   add_index "cars", ["has_abs"], name: "index_cars_on_has_abs"

@@ -1,4 +1,15 @@
 module ModelsHelper
+
+  def render_car_name(car)
+    car_name = if car.display_name.present?
+      "#{car.display_name}"
+    else
+      "#{car.model.name} #{car.displacement} #{car.submodel}"
+    end
+
+    return car_name
+  end
+
   def render_to_yes_no_with_color(value)
     label = value ? 'label-success' : 'label-danger'
     _value = value ? 'Yes' : 'No'
