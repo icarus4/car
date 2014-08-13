@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812131546) do
+ActiveRecord::Schema.define(version: 20140813121733) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20140812131546) do
     t.string   "ncap_crash_test_link"
     t.integer  "ncap_rating"
     t.string   "spec_url"
-    t.boolean  "is_all_data_ready"
     t.boolean  "has_brake_override_system"
     t.boolean  "has_city_safety_system"
     t.boolean  "has_adaptive_cruise_control"
@@ -79,6 +78,8 @@ ActiveRecord::Schema.define(version: 20140812131546) do
     t.boolean  "has_driver_alert"
     t.boolean  "has_collision_warning_and_auto_brake"
     t.text     "note"
+    t.boolean  "is_published",                         default: true
+    t.boolean  "is_locked",                            default: false
   end
 
   add_index "cars", ["airbag_num"], name: "index_cars_on_airbag_num"
@@ -107,9 +108,10 @@ ActiveRecord::Schema.define(version: 20140812131546) do
   add_index "cars", ["has_lane_keeping_assist"], name: "index_cars_on_has_lane_keeping_assist"
   add_index "cars", ["has_pretension_seat_belt"], name: "index_cars_on_has_pretension_seat_belt"
   add_index "cars", ["has_tpms"], name: "index_cars_on_has_tpms"
-  add_index "cars", ["is_all_data_ready"], name: "index_cars_on_is_all_data_ready"
   add_index "cars", ["is_electric_vehicle"], name: "index_cars_on_is_electric_vehicle"
   add_index "cars", ["is_hybrid"], name: "index_cars_on_is_hybrid"
+  add_index "cars", ["is_locked"], name: "index_cars_on_is_locked"
+  add_index "cars", ["is_published"], name: "index_cars_on_is_published"
   add_index "cars", ["made_in"], name: "index_cars_on_made_in"
   add_index "cars", ["model_id"], name: "index_cars_on_model_id"
   add_index "cars", ["ncap_rating"], name: "index_cars_on_ncap_rating"

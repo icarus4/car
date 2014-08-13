@@ -68,8 +68,10 @@ class Car < ActiveRecord::Base
   validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement, :model_id], case_sensitive: false
   validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in, :model_id], case_sensitive: false
 
-
-  # scope :ensures, -> (value) {where}
+  scope :published, -> { where(is_published: true) }
+  scope :locked, -> { where(is_locked: true) }
+  scope :not_locked, -> { where(is_locked: false) }
+  default_scope { where(is_published: true) }
 
   # Pick a random car
   def self.random
