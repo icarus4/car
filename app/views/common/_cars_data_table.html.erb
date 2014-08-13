@@ -24,8 +24,8 @@
   </tr>
 
   <tr>
-    <th class='data-name'>排氣量</th>
-    <% cars.each {|c| concat content_tag(:td, "#{c.displacement} L")} %>
+    <th class='data-name'>車門數 / 排氣量</th>
+    <% cars.each {|c| concat content_tag(:td, "#{c.door_num} 門 / #{c.displacement} L")} %>
   </tr>
 
   <tr>
