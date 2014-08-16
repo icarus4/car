@@ -63,10 +63,10 @@ class Car < ActiveRecord::Base
   validates :year,          presence: true, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
 
-  validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement, :model_id], case_sensitive: false
-  validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement, :model_id], case_sensitive: false
-  validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement, :model_id], case_sensitive: false
-  validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in, :model_id], case_sensitive: false
+  validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement, :model_id, :door_num], case_sensitive: false
+  validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement, :model_id, :door_num], case_sensitive: false
+  validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement, :model_id, :door_num], case_sensitive: false
+  validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in, :model_id, :door_num], case_sensitive: false
 
   scope :published, -> { where(is_published: true) }
   scope :locked, -> { where(is_locked: true) }

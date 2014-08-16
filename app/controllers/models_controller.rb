@@ -14,7 +14,7 @@ class ModelsController < ApplicationController
 
   def show
     @model = Model.find(params[:id])
-    @cars = @model.cars.order(:retail_price)
+    @cars = @model.cars.order(:door_num, :retail_price)
   end
 
 
