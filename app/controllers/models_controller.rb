@@ -8,6 +8,7 @@ class ModelsController < ApplicationController
   def index
     @model = Model.random
     @cars = @model.cars
+    render :show
   end
 
 
