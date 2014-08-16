@@ -64,6 +64,7 @@ task :deploy => :environment do
 
     to :launch do
       queue "touch #{deploy_to}/tmp/restart.txt"
+      queue "sudo service nginx restart"
     end
   end
 end
