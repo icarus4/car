@@ -169,6 +169,11 @@
     <% cars.each {|c| concat render_price(c.retail_price)} %>
   </tr>
 
+  <tr>
+    <th class='data-name'>備註</th>
+    <% cars.each {|c| concat content_tag(:td, simple_format(c.note))} %>
+  </tr>
+
 </tbody>
 
 </table>
