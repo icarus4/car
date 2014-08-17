@@ -171,7 +171,7 @@
 
   <tr>
     <th class='data-name'>備註</th>
-    <% cars.each {|c| concat content_tag(:td, simple_format(c.note))} %>
+    <% cars.each {|c| concat content_tag(:td, simple_format(c.note, class: 'extra-small-font'))} %>
   </tr>
 
 </tbody>
