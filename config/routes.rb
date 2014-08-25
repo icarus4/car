@@ -1,6 +1,5 @@
 SafetyCar::Application.routes.draw do
 
-
   root "models#index"
   resources :models, only: [:index, :show]
 
@@ -8,7 +7,6 @@ SafetyCar::Application.routes.draw do
   post 'search/search' => 'search#search'
 
   resources :contributions, only: [:index]
-
 
 
   mount RailsAdmin::Engine => '/adminqq', as: 'rails_admin'
