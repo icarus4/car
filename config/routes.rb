@@ -5,7 +5,7 @@ SafetyCar::Application.routes.draw do
   resources :models, only: [:index, :show]
 
   get 'search' => 'search#index'
-  get 'search/search' => 'search#search'
+  post 'search/search' => 'search#search'
 
   resources :contributions, only: [:index]
 
