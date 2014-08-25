@@ -59,7 +59,7 @@ class Car < ActiveRecord::Base
   validates :model_id,      presence: true
   validates :submodel,      presence: true
   validates :displacement,  presence: true
-  validates :made_in,       presence: true, inclusion: { in: %w(台灣 日本 美國 印度) }
+  validates :made_in,       presence: true, inclusion: { in: %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞) }
   validates :year,          presence: true, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
 
