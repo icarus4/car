@@ -80,7 +80,8 @@ class Car < ActiveRecord::Base
   end
 
   def made_in_enum
-    [['台灣'],['日本'],['美國'],['印度']]
+    made_in_array = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞)
+    return made_in_array.each_slice(1).to_a
   end
 
   def year_enum
