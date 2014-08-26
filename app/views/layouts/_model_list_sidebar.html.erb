@@ -9,7 +9,9 @@
         <ul class='ul-models'>
 
         <% brand.models.order(:name).select(:name, :id).each do |model| %>
-          <li class='li-model'><%= link_to "#{model.name}", { controller: :models, action: :show, id: model.id } %></li>
+          <% if model.cars.present? %>
+            <li class='li-model'><%= link_to "#{model.name}", { controller: :models, action: :show, id: model.id } %></li>
+          <% end %>
         <% end %>
 
         </ul>
