@@ -77,3 +77,4 @@ gem 'devise', '~> 3.2.4'
 
 # gem 'squeel', '~> 1.2.1'
 
+gem 'meta-tags', '~> 2.0.0'
