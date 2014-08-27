@@ -4,23 +4,27 @@
 
     <% @brands.each do |brand| %>
 
-      <li class='li-brand'><span class='span-brand'><%= brand.name %></span>
+      <% if brand.cars.present? %>
 
-        <ul class='ul-models'>
+        <li class='li-brand'><span class='span-brand'><%= brand.name %></span>
 
-        <% brand.models.order(:name).select(:name, :id).each do |model| %>
-          <% if model.cars.present? %>
-            <li class='li-model'><%= link_to "#{model.name}", { controller: :models, action: :show, id: model.id } %></li>
+          <ul class='ul-models'>
+
+          <% brand.models.order(:name).select(:name, :id).each do |model| %>
+            <% if model.cars.present? %>
+              <li class='li-model'><%= link_to "#{model.name}", { controller: :models, action: :show, id: model.id } %></li>
+            <% end %>
           <% end %>
+
+          </ul>
+
+        </li>
+
+        <!-- Don't show <hr> if it is the last brand -->
+        <% unless brand.equal? @brands.last %>
+        <hr>
         <% end %>
 
-        </ul>
-
-      </li>
-
-      <!-- Don't show <hr> if it is the last brand -->
-      <% unless brand.equal? @brands.last %>
-      <hr>
       <% end %>
 
     <% end %>
