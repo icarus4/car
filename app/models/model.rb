@@ -22,6 +22,6 @@ class Model < ActiveRecord::Base
   # Pick a random model
   def self.random
     # FIXME: make sure whether this way causes performance issue or not
-    self.first(order: 'RANDOM()')
+    self.joins(:cars).first(order: 'RANDOM()')
   end
 end
