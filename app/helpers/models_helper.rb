@@ -4,7 +4,7 @@ module ModelsHelper
     car_name = if car.display_name.present?
       "#{car.display_name}"
     else
-      "#{car.displacement} #{car.submodel}"
+      "#{car.model.name} #{car.displacement} #{car.submodel}"
     end
 
     return car_name
