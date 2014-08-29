@@ -1,6 +1,6 @@
 SafetyCar::Application.routes.draw do
 
-  root "models#index"
+  root "welcome#index"
   resources :models, only: [:index, :show]
 
   get 'search' => 'search#index'
