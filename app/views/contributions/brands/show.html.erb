@@ -1,0 +1,12 @@
+<h3><%= link_to '<< 回車廠列表', contributions_path %></h3>
+
+<h4>車系列表（點車系名稱進入編輯車款）</h4>
+
+<ul>
+  <% @brand.models.each do |model| %>
+    <li><%= model.name %></li>
+  <% end %>
+</ul>
+
+
+<%= link_to '建立新車系', new_contributions_brand_model_path(@brand), class: 'btn btn-success btn-mini' %>

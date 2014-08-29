@@ -8,6 +8,11 @@ SafetyCar::Application.routes.draw do
 
   resources :contributions, only: [:index]
 
+  namespace :contributions do
+    resources :brands do
+      resources :models
+    end
+  end
 
   mount RailsAdmin::Engine => '/adminqq', as: 'rails_admin'
   devise_for :users
