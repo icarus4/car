@@ -1,0 +1,60 @@
+
+<div style="margin: 30px 0 40px 0">
+<hr>
+<%= simple_form_for([:contributions, @car.model.brand, @car.model, @car]) do |f| %>
+  <h4 style="margin-bottom: 20px">基本資料：</h4 style="margin-bottom: 20px">
+  <%= f.input :submodel, label: '車款名（例：雅致型、VTi-S）' %>
+  <%= f.input :displacement, label: '排氣量 （單位：L）（例：1.8）' %>
+  <%= f.input :year, label: '販售年份（例：2014）', collection: 2014..(Time.now.year+1) %>
+  <%= f.input :made_in, label: '產地', collection: Car.made_in_list %>
+  <%= f.input :door_num, label: '車門數', collection: 2..9 %>
+  <%= f.input :is_hybrid, label: '若為油電車請打勾' %>
+  <%= f.input :is_electric_vehicle, label: '若為純電動車請打勾（排氣量請填0）' %>
+  <%= f.input :retail_price, label: '官方建議售價（單位：萬）' %>
+  <%= f.input :spec_url, label: '官方規格表連結' %>
+  <hr>
+  <p style="margin-bottom: 20px; width: 500px"><b>顯示名稱</b> 此欄原則上請留空白。設定此欄位將會強迫使車款名直接顯示為此欄位的名稱。</p>
+  <p style="margin-bottom: 20px; width: 500px">說明：使用者看到的車款名稱是由 "[車系] [排氣量] [款式]" (ex: "civic 1.8 VTi-S") 所構成，若此排列方式無法準確表示此款車時再考慮使用此欄位。<span style="color: #ff0033">如果您不確定是否該填此欄位，那麼此欄請留空白</span>。</p>
+  <%= f.input :display_name, label: '顯示名稱' %>
+  <hr>
+  <h4 style="margin-bottom: 20px">氣囊資料（若有該種氣囊者請打勾）：</h4 style="margin-bottom: 20px">
+  <p style="margin-bottom: 20px; width: 500px">有以下氣囊者請打勾：</p>
+  <%= f.input :has_airbags_at_front, label: '正面（雙前座正面氣囊）' %>
+  <%= f.input :has_airbags_at_front_side_torso, label: '前座側面（雙前座側面氣囊）' %>
+  <%= f.input :has_airbags_at_rear_side_torso, label: '後座側面（雙後座側面氣囊）' %>
+  <%= f.input :has_airbags_at_side_curtain, label: '車側氣簾（雙側邊簾幕式氣囊）' %>
+  <%= f.input :has_airbag_at_driver_knee, label: '駕駛膝部（駕駛座膝部氣囊）' %>
+  <%= f.input :has_airbag_at_passenger_knee, label: '副駕駛膝部（前座乘客膝部氣囊）' %>
+  <%= f.input :has_airbag_at_front_center, label: '中央（前座中央氣囊）' %>
+  <%= f.input :has_airbag_for_pedestrian, label: '行人（行人防護氣囊）' %>
+  <hr>
+  <h4 style="margin-bottom: 20px">煞車相關（若有該配備請打勾）：</h4 style="margin-bottom: 20px">
+  <%= f.input :has_abs, label: 'ABS（防鎖死煞車系統）' %>
+  <%= f.input :has_ebd, label: 'EBD（煞車力道分配系統）' %>
+  <%= f.input :has_eba, label: 'EBA（煞車力道輔助系統）' %>
+  <%= f.input :has_brake_override_system, label: 'BOS（煞車優先系統）' %>
+  <hr>
+  <h4 style="margin-bottom: 20px">其他（若有該配備請打勾）：</h4 style="margin-bottom: 20px">
+  <%= f.input :has_isofix, label: 'ISOFIX 兒童安全座椅固定裝置' %>
+  <%= f.input :has_esp, label: '動態車身穩定系統' %>
+  <%= f.input :esp_name, label: '動態車身穩定系統英文名稱', collection: Car.esp_name_list %>
+  <%= f.input :has_cruise_control, label: '定速巡航系統' %>
+  <%= f.input :has_adaptive_cruise_control, label: '主動車距控制巡航系統' %>
+  <%= f.input :has_afs, label: 'AFS 主動式轉向頭燈' %>
+  <%= f.input :has_hill_start_assist, label: '斜坡起步輔助系統' %>
+  <%= f.input :has_blind_spot_monitor_system, label: '車側盲點偵測系統' %>
+  <%= f.input :has_city_safety_system, label: '都會行車防護系統（慢速時主動煞停）' %>
+  <%= f.input :has_collision_warning_and_auto_brake, label: '碰撞警示暨主動煞車系統（一般速度時主動煞停）' %>
+  <%= f.input :has_lane_departure_warning_system, label: '車道偏移警示系統（僅警示，不調整）' %>
+  <%= f.input :has_lane_keeping_assist, label: '車道偏移輔助系統（會主動調整偏移）' %>
+  <%= f.input :has_attention_assist, label: '駕駛疲勞警示系統' %>
+  <%= f.input :has_tpms, label: '胎壓偵測系統' %>
+  <%= f.input :note, label: '其他上述沒有的配備請列於此' %>
+
+  <h4 style="margin: 70px 0 30px; width: 800px"><span style="color: red;">注意！</span>儲存資料後瀏覽網站者<span style="color: red">並不會立刻看到結果</span>，請先到車系列表確認資料正確後，再點選車款名稱旁的發佈按鈕，<span style="color: red">發佈後瀏覽網站的人才看得到此車款。</span></h4>
+
+  <%= f.submit "儲存", disable_with: "Submiting...", class: "btn btn-primary" %>
+
+  <span style="padding-left: 10px">or <%= link_to "取消回上一頁", contributions_brand_model_path(@car.model.brand, @car.model), confirm: "確定不儲存？" %></span>
+<% end %>
+</div>

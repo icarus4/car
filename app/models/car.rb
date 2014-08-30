@@ -53,16 +53,18 @@
 class Car < ActiveRecord::Base
 
   MADE_IN_LIST = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞)
+  ESP_NAME_LIST = %w(AdvanceTrac ASC DSC DSTC ESP MSP S-VSC StabiliTrak VDC VDCS VSA VSC)
 
   belongs_to :model
 
   before_save :calculate_airbag_number
 
-  validates :model_id,      presence: true
-  validates :submodel,      presence: true
-  validates :displacement,  presence: true
-  validates :made_in,       presence: true, inclusion: { in: MADE_IN_LIST }
-  validates :year,          presence: true, numericality: { greater_than_or_equal_to: 2000 }
+  validates_presence_of :model_id,      message: '此欄位不可留空白'
+  validates_presence_of :submodel,      message: '此欄位不可留空白'
+  validates_presence_of :displacement,  message: '此欄位不可留空白'
+  validates_presence_of :made_in,       message: '此欄位不可留空白'
+  validates_presence_of :year,          message: '此欄位不可留空白'
+  validates :year, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
 
   validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement, :model_id, :door_num], case_sensitive: false
@@ -85,8 +87,11 @@ class Car < ActiveRecord::Base
     MADE_IN_LIST
   end
 
+  def self.esp_name_list
+    ESP_NAME_LIST
+  end
+
   def made_in_enum
-    # made_in_array = MADE_IN_LIST
     return MADE_IN_LIST.each_slice(1).to_a
   end
 
@@ -99,7 +104,7 @@ class Car < ActiveRecord::Base
   end
 
   def esp_name_enum
-    [['AdvanceTrac'],['ASC'],['DSC'],['DSTC'],['ESP'],['MSP'],['S-VSC'],['StabiliTrak'],['VDC'],['VDCS'],['VSA'],['VSC']]
+    ESP_NAME_LIST.each_slice(1).to_a
   end
 
 

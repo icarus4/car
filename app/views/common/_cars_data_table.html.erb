@@ -20,7 +20,7 @@
 </thead>
 <tbody>
   <tr>
-    <th class='data-name'>年份</th>
+    <th class='data-name'>販售年份</th>
     <% cars.each {|c| concat content_tag(:td, c.year)} %>
   </tr>
 
@@ -40,7 +40,7 @@
   </tr>
 
   <tr>
-    <th class='data-name'>雙前座氣囊</th>
+    <th class='data-name'>雙前座正面氣囊</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_front)} %>
   </tr>
 
@@ -86,7 +86,7 @@
  -->
 
   <tr>
-    <th class='data-name'>ISOFIX 安全座椅固定裝置</th>
+    <th class='data-name'>ISOFIX 兒童安全座椅固定裝置</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_isofix)} %>
   </tr>
 
@@ -158,6 +158,11 @@
   <tr>
     <th class='data-name'>碰撞警示暨主動煞車系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_collision_warning_and_auto_brake)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>駕駛疲勞警示系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_attention_assist)} %>
   </tr>
 
   <tr>

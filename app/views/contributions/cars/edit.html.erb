@@ -1,17 +1,3 @@
 <h3>目前正在修改車款的是： <%= "#{@car.model.name} #{@car.displacement} #{@car.submodel}" %> <%= "（#{@car.display_name}）" if @car.display_name.present? %></h3>
 
-<div style="margin: 30px 0 20px 0">
-<hr>
-<%= simple_form_for([:contributions, @car.model.brand, @car.model, @car]) do |f| %>
-  <h4 style="margin-bottom: 20px">基本資料：</h4 style="margin-bottom: 20px">
-  <%= f.input :submodel, label: '車款名' %>
-  <%= f.input :displacement, label: '排氣量（單位：L）' %>
-  <%= f.input :year, label: '販售年份' %>
-  <%= f.input :made_in, label: '產地', collection: Car.made_in_list %>
-  <%= f.input :retail_price, label: '售價（單位：萬）' %>
-  <hr>
-  <p style="margin-bottom: 20px; width: 500px"><b>顯示名稱</b> 此欄原則上請留空白。設定此欄位將會強迫使車款名直接顯示為此欄位的名稱。</p>
-  <p style="margin-bottom: 20px; width: 500px">說明：使用者看到的車款名稱是由 "[車系] [排氣量] [款式]" (ex: "civic 1.8 VTi-S") 所構成，若此排列方式無法準確表示此款車時再考慮使用此欄位。如果您不確定是否該填此欄位，那麼此欄請留空白。</p>
-  <%= f.input :display_name, label: '顯示名稱' %>
-<% end %>
-</div>
+<%= render 'contributions/models/car_form' %>
