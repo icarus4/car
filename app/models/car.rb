@@ -52,6 +52,8 @@
 
 class Car < ActiveRecord::Base
 
+  MADE_IN_LIST = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞)
+
   belongs_to :model
 
   before_save :calculate_airbag_number
@@ -59,7 +61,7 @@ class Car < ActiveRecord::Base
   validates :model_id,      presence: true
   validates :submodel,      presence: true
   validates :displacement,  presence: true
-  validates :made_in,       presence: true, inclusion: { in: %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞) }
+  validates :made_in,       presence: true, inclusion: { in: MADE_IN_LIST }
   validates :year,          presence: true, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
 
@@ -79,13 +81,17 @@ class Car < ActiveRecord::Base
     self.first(order: 'RANDOM()')
   end
 
+  def self.made_in_list
+    MADE_IN_LIST
+  end
+
   def made_in_enum
-    made_in_array = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞)
-    return made_in_array.each_slice(1).to_a
+    # made_in_array = MADE_IN_LIST
+    return MADE_IN_LIST.each_slice(1).to_a
   end
 
   def year_enum
-    [[2014]]
+    [[2014],[2015]]
   end
 
   def airbag_num_enum
