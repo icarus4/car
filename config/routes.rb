@@ -9,8 +9,8 @@ SafetyCar::Application.routes.draw do
   resources :contributions, only: [:index]
 
   namespace :contributions do
-    resources :brands do
-      resources :models do
+    resources :brands, only: [:index, :show] do
+      resources :models, only: [:show] do
         resources :cars
       end
     end
