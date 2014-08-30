@@ -4,6 +4,6 @@ class Contributions::ModelsController < ApplicationController
 
   def show
     @model = Model.find params[:id]
-    @cars = @model.cars.order(:submodel)
+    @cars = @model.cars.order(:door_num, :retail_price)
   end
 end

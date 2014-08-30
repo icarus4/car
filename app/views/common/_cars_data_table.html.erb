@@ -8,7 +8,13 @@
     <th class='data-name'>車款</th>
 
     <% cars.each do |car| %>
-    <th class='data-value small-font'><%= render_car_name(car) %></th>
+    <th class='data-value small-font'>
+      <%= render_car_name(car) %>
+      <% if editable %>
+        <br>
+        （<%= link_to '編輯', edit_contributions_brand_model_car_path(car.model.brand, car.model, car) %>）
+      <% end %>
+    </th>
     <% end %>
   </tr>
 </thead>
