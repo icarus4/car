@@ -10,7 +10,9 @@ SafetyCar::Application.routes.draw do
 
   namespace :contributions do
     resources :brands do
-      resources :models
+      resources :models do
+        resources :cars
+      end
     end
   end
 
