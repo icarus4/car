@@ -3,7 +3,7 @@
 <h4>車系列表（點車系名稱進入編輯車款）</h4>
 
 <ul>
-  <% @brand.models.each do |model| %>
+  <% @brand.models.order(:name).each do |model| %>
     <li><%= model.name %></li>
   <% end %>
 </ul>

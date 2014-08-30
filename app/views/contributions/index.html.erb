@@ -1,4 +1,8 @@
 <h3>歡迎編輯資料</h3>
+<h4>本頁為車系列表。若您想新增車款，請先進入對應的車系</h4>
+<h4>若不存在您想新增或編輯的車系，請再新增車系</h4>
+<h5>舉例1：CIVIC 為車系，此車系底下之車款有 1.8 VTi / 1.8 VTi-S / 2.0 S 共三車款</h5>
+<h5>舉例2：CT 200h為車系，此車系底下之車款有 菁英版 / 豪華版 / 頂級NAVI版 / F SPORT 菁英版 / F SPORT 豪華版 / F SPORT 頂級NAVI版 共六車款</h5>
 
 <% unless user_signed_in? %>
   <h3>請先 <%= link_to '登入', new_user_session_path %> 或 <%= link_to '註冊', new_user_registration_path %></h3>
@@ -8,15 +12,17 @@
   <ul>
 
     <% @brands.each do |brand| %>
-
+      <hr>
       <li><h4><%= brand.name %></h4>
 
         <ul>
-        <% brand.models.each do |model| %>
+
+        <% brand.models.order(:name).each do |model| %>
           <li><%= link_to "#{model.name}", contributions_brand_model_path(brand, model) %> <%= "(#{model.cars.size})" %> </li>
         <% end %>
 
         </ul>
+
       </li>
 
     <% end %>
