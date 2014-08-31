@@ -64,13 +64,25 @@ class Car < ActiveRecord::Base
   validates_presence_of :displacement,  message: '此欄位不可為空白'
   validates_presence_of :made_in,       message: '此欄位不可為空白'
   validates_presence_of :year,          message: '此欄位不可為空白'
+  validates_presence_of :door_num,      message: '此欄位不可為空白'
   validates :year, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
 
-  validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement, :model_id, :door_num], case_sensitive: false
-  validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement, :model_id, :door_num], case_sensitive: false
-  validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement, :model_id, :door_num], case_sensitive: false
-  validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in, :model_id, :door_num], case_sensitive: false
+  validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
+
+  validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
+
+  validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
+
+  validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
 
   scope :published, -> { where(is_published: true) }
   scope :locked, -> { where(is_locked: true) }
