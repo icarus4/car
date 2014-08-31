@@ -1,5 +1,5 @@
 
-<div style="margin: 30px 0 40px 0">
+<div class='contribution_form' style="margin: 30px 0 40px 0">
 <hr>
 <%= simple_form_for([:contributions, @car.model.brand, @car.model, @car]) do |f| %>
   <h4 style="margin-bottom: 20px">基本資料：</h4 style="margin-bottom: 20px">
@@ -49,9 +49,11 @@
   <%= f.input :has_lane_keeping_assist, label: '車道偏移輔助系統（會主動調整偏移）' %>
   <%= f.input :has_attention_assist, label: '駕駛疲勞警示系統' %>
   <%= f.input :has_tpms, label: '胎壓偵測系統' %>
-  <%= f.input :note, label: '其他上述沒有的配備請列於此' %>
-
-  <h4 style="margin: 70px 0 30px; width: 800px"><span style="color: red;">注意！</span>儲存資料後瀏覽網站者<span style="color: red">並不會立刻看到結果</span>，請先到車系列表確認資料正確後，再點選車款名稱旁的發佈按鈕，<span style="color: red">發佈後瀏覽網站的人才看得到此車款。</span></h4>
+  <hr>
+  <h4 style="margin-bottom: 20px">備註欄（若含有其他上述沒有列出的特殊配備，請填寫於此）：</h4 style="margin-bottom: 20px">
+  <%= f.input :note, label: '備註欄' %>
+  <hr>
+  <h4 style="margin: 70px 0 30px; width: 800px"><span style="color: red;">注意！</span>儲存資料後瀏覽網站者<span style="color: red">並不會立刻看到結果</span>，儲存後請先到車系列表確認資料正確後，再點選車款名稱旁的發佈按鈕，<span style="color: red">發佈後瀏覽網站的人才看得到此車款。</span></h4>
 
   <%= f.submit "儲存", disable_with: "Submiting...", class: "btn btn-primary" %>
 
