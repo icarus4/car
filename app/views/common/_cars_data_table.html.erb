@@ -8,13 +8,30 @@
     <th class='data-name'>車款</th>
 
     <% cars.each do |car| %>
-    <th class='data-value small-font'><%= render_car_name(car) %></th>
+    <th class='data-value small-font'>
+      <%= render_car_name(car) %>
+
+      <!-- for contribution -->
+      <% if editable %>
+        <br>
+        <br>
+        <%= link_to '編輯', edit_contributions_brand_model_car_path(car.model.brand, car.model, car), class: 'btn btn-default btn-xs' %>
+        <br>
+        <br>
+        <% if car.published? %>
+          <%= button_to '隱藏此車款', unpublish_contributions_brand_model_car_path(car.model.brand, car.model, car), data: { confirm: "確定要隱藏此車款？" }, method: :get , class: 'btn btn-default btn-xs' %>
+        <% else %>
+          <%= button_to '公開此車款', publish_contributions_brand_model_car_path(car.model.brand, car.model, car), data: { confirm: "公開前請先確定資料是否都正確。\n確定要公開？" }, method: :get, class: 'btn btn-warning btn-xs' %>
+        <% end %>
+      <% end %>
+
+    </th>
     <% end %>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <th class='data-name'>年份</th>
+    <th class='data-name'>販售年份</th>
     <% cars.each {|c| concat content_tag(:td, c.year)} %>
   </tr>
 
@@ -34,7 +51,7 @@
   </tr>
 
   <tr>
-    <th class='data-name'>雙前座氣囊</th>
+    <th class='data-name'>雙前座正面氣囊</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_airbags_at_front)} %>
   </tr>
 
@@ -80,7 +97,7 @@
  -->
 
   <tr>
-    <th class='data-name'>ISOFIX 安全座椅固定裝置</th>
+    <th class='data-name'>ISOFIX 兒童安全座椅固定裝置</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_isofix)} %>
   </tr>
 
@@ -152,6 +169,11 @@
   <tr>
     <th class='data-name'>碰撞警示暨主動煞車系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_collision_warning_and_auto_brake)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>駕駛疲勞警示系統</th>
+    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_attention_assist)} %>
   </tr>
 
   <tr>

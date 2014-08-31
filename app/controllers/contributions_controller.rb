@@ -1,5 +1,8 @@
 class ContributionsController < ApplicationController
-  def index
 
+  def index
+    if current_user
+      @brands = Brand.all.order(:name)
+    end
   end
 end

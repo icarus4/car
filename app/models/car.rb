@@ -52,21 +52,37 @@
 
 class Car < ActiveRecord::Base
 
+  MADE_IN_LIST = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞)
+  ESP_NAME_LIST = %w(AdvanceTrac ASC DSC DSTC ESP MSP S-VSC StabiliTrak VDC VDCS VSA VSC)
+
   belongs_to :model
 
   before_save :calculate_airbag_number
 
-  validates :model_id,      presence: true
-  validates :submodel,      presence: true
-  validates :displacement,  presence: true
-  validates :made_in,       presence: true, inclusion: { in: %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞) }
-  validates :year,          presence: true, numericality: { greater_than_or_equal_to: 2000 }
+  validates_presence_of :model_id,      message: '此欄位不可為空白'
+  validates_presence_of :submodel,      message: '此欄位不可為空白'
+  validates_presence_of :displacement,  message: '此欄位不可為空白'
+  validates_presence_of :made_in,       message: '此欄位不可為空白'
+  validates_presence_of :year,          message: '此欄位不可為空白'
+  validates_presence_of :door_num,      message: '此欄位不可為空白'
+  validates :year, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
 
-  validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement, :model_id, :door_num], case_sensitive: false
-  validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement, :model_id, :door_num], case_sensitive: false
-  validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement, :model_id, :door_num], case_sensitive: false
-  validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in, :model_id, :door_num], case_sensitive: false
+  validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
+
+  validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
+
+  validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
+
+  validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
 
   scope :published, -> { where(is_published: true) }
   scope :locked, -> { where(is_locked: true) }
@@ -79,13 +95,34 @@ class Car < ActiveRecord::Base
     self.first(order: 'RANDOM()')
   end
 
+  def self.made_in_list
+    MADE_IN_LIST
+  end
+
+  def self.esp_name_list
+    ESP_NAME_LIST
+  end
+
+  def publish!
+    self.is_published = true
+    self.save!
+  end
+
+  def unpublish!
+    self.is_published = false
+    self.save!
+  end
+
+  def published?
+    self.is_published
+  end
+
   def made_in_enum
-    made_in_array = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 羅馬尼亞)
-    return made_in_array.each_slice(1).to_a
+    return MADE_IN_LIST.each_slice(1).to_a
   end
 
   def year_enum
-    [[2014]]
+    [[2014],[2015]]
   end
 
   def airbag_num_enum
@@ -93,7 +130,7 @@ class Car < ActiveRecord::Base
   end
 
   def esp_name_enum
-    [['AdvanceTrac'],['ASC'],['DSC'],['DSTC'],['ESP'],['MSP'],['S-VSC'],['StabiliTrak'],['VDC'],['VDCS'],['VSA'],['VSC']]
+    ESP_NAME_LIST.each_slice(1).to_a
   end
 
 
