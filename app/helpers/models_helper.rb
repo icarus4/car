@@ -19,6 +19,23 @@ module ModelsHelper
     end
   end
 
+  def render_abs_ebd_eda_to_y_n_with_color(has_abs, has_ebd, has_eba)
+    label_abs = has_abs ? 'label-success' : 'label-danger'
+    label_ebd = has_ebd ? 'label-success' : 'label-danger'
+    label_eba = has_eba ? 'label-success' : 'label-danger'
+    _has_abs = has_abs ? 'Y' : 'N'
+    _has_ebd = has_ebd ? 'Y' : 'N'
+    _has_eba = has_eba ? 'Y' : 'N'
+
+    content_tag(:td) do
+      concat content_tag(:span, _has_abs, class: "label #{label_abs} extra-small-font")
+      concat ' / '
+      concat content_tag(:span, _has_ebd, class: "label #{label_ebd} extra-small-font")
+      concat ' / '
+      concat content_tag(:span, _has_eba, class: "label #{label_eba} extra-small-font")
+    end
+  end
+
   def render_airbag_field_with_color(value)
     label = if value < 4
       'label-danger'

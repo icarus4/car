@@ -113,7 +113,7 @@
 
   <tr>
     <th class='data-name small-font'>ABS / EBD / EBA 煞車輔助系統</th>
-    <% cars.each {|c| concat render_to_yes_no_with_color(c.has_abs && c.has_ebd && c.has_eba)} %>
+    <% cars.each {|c| concat render_abs_ebd_eda_to_y_n_with_color(c.has_abs, c.has_ebd,c. has_eba)} %>
   </tr>
 
 <!--   <tr>
