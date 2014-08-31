@@ -11,7 +11,7 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, 'car-safety.tw'
-set :deploy_to, '/var/www/car-safety.tw'
+set :deploy_to, '/var/www/test.car-safety.tw'
 set :repository, 'git@github.com:icarus4/car.git'
 set :branch, 'develop'
 
