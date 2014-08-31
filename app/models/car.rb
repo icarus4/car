@@ -91,6 +91,20 @@ class Car < ActiveRecord::Base
     ESP_NAME_LIST
   end
 
+  def publish!
+    self.is_published = true
+    self.save!
+  end
+
+  def unpublish!
+    self.is_published = false
+    self.save!
+  end
+
+  def published?
+    self.is_published
+  end
+
   def made_in_enum
     return MADE_IN_LIST.each_slice(1).to_a
   end

@@ -1,4 +1,4 @@
-SafetyCar::Application.routes.draw do
+  SafetyCar::Application.routes.draw do
 
   root "welcome#index"
   resources :models, only: [:index, :show]
@@ -11,7 +11,12 @@ SafetyCar::Application.routes.draw do
   namespace :contributions do
     resources :brands, only: [:index, :show] do
       resources :models, only: [:show] do
-        resources :cars
+        resources :cars do
+          member do
+            get 'publish'
+            get 'unpublish'
+          end
+        end
       end
     end
   end

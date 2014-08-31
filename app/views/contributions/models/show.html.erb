@@ -1,7 +1,8 @@
 <h3><%= link_to "<< 回車系列表", contributions_path %></h3>
 
 <div id="car-data-table-div">
-  <h4 style='text-align: center'>目前的 <%= "#{@model.brand.name} #{@model.name}" %> 安全配備一覽表 （<%= link_to "點我新增車款", new_contributions_brand_model_car_path(@model.brand, @model) %>）</h4>
+  <h4 style='text-align: center'>目前的 <%= "#{@model.brand.name} #{@model.name}" %> 各車款安全配備一覽表</h4>
+  <h4 style='text-align: center'><%= link_to "點我新增車款", new_contributions_brand_model_car_path(@model.brand, @model) %></h4>
   <h4 style='text-align: center'>若現有車款資料有錯想修改，請點車款名下方之 "編輯"</h4>
   <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: true} %>
 
