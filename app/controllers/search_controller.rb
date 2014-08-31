@@ -29,6 +29,8 @@ class SearchController < ApplicationController
     _cars = _cars.where(has_lane_keeping_assist: true) if params[:has_lane_keeping_assist] == '1'
     _cars = _cars.where(has_collision_warning_and_auto_brake: true) if params[:has_collision_warning_and_auto_brake] == '1'
     _cars = _cars.where(has_attention_assist: true) if params[:has_attention_assist] == '1'
+    _cars = _cars.where(made_in: '台灣') if params[:made_in] == 'tw'
+    _cars = _cars.where.not(made_in: '台灣') if params[:made_in] == 'not_tw'
     _cars = _cars.where('retail_price <= ? OR retail_price IS NULL', params[:max_price].to_f) if params[:max_price].to_f > 0
 
     # Ordered by price, max result: 60
