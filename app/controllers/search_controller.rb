@@ -38,7 +38,7 @@ class SearchController < ApplicationController
       flash[:warning] = '沒有符合條件的車子哦！請減少一些條件再試試看'
       redirect_to action: 'index'
     else
-      flash[:success] = "符合條件的車子共 #{_cars.size} 輛（按照售價排序）："
+      flash.now[:success] = "符合條件的車子共 #{_cars.size} 輛（按照售價排序）："
       @cars_group = _cars.each_slice(6).to_a
     end
   end
