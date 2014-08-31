@@ -1,10 +1,21 @@
 class Contributions::CarsController < ApplicationController
 
-  before_action :get_current_car, except: [:new]
+  before_action :get_current_car, except: [:new, :create]
 
   def new
     @model = Model.find params[:model_id]
     @car = @model.cars.build
+  end
+
+  def create
+    @model = Model.find params[:model_id]
+    @car = @model.cars.new(car_params)
+    if @car.save
+      @car.unpublish!
+      redirect_to contributions_brand_model_path(@car.model.brand, @car.model)
+    else
+      render :new
+    end
   end
 
   def edit

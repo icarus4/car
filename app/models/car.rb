@@ -59,11 +59,11 @@ class Car < ActiveRecord::Base
 
   before_save :calculate_airbag_number
 
-  validates_presence_of :model_id,      message: '此欄位不可留空白'
-  validates_presence_of :submodel,      message: '此欄位不可留空白'
-  validates_presence_of :displacement,  message: '此欄位不可留空白'
-  validates_presence_of :made_in,       message: '此欄位不可留空白'
-  validates_presence_of :year,          message: '此欄位不可留空白'
+  validates_presence_of :model_id,      message: '此欄位不可為空白'
+  validates_presence_of :submodel,      message: '此欄位不可為空白'
+  validates_presence_of :displacement,  message: '此欄位不可為空白'
+  validates_presence_of :made_in,       message: '此欄位不可為空白'
+  validates_presence_of :year,          message: '此欄位不可為空白'
   validates :year, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
 
