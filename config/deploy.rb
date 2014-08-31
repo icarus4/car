@@ -13,7 +13,7 @@ require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
 set :domain, 'car-safety.tw'
 set :deploy_to, '/var/www/test.car-safety.tw'
 set :repository, 'git@github.com:icarus4/car.git'
-set :branch, 'develop'
+set :branch, 'feature/user_confirmable'
 
 # For password prompt in mina doesn't work
 set :term_mode, nil
