@@ -9,7 +9,7 @@
 
 <hr>
 
-<%= form_tag({controller: 'search', action: 'search'}, method: 'post', id: 'search-form') do %>
+<%= form_tag({controller: 'search', action: 'results'}, method: 'post', id: 'search-form') do %>
 
   <div class="form-group checkbox">
     <span class='control-label'>最低氣囊數：</span>
@@ -41,6 +41,7 @@
     <label><%= check_box_tag(:has_lane_departure_warning_system) %> 車道偏離警示系統</label>
     <label><%= check_box_tag(:has_lane_keeping_assist) %> 車道偏移輔助系統</label>
     <label><%= check_box_tag(:has_collision_warning_and_auto_brake) %> 碰撞警示暨主動煞車系統</label>
+    <label><%= check_box_tag(:has_attention_assist) %> 駕駛疲勞警示系統</label>
     <label><%= check_box_tag(:has_tpms) %> TPMS 胎壓偵測系統</label>
     <hr>
     <label>售價低於：<%= number_field_tag(:max_price, 100, in: 50..1000, step: 10) %> 萬</label>
