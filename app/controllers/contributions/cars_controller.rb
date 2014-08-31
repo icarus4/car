@@ -1,5 +1,6 @@
 class Contributions::CarsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :get_current_car, except: [:new, :create]
 
   def new

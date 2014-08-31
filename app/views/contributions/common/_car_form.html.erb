@@ -61,7 +61,7 @@
   <hr style="margin: 80px 0 30px 0">
 <!--   <h4 style="margin: 0 0 30px; width: 500px"><span style="color: red;">注意！</span>儲存資料後瀏覽網站者<span style="color: red">並不會立刻看到結果</span>，儲存後請先到車系列表確認資料正確後，再點選車款名稱下方的 <span class="label label-warning">公開此車款</span> 按鈕，瀏覽網站的人才看得到此車款。</h4>
  -->
-  <%= f.submit "儲存", disable_with: "Submiting...", class: "btn btn-primary" %>
+  <%= f.submit "儲存", disable_with: "儲存中...", class: "btn btn-primary" %>
 
   <span style="padding-left: 10px">or <%= link_to "取消回上一頁", contributions_brand_model_path(@car.model.brand, @car.model), confirm: "確定不儲存？" %></span>
 <% end %>

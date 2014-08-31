@@ -10,7 +10,7 @@
 
   namespace :contributions do
     resources :brands, only: [:index, :show] do
-      resources :models, only: [:show] do
+      resources :models, only: [:show, :new, :create] do
         resources :cars do
           member do
             get 'publish'

@@ -1,0 +1,13 @@
+<h3>新增 <%= "#{@brand.name}" %> 車系</h3>
+<p>說明：車系名稱若為單字，首字請大寫。若為縮寫，則請全大寫</p>
+<p>ex: <br>單字：Civic / Altis <br>縮寫：CR-V / RAV4</p>
+
+<hr>
+<div class="contribution_form">
+<%= simple_form_for([:contributions, @model.brand, @model]) do |f| %>
+  <%= f.input :name, label: '車系名稱' %>
+  <%= f.submit '儲存', disable_with: "儲存中...", class: 'btn btn-primary' %>
+  <span style="padding-left: 10px">or <%= link_to "取消回上一頁", contributions_path %></span>
+<% end %>
+
+</div>

@@ -17,7 +17,7 @@ class Model < ActiveRecord::Base
   validates :name, presence: true
   validates :brand_id, presence: true
 
-  validates_uniqueness_of :name, scope: [:brand_id], case_sensitive: false
+  validates_uniqueness_of :name, scope: [:brand_id], case_sensitive: false, message: "已經有同名的車系了！"
 
   # Pick a random model
   def self.random
