@@ -1,10 +1,14 @@
 module ModelsHelper
 
-  def render_car_name(car)
+  def render_car_name(car, render_model_name=true)
     car_name = if car.display_name.present?
       "#{car.display_name}"
     else
-      "#{car.model.name} #{car.displacement} #{car.submodel}"
+      if render_model_name
+        "#{car.model.name} #{car.displacement} #{car.submodel}"
+      else
+        "#{car.displacement} #{car.submodel}"
+      end
     end
 
     return car_name

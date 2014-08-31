@@ -11,5 +11,5 @@
     <div class="alert alert-success"><%= flash[:success] %><br>辛苦了:D</div>
   <% end %>
 
-  <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: true} %>
+  <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: true, render_model_name: false} %>
 </div>

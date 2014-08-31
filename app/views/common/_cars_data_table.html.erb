@@ -9,7 +9,7 @@
 
     <% cars.each do |car| %>
     <th class='data-value small-font'>
-      <%= render_car_name(car) %>
+      <%= render_car_name(car, render_model_name) %>
 
       <!-- for contribution -->
       <% if editable %>
