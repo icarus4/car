@@ -46,6 +46,16 @@
   </tr>
 
   <tr>
+    <th class='data-name'>建議售價</th>
+    <% cars.each {|c| concat render_price(c.retail_price)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>官方規格表</th>
+    <% cars.each {|c| concat render_external_link(c.spec_url)} %>
+  </tr>
+
+  <tr>
     <th class='data-name'>安全氣囊數</th>
     <% cars.each {|c| concat render_airbag_field_with_color(c.airbag_num)} %>
   </tr>
@@ -179,16 +189,6 @@
   <tr>
     <th class='data-name'>TPMS 胎壓偵測系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_tpms)} %>
-  </tr>
-
-  <tr>
-    <th class='data-name'>官方規格表</th>
-    <% cars.each {|c| concat render_external_link(c.spec_url)} %>
-  </tr>
-
-  <tr>
-    <th class='data-name'>建議售價</th>
-    <% cars.each {|c| concat render_price(c.retail_price)} %>
   </tr>
 
   <tr>
