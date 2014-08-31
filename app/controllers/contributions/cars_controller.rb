@@ -1,6 +1,11 @@
 class Contributions::CarsController < ApplicationController
 
-  before_action :get_current_car
+  before_action :get_current_car, except: [:new]
+
+  def new
+    @model = Model.find params[:model_id]
+    @car = @model.cars.build
+  end
 
   def edit
   end

@@ -1,3 +1,2 @@
 <h3>目前正在修改車款的是： <%= "#{@car.model.name} #{@car.displacement} #{@car.submodel}" %> <%= "（#{@car.display_name}）" if @car.display_name.present? %></h3>
-
-<%= render 'contributions/models/car_form' %>
+<%= render 'contributions/common/car_form' %>
