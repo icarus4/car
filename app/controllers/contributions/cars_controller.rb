@@ -35,7 +35,11 @@ class Contributions::CarsController < ApplicationController
   end
 
   def update
-    if @car.update(car_params)
+    @car.assign_attributes(car_params)
+    if !@car.changed?
+      flash[:info] = '修改後的資料和原本的一模一樣哦~記得確定一下是否有改到你想改的部分'
+      redirect_to contributions_brand_model_path(@car.model.brand, @car.model)
+    elsif @car.update(car_params)
       # save edit history
       if current_user
         current_user.car_editions.create!(car_id: @car.id, is_creation: false)
