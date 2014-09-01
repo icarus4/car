@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828135832) do
+ActiveRecord::Schema.define(version: 20140901132026) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20140828135832) do
   add_index "brands", ["headquarters"], name: "index_brands_on_headquarters"
   add_index "brands", ["name"], name: "index_brands_on_name", unique: true
   add_index "brands", ["parent_company"], name: "index_brands_on_parent_company"
+
+  create_table "car_editions", force: true do |t|
+    t.integer  "car_id",      null: false
+    t.integer  "user_id",     null: false
+    t.boolean  "is_creation", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "car_editions", ["car_id", "user_id"], name: "index_car_editions_on_car_id_and_user_id"
+  add_index "car_editions", ["is_creation"], name: "index_car_editions_on_is_creation"
+  add_index "car_editions", ["user_id", "car_id"], name: "index_car_editions_on_user_id_and_car_id"
 
   create_table "cars", force: true do |t|
     t.string   "submodel"
@@ -149,8 +161,12 @@ ActiveRecord::Schema.define(version: 20140828135832) do
     t.datetime "updated_at"
     t.string   "name"
     t.boolean  "admin",                  default: false
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

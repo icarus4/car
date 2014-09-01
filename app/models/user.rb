@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :car_editions
+  has_many :cars, through: :car_editions
+
   validates :name, presence: true
 
   # def admin?

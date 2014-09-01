@@ -56,6 +56,8 @@ class Car < ActiveRecord::Base
   ESP_NAME_LIST = %w(AdvanceTrac ASC DSC DSTC ESP MSP S-VSC StabiliTrak VDC VDCS VSA VSC)
 
   belongs_to :model
+  has_many :car_editions
+  has_many :users, through: :car_editions
 
   before_save :calculate_airbag_number
 
