@@ -9,14 +9,14 @@
 
 <%= simple_form_for([:contributions, @car.model.brand, @car.model, @car]) do |f| %>
   <h4 style="margin-bottom: 20px">基本資料：</h4 style="margin-bottom: 20px">
-  <%= f.input :submodel, label: '車款名（例：雅致型、VTi-S）' %>
-  <%= f.input :displacement, label: '排氣量 （單位：L）（例：1.8）' %>
+  <%= f.input :submodel, label: '車款名（例：VTi-S。不包含排氣量）' %>
+  <%= f.input :displacement, label: '排氣量 （<span style="color:red">單位：L</span>）（例：1.8）'.html_safe, input_html: { step: 0.1 } %>
   <%= f.input :year, label: '販售年份（例：2014）', collection: 2014..(Time.now.year+1) %>
   <%= f.input :made_in, label: '產地', collection: Car.made_in_list %>
   <%= f.input :door_num, label: '車門數', collection: 2..9 %>
   <%= f.input :is_hybrid, label: '若為油電車請打勾' %>
   <%= f.input :is_electric_vehicle, label: '若為純電動車請打勾（排氣量請填0）' %>
-  <%= f.input :retail_price, label: '官方建議售價（單位：萬）' %>
+  <%= f.input :retail_price, label: '官方建議售價（<span style="color:red">單位：萬</span>。請勿填特價）'.html_safe, input_html: { step: 0.1 } %>
   <%= f.input :spec_url, label: '官方規格表連結' %>
   <hr>
   <p style="margin-bottom: 20px; width: 500px"><b>顯示名稱</b> 此欄原則上請留空白。設定此欄位將會強迫使車款名直接顯示為此欄位的名稱。</p>
