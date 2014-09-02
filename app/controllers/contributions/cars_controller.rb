@@ -17,6 +17,11 @@ class Contributions::CarsController < ApplicationController
     @model = Model.find params[:model_id]
     @car = @model.cars.new(car_params)
     if @car.save
+      # save edit history
+      if current_user
+        current_user.car_editions.create!(car_id: @car.id, is_creation: true)
+      end
+
       @car.unpublish!
       flash[:success] = '新車款編輯完成！請檢查看看有沒有錯誤，沒有錯誤的話記得點選車款名稱下方的 <span class="label label-warning">公開此車款</span>，前台瀏覽網站的人才能看得到哦！'.html_safe
       redirect_to contributions_brand_model_path(@car.model.brand, @car.model)
@@ -30,7 +35,16 @@ class Contributions::CarsController < ApplicationController
   end
 
   def update
-    if @car.update(car_params)
+    @car.assign_attributes(car_params)
+    if !@car.changed?
+      flash[:info] = '修改後的資料和原本的一模一樣哦~記得確定一下是否有改到你想改的部分'
+      redirect_to contributions_brand_model_path(@car.model.brand, @car.model)
+    elsif @car.update(car_params)
+      # save edit history
+      if current_user
+        current_user.car_editions.create!(car_id: @car.id, is_creation: false)
+      end
+
       @car.unpublish!
       flash[:success] = '修改完成！請檢查看看有沒有錯誤，沒有錯誤的話記得點選車款名稱下方的 <span class="label label-warning">公開此車款</span>，前台瀏覽網站的人才能看得到哦！'.html_safe
 
