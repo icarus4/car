@@ -21,7 +21,7 @@
         <ul>
 
         <% brand.models.order(:name).each do |model| %>
-          <li><%= link_to "#{model.name}", contributions_brand_model_path(brand, model) %> <%= "（#{model.cars.not_published.size}）" %> </li>
+          <li><%= link_to "#{model.name}", contributions_brand_model_path(brand, model) %> <%= render_unpublished_data(model) %> </li>
         <% end %>
           <li><%= link_to '點我增加新車系', new_contributions_brand_model_path(brand) %></li>
 
