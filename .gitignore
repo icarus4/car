@@ -28,6 +28,9 @@ bundler_stubs/
 # database
 config/database.yml
 
+# settingslogic
+config/application.yml
+
 # sublime text
 *.sublime-*
 

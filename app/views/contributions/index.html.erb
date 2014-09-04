@@ -3,7 +3,7 @@
 <% unless user_signed_in? %>
 
   <h3>請先 <%= link_to '登入', new_user_session_path %> 或 <%= link_to '註冊', new_user_registration_path %></h3>
-
+  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
 <% else %>
 
   <h4>本頁為<span style="color: #3300ff"><b>車系</b></span>列表。若您想新增<span style="color: #cc0000"><b>車款</b></span>，請先進入對應的<span style="color: #3300ff"><b>車系</b></span></h4>
