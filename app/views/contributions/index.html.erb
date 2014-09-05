@@ -1,21 +1,22 @@
+<% unless user_signed_in? %>
 <h3>歡迎編輯資料</h3>
 
-<% unless user_signed_in? %>
-
-  <h3>請先 <%= link_to '登入', new_user_session_path %> 或 <%= link_to '註冊', new_user_registration_path %></h3>
-  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+  <!--h3>請先 <%#= link_to '登入', new_user_session_path %> 或 <%= link_to '註冊', new_user_registration_path %></h3-->
+  <h4 style="display: inline-block"><%= link_to "請先使用 Facebook 登入", user_omniauth_authorize_path(:facebook) %></h4>
+  <h5 style="display: inline-block; margin-left: 0px">（我們僅向 Facebook 取得您的 email 及顯示名稱作為辨識使用者之用，不會取得其他私人資料）</h5>
 <% else %>
+<h3><%= current_user.name %> 您好，歡迎編輯資料！</h3>
 
-  <h4>本頁為<span style="color: #3300ff"><b>車系</b></span>列表。若您想新增<span style="color: #cc0000"><b>車款</b></span>，請先進入對應的<span style="color: #3300ff"><b>車系</b></span></h4>
+  <h4 style="margin-top: 30px">本頁為<span style="color: #3300ff"><b>車系</b></span>列表。若您想新增<span style="color: #cc0000"><b>車款</b></span>，請先進入對應的<span style="color: #3300ff"><b>車系</b></span></h4>
   <h4>若不存在您想新增或編輯的車系，請再新增車系</h4>
-  <h5>舉例說明：</h5>
+  <h5 style="margin-top: 30px">舉例說明：</h5>
   <h5>1：Civic 為<span style="color: #3300ff"><b>車系</b></span>，此<span style="color: #3300ff"><b>車系</b></span>底下之<span style="color: #cc0000"><b>車款</b></span>有 VTi / VTi-S / S 共三款</h5>
-  <h5>2：CT 200h為<span style="color: #3300ff"><b>車系</b></span>，此<span style="color: #3300ff"><b>車系</b></span>底下之<span style="color: #cc0000"><b>車款</b></span>有 菁英版 / 豪華版 / 頂級NAVI版 / F SPORT 菁英版 / F SPORT 豪華版 / F SPORT 頂級NAVI版 共六款</h5>
+  <h5>2：CT 200h 為<span style="color: #3300ff"><b>車系</b></span>，此<span style="color: #3300ff"><b>車系</b></span>底下之<span style="color: #cc0000"><b>車款</b></span>有 菁英版 / 豪華版 / 頂級 NAVI 版 / F SPORT 菁英版 / F SPORT 豪華版 / F SPORT 頂級 NAVI 版 共六款</h5>
+
+  <hr>
 
   <ul>
-
     <% @brands.each do |brand| %>
-      <hr>
       <li><h4><%= brand.name %></h4>
 
         <ul>
@@ -29,6 +30,7 @@
 
       </li>
 
+      <hr>
     <% end %>
 
   </ul>
