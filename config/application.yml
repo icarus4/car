@@ -1,0 +1,17 @@
+defaults: &defaults
+  app_name: "SafetyCar"
+
+development:
+  <<: *defaults
+  domain: "http://car.dev"
+  facebook_app_id: "656192531154884"
+  facebook_secret: "280d904746f890a85c2986aee5926339"
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  domain: "http://car-safety.tw"
+  facebook_app_id: "656186347822169"
+  facebook_secret: "8abd6c2612a27f9f9cecc96b25719fd3"

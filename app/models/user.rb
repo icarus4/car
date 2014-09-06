@@ -29,9 +29,10 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  # def admin?
-  #   return self.user_level == 0 ? true : false
-  # end
+  def admin?
+    return self.user_level == 0 ? true : false
+  end
+
   def current_admin
     current_user && current_user.admin?
   end
