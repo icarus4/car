@@ -9,9 +9,9 @@
 
 <hr>
 
-<%= form_tag({controller: 'search', action: 'search'}, method: 'get', id: 'search-form') do %>
+<%= form_tag({controller: 'search', action: 'results'}, method: 'post', id: 'search-form') do %>
 
-  <div class="form-group checkbox">
+  <div class="form-group radio">
     <span class='control-label'>最低氣囊數：</span>
     <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '0', checked: true) %>不限</label>
     <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '2') %>2</label>
@@ -21,23 +21,42 @@
 
   <div class="checkbox-group">
     <label><%= check_box_tag(:has_airbags_at_side_curtain) %> 車側氣簾</label>
-    <label><%= check_box_tag(:has_pretension_seat_belt) %> 預束式安全帶</label>
+    <label><%= check_box_tag(:has_airbag_at_driver_knee) %> 駕駛座膝部氣囊</label>
+    <!-- <label><%#= check_box_tag(:has_pretension_seat_belt) %> 預束式安全帶</label> -->
     <label><%= check_box_tag(:has_isofix) %> ISOFIX 安全座椅固定裝置</label>
-    <label><%= check_box_tag(:has_cruise_control) %> 定速巡航系統</label>
     <hr>
     <label><%= check_box_tag(:has_abs, 1, true) %> ABS 防鎖死煞車系統</label>
     <label><%= check_box_tag(:has_ebd, 1, true) %> EBD 煞車力道分配系統</label>
     <label><%= check_box_tag(:has_eba, 1, true) %> EBA 煞車力道輔助系統</label>
-    <label><%= check_box_tag(:has_brake_override_system, 1, true) %> BOS 煞車優先系統</label>
+    <label><%= check_box_tag(:has_brake_override_system) %> BOS 煞車優先系統</label>
     <label><%= check_box_tag(:has_esp, 1, true) %> ESP 車身動態穩定系統</label>
     <hr>
-    <label><%= check_box_tag(:has_tpms) %> TPMS 胎壓偵測系統</label>
+    <label><%= check_box_tag(:has_cruise_control) %> 定速巡航系統</label>
+    <label><%= check_box_tag(:has_adaptive_cruise_control) %> 主動車距控制巡航系統</label>
     <label><%= check_box_tag(:has_afs) %> AFS 主動式轉向頭燈</label>
+    <label><%= check_box_tag(:has_hill_start_assist) %> 斜坡起步輔助系統</label>
     <label><%= check_box_tag(:has_blind_spot_monitor_system) %> 車側盲點偵測系統</label>
-    <label><%= check_box_tag(:has_ldws) %> LDWS 車道偏離警示系統</label>
     <hr>
+    <label><%= check_box_tag(:has_city_safety_system) %> 都會行車防護系統</label>
+    <label><%= check_box_tag(:has_lane_departure_warning_system) %> 車道偏離警示系統</label>
+    <label><%= check_box_tag(:has_lane_keeping_assist) %> 車道偏移輔助系統</label>
+    <label><%= check_box_tag(:has_collision_warning_and_auto_brake) %> 碰撞警示暨主動煞車系統</label>
+    <label><%= check_box_tag(:has_attention_assist) %> 駕駛疲勞警示系統</label>
+    <label><%= check_box_tag(:has_tpms) %> TPMS 胎壓偵測系統</label>
+    <hr>
+  </div>
+
+  <div class="form-group radio">
+    <span class='control-label'>產地：</span>
+    <label class="radio-inline"><%= radio_button_tag(:made_in, 'all', checked: true) %>不限</label>
+    <label class="radio-inline"><%= radio_button_tag(:made_in, 'tw') %>國產</label>
+    <label class="radio-inline"><%= radio_button_tag(:made_in, 'not_tw') %>進口</label>
+  </div>
+
+  <div class="form-group">
     <label>售價低於：<%= number_field_tag(:max_price, 100, in: 50..1000, step: 10) %> 萬</label>
   </div>
+
   <%= submit_tag('搜尋', class: 'btn btn-default btn-sm') %>
 <% end %>
 </div>

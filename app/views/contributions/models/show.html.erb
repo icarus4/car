@@ -1,0 +1,19 @@
+<h3><%= link_to "<< 回車系列表", contributions_path %></h3>
+
+<div id="car-data-table-div">
+  <h4 style='text-align: center'>目前的 <%= "#{@model.brand.name} #{@model.name}" %> 各車款安全配備一覽表</h4>
+  <hr>
+  <h5><%= link_to "點我新增車款", new_contributions_brand_model_car_path(@model.brand, @model) %></h5>
+  <h5>若現有車款資料有錯，可請先點選 <button class="btn btn-default btn-xs">隱藏此車款</button> 讓此車不顯示於前台</h5>
+  <h5>要修正錯誤請點車款名稱下方之 <button class="btn btn-default btn-xs">編輯</button></h5>
+
+  <% if flash[:success] %>
+    <div class="alert alert-success"><%= flash[:success] %><br>辛苦了:D</div>
+  <% end %>
+
+  <% if flash[:info] %>
+    <div class="alert alert-info"><%= flash[:info] %></div>
+  <% end %>
+
+  <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: true, render_model_name: false} %>
+</div>

@@ -30,3 +30,8 @@ config/database.yml
 
 # sublime text
 *.sublime-*
+
+*.TODO
+
+config/deploy.rb
+

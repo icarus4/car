@@ -1,11 +1,25 @@
-SafetyCar::Application.routes.draw do
+  SafetyCar::Application.routes.draw do
 
-
-  root "models#index"
+  root "welcome#index"
   resources :models, only: [:index, :show]
 
   get 'search' => 'search#index'
-  get 'search/search' => 'search#search'
+  post 'search/results' => 'search#results'
+
+  resources :contributions, only: [:index]
+
+  namespace :contributions do
+    resources :brands, only: [:index, :show] do
+      resources :models, only: [:show, :new, :create] do
+        resources :cars do
+          member do
+            get 'publish'
+            get 'unpublish'
+          end
+        end
+      end
+    end
+  end
 
   mount RailsAdmin::Engine => '/adminqq', as: 'rails_admin'
   devise_for :users

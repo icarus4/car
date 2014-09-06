@@ -5,10 +5,19 @@
 table.car-data
 
   font-family: 'Arial'
-  // font-size: 14px
+  font-size: 13px
+  // table-layout: fixed
 
   td, th
     text-align: center
+
+  td
+    word-break: break-all
+    // font-family: "Avenir Next","Nunito","Helvetica Neue",Helvetica,Arial,sans-serif
+
+  span.extra-small-font
+    font-size: 11px
+    padding: 2px 3px 2px 4px
 
   span.label
     font-weight: normal
@@ -17,8 +26,15 @@ table.car-data
     // font-family: 'Arial'
     // font-family: 'Helvetica'
 
-  th.data-name
+  th.data-name, td.data-name
     width: 200px
 
+  th.data-value, td.data-value
+    width: 100px
 
+  .small-font
+    font-size: 12px
+
+  .extra-small-font
+    font-size: 11px
 

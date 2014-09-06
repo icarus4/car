@@ -59,6 +59,8 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "annotate"
+  gem 'hirb-unicode'
+  gem 'awesome_print'
 end
 
 group :production do
@@ -74,3 +76,5 @@ gem 'font-awesome-sass', '~> 4.1.0'
 gem 'devise', '~> 3.2.4'
 
 # gem 'squeel', '~> 1.2.1'
+
+gem 'meta-tags', '~> 2.0.0'

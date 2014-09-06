@@ -13,11 +13,10 @@
 #  is_hybrid                       :boolean
 #  is_electric_vehicle             :boolean
 #  airbag_num                      :integer
-#  has_airbag_at_driver_front      :boolean
-#  has_airbag_at_passenger_front   :boolean
+#  has_airbags_at_front            :boolean
 #  has_airbag_at_driver_knee       :boolean
 #  has_airbag_at_passenger_knee    :boolean
-#  has_airbag_at_center            :boolean
+#  has_airbag_at_front_center      :boolean
 #  has_airbag_for_pedestrian       :boolean
 #  has_airbags_at_front_side_torso :boolean
 #  has_airbags_at_rear_side_torso  :boolean
@@ -31,7 +30,7 @@
 #  has_isofix                      :boolean
 #  created_at                      :datetime
 #  updated_at                      :datetime
-#  retail_price                    :integer
+#  retail_price                    :float
 #  brand_name                      :string(255)
 #  model_id                        :integer
 #  has_tpms                        :boolean
@@ -48,27 +47,50 @@
 #  ncap_rating                     :integer
 #  spec_url                        :string(255)
 #  is_all_data_ready               :boolean
+#  has_brake_override_system       :boolean
 #
 
 class Car < ActiveRecord::Base
 
-  belongs_to :model
+  MADE_IN_LIST = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 匈牙利 羅馬尼亞)
+  ESP_NAME_LIST = %w(AdvanceTrac ASC DSC DSTC ESP MSP S-VSC StabiliTrak VDC VDCS VSA VSC)
 
-  validates :model_id,      presence: true
-  validates :submodel,      presence: true
-  validates :displacement,  presence: true
-  validates :airbag_num,    presence: true
-  validates :made_in,       presence: true, inclusion: { in: %w(台灣 日本 美國 印度) }
-  validates :year,          presence: true, numericality: { greater_than_or_equal_to: 2000 }
+  belongs_to :model
+  has_many :car_editions
+  has_many :users, through: :car_editions
+
+  before_save :calculate_airbag_number
+
+  validates_presence_of :model_id,      message: '此欄位不可為空白'
+  validates_presence_of :submodel,      message: '此欄位不可為空白'
+  validates_presence_of :displacement,  message: '此欄位不可為空白'
+  validates_presence_of :made_in,       message: '此欄位不可為空白'
+  validates_presence_of :year,          message: '此欄位不可為空白'
+  validates_presence_of :door_num,      message: '此欄位不可為空白'
+  validates :year, numericality: { greater_than_or_equal_to: 2000 }
   validates :retail_price,  allow_nil: true, numericality: { greater_than: 0 }
 
-  validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement], case_sensitive: false
-  validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement], case_sensitive: false
-  validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement], case_sensitive: false
-  validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in], case_sensitive: false
+  validates_uniqueness_of :submodel,      scope: [:made_in, :year, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
 
+  validates_uniqueness_of :made_in,       scope: [:submodel, :year, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
 
-  # scope :ensures, -> (value) {where}
+  validates_uniqueness_of :year,          scope: [:submodel, :made_in, :displacement, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
+
+  validates_uniqueness_of :displacement,  scope: [:submodel, :year, :made_in, :model_id, :door_num],
+                                          case_sensitive: false,
+                                          message: '有一模一樣的車子已經存在了哦！'
+
+  scope :published, -> { where(is_published: true) }
+  scope :not_published, -> { where(is_published: false) }
+  scope :locked, -> { where(is_locked: true) }
+  scope :not_locked, -> { where(is_locked: false) }
+  default_scope { where(is_published: true) }
 
   # Pick a random car
   def self.random
@@ -76,12 +98,34 @@ class Car < ActiveRecord::Base
     self.first(order: 'RANDOM()')
   end
 
+  def self.made_in_list
+    MADE_IN_LIST
+  end
+
+  def self.esp_name_list
+    ESP_NAME_LIST
+  end
+
+  def publish!
+    self.is_published = true
+    self.save!
+  end
+
+  def unpublish!
+    self.is_published = false
+    self.save!
+  end
+
+  def published?
+    self.is_published
+  end
+
   def made_in_enum
-    [['台灣'],['日本'],['美國'],['印度']]
+    return MADE_IN_LIST.each_slice(1).to_a
   end
 
   def year_enum
-    [[2014]]
+    [[2014],[2015]]
   end
 
   def airbag_num_enum
@@ -89,6 +133,21 @@ class Car < ActiveRecord::Base
   end
 
   def esp_name_enum
-    [['ESP'],['VSC'],['VSA']]
+    ESP_NAME_LIST.each_slice(1).to_a
+  end
+
+
+  private
+
+  def calculate_airbag_number
+    self.airbag_num = 0
+    self.airbag_num += 2 if self.has_airbags_at_front
+    self.airbag_num += 1 if self.has_airbag_at_driver_knee
+    self.airbag_num += 1 if self.has_airbag_at_passenger_knee
+    self.airbag_num += 1 if self.has_airbag_at_front_center
+    self.airbag_num += 1 if self.has_airbag_for_pedestrian
+    self.airbag_num += 2 if self.has_airbags_at_front_side_torso
+    self.airbag_num += 2 if self.has_airbags_at_rear_side_torso
+    self.airbag_num += 2 if self.has_airbags_at_side_curtain
   end
 end

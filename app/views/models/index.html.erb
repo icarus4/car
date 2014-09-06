@@ -4,7 +4,7 @@
 
     <div id="car-data">
 
-      <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table'} %>
+      <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: false, render_model_name: false} %>
 
     </div>
 

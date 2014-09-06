@@ -1,0 +1,2 @@
+module Contributions::ModelsHelper
+end

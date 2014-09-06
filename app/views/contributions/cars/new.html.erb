@@ -1,0 +1,3 @@
+<%= link_to "取消回上一頁", contributions_brand_model_path(@car.model.brand, @car.model), confirm: "確定不儲存？" %>
+<h3>新增 <%= "#{@car.model.brand.name} #{@car.model.name}" %> 車款</h3>
+<%= render 'contributions/common/car_form' %>

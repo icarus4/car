@@ -1,12 +1,8 @@
-<div id="content-container">
+<div id="content">
 
-  <div id="content">
-
-    <div id="car-data">
-
-      <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table'} %>
-
-    </div>
+  <div id="car-data-table-div">
+    <h4 style='text-align: center'><%= "#{@model.brand.name} #{@model.name}" %> 安全配備一覽表</h4>
+    <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: false, render_model_name: false} %>
 
   </div>
 

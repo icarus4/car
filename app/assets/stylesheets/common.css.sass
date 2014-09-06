@@ -1,6 +1,12 @@
 $header-line-height: 50px
 $max-middle-inner-container-width: 800px
-$side-nav-container-width: 150px
+$side-nav-container-width: 200px
+
+*
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
 
 html
   font-size: 100%
@@ -10,21 +16,24 @@ div#header
   // height: $header-line-height
   // text-align: center
   // background-color: #CCC
-
+  ul li
+    // max-width: 100px
   // h1
   //   margin: auto
   //   vertical-align: middle
   //   line-height: $header-line-height
 
-#middle-container
+div#middle-container
   // background-color: #ebf5ff
+  margin: 0 auto
+  max-width: 1200px
   padding-top: 20px
 
-#middle-inner-container
-  max-width: $max-middle-inner-container-width
-  margin: auto
+div#middle-inner-container
+  // max-width: $max-middle-inner-container-width
+  margin: 0 auto
 
-#side-nav-container
+div#side-nav-container
   float: left
   width: $side-nav-container-width
   // border-style: solid
@@ -32,19 +41,27 @@ div#header
   // background-color: #EEE
 
 
-#content-container
-  display: inline-block
-  min-width: $max-middle-inner-container-width - $side-nav-container-width
+div#content-container
+  // display: inline-block
+  margin-left: $side-nav-container-width
+  margin-right: 40px
+  // min-width: $max-middle-inner-container-width - $side-nav-container-width
   // float: right
   // width: 100%
   // border-style: solid
   // border-width: 1px
   // background-color: #DDF
 
-#content
+div#content
   margin: 20px 0 20px 0
+  text-align: center
   // border-style: solid
   // border-width: 1px
   // padding: 20px 20px 20px 20px
   // border-color: #DDD
   // background-color: #CCF
+
+div#car-data-table-div
+  display: inline-block
+  margin-right: 40px
+
