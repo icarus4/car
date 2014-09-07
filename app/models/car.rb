@@ -107,6 +107,7 @@ class Car < ActiveRecord::Base
   scope :not_published, -> { where(is_published: false) }
   scope :locked, -> { where(is_locked: true) }
   scope :not_locked, -> { where(is_locked: false) }
+  scope :order_for_display, -> { order(:engine_fuel => :desc).order(:door_num, :retail_price) }
   default_scope { where(is_published: true) }
 
   # Pick a random car

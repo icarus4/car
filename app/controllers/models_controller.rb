@@ -7,14 +7,14 @@ class ModelsController < ApplicationController
 
   def index
     @model = Model.random
-    @cars = @model.cars.order(:engine_fuel, :door_num, :retail_price)
+    @cars = @model.cars.order_for_display
     render :show
   end
 
 
   def show
     @model = Model.find(params[:id])
-    @cars = @model.cars.order(:engine_fuel, :door_num, :retail_price)
+    @cars = @model.cars.order_for_display
   end
 
 
