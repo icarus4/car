@@ -41,8 +41,13 @@
   </tr>
 
   <tr>
-    <th class='data-name'>車門數 / 排氣量</th>
-    <% cars.each {|c| concat content_tag(:td, "#{c.door_num} 門 / #{c.displacement} L")} %>
+    <th class='data-name'>引擎燃油 / 排氣量</th>
+    <% cars.each {|c| concat content_tag(:td, "#{render_engine_fuel(c.engine_fuel)} / #{c.displacement}L".html_safe)} %>
+  </tr>
+
+  <tr>
+    <th class='data-name'>車門數</th>
+    <% cars.each {|c| concat content_tag(:td, "#{c.door_num}門")} %>
   </tr>
 
   <tr>

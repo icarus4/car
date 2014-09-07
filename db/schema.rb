@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901132026) do
+ActiveRecord::Schema.define(version: 20140907031812) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20140901132026) do
     t.boolean  "is_published",                         default: true
     t.boolean  "is_locked",                            default: false
     t.string   "display_name",                         default: ""
+    t.string   "engine_fuel"
   end
 
   add_index "cars", ["airbag_num"], name: "index_cars_on_airbag_num"
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 20140901132026) do
   add_index "cars", ["displacement"], name: "index_cars_on_displacement"
   add_index "cars", ["display_name"], name: "index_cars_on_display_name"
   add_index "cars", ["door_num"], name: "index_cars_on_door_num"
+  add_index "cars", ["engine_fuel"], name: "index_cars_on_engine_fuel"
   add_index "cars", ["generation"], name: "index_cars_on_generation"
   add_index "cars", ["has_abs"], name: "index_cars_on_has_abs"
   add_index "cars", ["has_adaptive_cruise_control"], name: "index_cars_on_has_adaptive_cruise_control"
@@ -133,6 +135,19 @@ ActiveRecord::Schema.define(version: 20140901132026) do
   add_index "cars", ["submodel"], name: "index_cars_on_submodel"
   add_index "cars", ["year"], name: "index_cars_on_year"
 
+  create_table "contribution_comments", force: true do |t|
+    t.text     "content",           null: false
+    t.integer  "user_id",           null: false
+    t.integer  "parent_comment_id"
+    t.datetime "replied_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "contribution_comments", ["parent_comment_id"], name: "index_contribution_comments_on_parent_comment_id"
+  add_index "contribution_comments", ["replied_at"], name: "index_contribution_comments_on_replied_at"
+  add_index "contribution_comments", ["user_id"], name: "index_contribution_comments_on_user_id"
+
   create_table "models", force: true do |t|
     t.integer  "brand_id"
     t.string   "name"
@@ -164,6 +179,9 @@ ActiveRecord::Schema.define(version: 20140901132026) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

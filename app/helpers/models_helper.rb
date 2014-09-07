@@ -80,4 +80,11 @@ module ModelsHelper
 
     # number_with_delimiter(price)
   end
+
+  def render_engine_fuel(engine_fuel)
+    engine_fuel ||= '汽油'
+    label_class = ''
+    label_class = 'label label-info' if engine_fuel != '汽油'
+    content_tag(:span, engine_fuel, class: "#{label_class}")
+  end
 end

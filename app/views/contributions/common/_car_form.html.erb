@@ -1,6 +1,6 @@
 
 <div class='contribution_form' style="margin: 30px 0 40px 0">
-<p>說明：<br>1. 有 * 號的欄位不可以留空白<br>2. 車款不可重複。重複的定義：所有 * 號的欄位皆一模一樣</p>
+<p>說明：<br>1. 有 * 號的欄位不可以留空白<br>2. 車款不可重複。重複的定義：（除了建議售價以外）所有 * 號的欄位皆一模一樣</p>
 <hr>
 
 <% if flash[:warning] %>
@@ -14,10 +14,11 @@
   <%= f.input :year, label: '販售年份（例：2014）', collection: 2014..(Time.now.year+1) %>
   <%= f.input :made_in, label: '產地', collection: Car.made_in_list %>
   <%= f.input :door_num, label: '車門數', collection: 2..9 %>
-  <%= f.input :is_hybrid, label: '若為油電車請打勾' %>
-  <%= f.input :is_electric_vehicle, label: '若為純電動車請打勾（排氣量請填0）' %>
+  <%= f.input :engine_fuel, label: '引擎燃油', collection: Car.engine_fuel_list, as: :radio_buttons, checked: Car.engine_fuel_list[0] %>
   <%= f.input :retail_price, label: '官方建議售價（<span style="color:red">單位：萬</span>。請勿填特價）'.html_safe, input_html: { step: 0.1 } %>
-  <%= f.input :spec_url, label: '官方規格表連結' %>
+  <%= f.input :is_hybrid, label: '油電車請打勾' %>
+  <%= f.input :is_electric_vehicle, label: '純電動車請打勾（排氣量請填0）' %>
+  <%= f.input :spec_url, label: '官方規格表連結', input_html: { style: 'width: 300px'} %>
   <hr>
   <p style="margin-bottom: 20px; width: 500px"><b>顯示名稱</b> 此欄原則上請留空白。設定此欄位將會強迫使車款名直接顯示為此欄位的名稱。</p>
   <p style="margin-bottom: 20px; width: 500px">說明：使用者看到的車款名稱是由 "[車系] [排氣量] [款式]" (ex: "civic 1.8 VTi-S") 所構成，若此排列方式無法準確表示此款車時再考慮使用此欄位。<span style="color: #ff0033">如果您不確定是否該填此欄位，那麼此欄請留空白不要填</span>。</p>

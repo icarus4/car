@@ -16,6 +16,14 @@
 #  user_level             :integer          default(3), not null
 #  created_at             :datetime
 #  updated_at             :datetime
+#  name                   :string(255)
+#  admin                  :boolean          default(FALSE)
+#  confirmation_token     :string(255)
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  provider               :string(255)
+#  uid                    :string(255)
+#  token                  :string(255)
 #
 
 class User < ActiveRecord::Base
