@@ -5,8 +5,9 @@
   <%= render 'layouts/head' %>
 
   <!-- For Google -->
-  <meta name="description" content="安心上路的安全配備篩選功能，讓購車者快速篩選出符合心目中安全配備都具備的好車。">
-  <meta name="keyword" content="車輛安全,車輛安全配備篩選,安全配備篩選,車輛安全配備搜尋,安全配備搜尋">
+  <%= display_meta_tags :title => "快速篩選安全好車" %>
+  <%= display_meta_tags :description => "安心上路的安全配備篩選功能，讓購車者快速篩選出符合心目中安全配備都具備的好車。" %>
+  <%= display_meta_tags :keywords => "車輛安全,車輛安全配備篩選,安全配備篩選,車輛安全配備搜尋,安全配備搜尋,安心上路" %>
 
   <!-- For Facebook -->
   <%= display_meta_tags :og => {:title => '安心上路',

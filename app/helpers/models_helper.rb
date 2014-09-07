@@ -87,4 +87,8 @@ module ModelsHelper
     label_class = 'label label-info' if engine_fuel != '汽油'
     content_tag(:span, engine_fuel, class: "#{label_class}")
   end
+
+  def render_brand_and_model_name(model)
+    "#{model.brand.name} #{model.name}"
+  end
 end
