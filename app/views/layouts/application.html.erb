@@ -10,10 +10,13 @@
   <%= display_meta_tags :keywords => "車輛安全,車輛安全配備,安全配備,安心上路" %>
 
   <!-- For Facebook -->
-  <%= display_meta_tags :og => {:title => '安心上路',
-                                :type => 'car.safety',
-                                :url => request.original_url,
-                                :description => "安心上路提供最齊全的汽車安全配備比較，讓購車者都能買到安全的車！"} %>
+  <%= display_meta_tags :fb => { :app_id => "656186347822169" } %>
+  <%= display_meta_tags :og => { :site_name => '安心上路',
+                                 :title => '安心上路 - 車輛安全配備查詢',
+                                 :url => request.original_url,
+                                 :locale => 'zh_TW',
+                                 :type => 'car',
+                                 :description => "安心上路提供最齊全的汽車安全配備比較，讓購車者都能買到安全的車！"} %>
 
 </head>
 

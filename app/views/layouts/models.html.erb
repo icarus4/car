@@ -10,10 +10,14 @@
   <%= display_meta_tags :description => "#{render_brand_and_model_name(@model)} 的安全配備一覽表" %>
 
   <!-- For Facebook -->
-  <%= display_meta_tags :og => {:title => "#{render_brand_and_model_name(@model)} 安全配備一覽表",
-                                :type => 'car.safety',
-                                :url => request.original_url,
-                                :description => "#{render_brand_and_model_name(@model)} 的安全配備一覽表。安心上路提供最齊全的汽車安全配備比較！"} %>
+  <%= display_meta_tags :fb => { :app_id => "656186347822169" } %>
+  <%= display_meta_tags :og => { :site_name => '安心上路',
+                                 :title => "#{render_brand_and_model_name(@model)} 安全配備一覽表",
+                                 :url => request.original_url,
+                                 :locale => 'zh_TW',
+                                 :type => 'car',
+                                 :description => "#{render_brand_and_model_name(@model)} 的安全配備一覽表。安心上路提供最齊全的汽車安全配備比較！" } %>
+
 
 </head>
 

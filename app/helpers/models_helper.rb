@@ -1,11 +1,15 @@
 module ModelsHelper
 
-  def render_car_name(car, render_model_name=true)
+  def render_car_name(car, render_full_name=true)
     car_name = if car.display_name.present?
-      "#{car.display_name}"
+      if render_full_name
+        "#{car.model.brand.name}<br>#{car.display_name}".html_safe
+      else
+        "#{car.display_name}"
+      end
     else
-      if render_model_name
-        "#{car.model.name} #{car.displacement} #{car.submodel}"
+      if render_full_name
+        "#{car.model.brand.name}<br>#{car.model.name}<br>#{car.displacement} #{car.submodel}".html_safe
       else
         "#{car.displacement} #{car.submodel}"
       end
@@ -90,5 +94,14 @@ module ModelsHelper
 
   def render_brand_and_model_name(model)
     "#{model.brand.name} #{model.name}"
+  end
+
+  def render_made_in(made_in)
+    label_class = ''
+    label_class = 'label label-primary' if made_in != '台灣'
+
+    content_tag(:td) do
+      content_tag(:span, made_in, class: "#{label_class}")
+    end
   end
 end
