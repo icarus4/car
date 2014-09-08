@@ -13,14 +13,14 @@
 
   <div class="form-group radio">
     <span class='control-label'>最低氣囊數：</span>
-    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '0', checked: true) %>不限</label>
+    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '0') %>不限</label>
     <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '2') %>2</label>
-    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '4', true) %>4</label>
-    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '6') %>6</label>
+    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '4') %>4</label>
+    <label class="radio-inline"><%= radio_button_tag(:min_airbag_num, '6', checked: true) %>6</label>
   </div>
 
   <div class="checkbox-group">
-    <label><%= check_box_tag(:has_airbags_at_side_curtain) %> 車側氣簾</label>
+    <label><%= check_box_tag(:has_airbags_at_side_curtain, 1, checked: true) %> 車側氣簾</label>
     <label><%= check_box_tag(:has_airbag_at_driver_knee) %> 駕駛座膝部氣囊</label>
     <!-- <label><%#= check_box_tag(:has_pretension_seat_belt) %> 預束式安全帶</label> -->
     <label><%= check_box_tag(:has_isofix) %> ISOFIX 安全座椅固定裝置</label>
