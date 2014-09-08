@@ -15,5 +15,5 @@
     <div class="alert alert-info"><%= flash[:info] %></div>
   <% end %>
 
-  <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: true, render_model_name: false} %>
+  <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: true, render_full_name: false} %>
 </div>

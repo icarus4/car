@@ -1,11 +1,11 @@
 module ModelsHelper
 
-  def render_car_name(car, render_model_name=true)
+  def render_car_name(car, render_full_name=true)
     car_name = if car.display_name.present?
       "#{car.display_name}"
     else
-      if render_model_name
-        "#{car.model.name} #{car.displacement} #{car.submodel}"
+      if render_full_name
+        "#{car.model.brand.name}<br> #{car.model.name}<br> #{car.displacement} #{car.submodel}".html_safe
       else
         "#{car.displacement} #{car.submodel}"
       end
