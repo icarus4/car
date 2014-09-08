@@ -91,4 +91,13 @@ module ModelsHelper
   def render_brand_and_model_name(model)
     "#{model.brand.name} #{model.name}"
   end
+
+  def render_made_in(made_in)
+    label_class = ''
+    label_class = 'label label-primary' if made_in != '台灣'
+
+    content_tag(:td) do
+      content_tag(:span, made_in, class: "#{label_class}")
+    end
+  end
 end

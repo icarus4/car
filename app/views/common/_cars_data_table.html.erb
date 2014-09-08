@@ -37,12 +37,12 @@
 
   <tr>
     <th class='data-name'>製造地</th>
-    <% cars.each {|c| concat content_tag(:td, c.made_in)} %>
+    <% cars.each {|c| concat render_made_in(c.made_in) } %>
   </tr>
 
   <tr>
     <th class='data-name'>引擎燃油 / 排氣量</th>
-    <% cars.each {|c| concat content_tag(:td, "#{render_engine_fuel(c.engine_fuel)} / #{c.displacement}L".html_safe)} %>
+    <% cars.each {|c| concat content_tag(:td, "#{render_engine_fuel(c.engine_fuel)} / #{c.displacement}".html_safe)} %>
   </tr>
 
   <tr>
