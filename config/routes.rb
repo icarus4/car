@@ -22,7 +22,7 @@
   end
 
   mount RailsAdmin::Engine => '/adminqq', as: 'rails_admin'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # namespace :admin do
   #   resources :brands do
