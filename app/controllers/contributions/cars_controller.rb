@@ -5,7 +5,7 @@ class Contributions::CarsController < ApplicationController
 
   def new
     @model = Model.find params[:model_id]
-    if @model.cars.present?
+    if @model.cars.where(is_published: [true, false]).present?
       @car = @model.cars.unscoped.order(updated_at: :desc).first.dup
     else
       @car = @model.cars.build(@model.cars.first)
