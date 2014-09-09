@@ -8,7 +8,7 @@
     <hr>
     <%= link_to "查看各車款配備", models_path, class: 'btn btn-warning btn-lg' %>
     <%= link_to "篩選安全好車", { controller: 'search', action: 'index' }, class: 'btn btn-warning btn-lg' %>
-    <%= link_to "協助增加車款資料", contributions_path, class: 'btn btn-default btn-lg float-right' %>
+    <%= link_to "協助編輯車款資料", contributions_path, class: 'btn btn-default btn-lg float-right' %>
   </div>
 
   <div style='width: 240px; margin: 0 auto auto;'>
@@ -16,7 +16,7 @@
       <h4>最近新增車款：</h4>
       <ul style="padding-left: 0px; list-style: none">
       <% @new_cars.each do |car| %>
-        <li><%= link_to render_car_name(car, true), model_path(car.model) %></li>
+        <li><%= link_to render_car_name(car, true, false), model_path(car.model) %></li>
       <% end %>
       </ul>
     </div>

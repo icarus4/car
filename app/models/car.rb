@@ -61,7 +61,7 @@
 
 class Car < ActiveRecord::Base
 
-  MADE_IN_LIST = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 西班牙 匈牙利 羅馬尼亞)
+  MADE_IN_LIST = %w(台灣 日本 美國 德國 捷克 印度 泰國 中國 南韓 英國 法國 義大利 瑞典 比利時 西班牙 匈牙利 羅馬尼亞 進口)
   ESP_NAME_LIST = %w(AdvanceTrac ASC DSC DSTC ESP MSP S-VSC StabiliTrak VDC VDCS VSA VSC)
   ENGINE_FUEL_LIST = %w(汽油 柴油)
 

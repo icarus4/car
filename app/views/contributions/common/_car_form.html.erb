@@ -12,7 +12,7 @@
   <%= f.input :submodel, label: '車款名（例：VTi-S。不包含排氣量）' %>
   <%= f.input :displacement, label: '排氣量 （<span style="color:red">單位：L</span>）（例：1.8）'.html_safe, input_html: { step: 0.1 } %>
   <%= f.input :year, label: '販售年份（例：2014）', collection: 2014..(Time.now.year+1) %>
-  <%= f.input :made_in, label: '產地', collection: Car.made_in_list %>
+  <%= f.input :made_in, label: '產地（若不在列表中請選 "進口"）', collection: Car.made_in_list %>
   <%= f.input :door_num, label: '車門數', collection: 2..9 %>
   <%= f.input :engine_fuel, label: '引擎燃油', collection: Car.engine_fuel_list, as: :radio_buttons, checked: Car.engine_fuel_list[0] %>
   <%= f.input :retail_price, label: '官方建議售價（<span style="color:red">單位：萬</span>。請勿填特價）'.html_safe, input_html: { step: 0.1 } %>
