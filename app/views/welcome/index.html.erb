@@ -16,7 +16,7 @@
       <h4>最近新增車款：</h4>
       <ul style="padding-left: 0px; list-style: none">
       <% @new_cars.each do |car| %>
-        <li><%= link_to "#{car.model.brand.name} #{car.model.name} #{car.submodel}", model_path(car.model) %></li>
+        <li><%= link_to render_car_name(car, true), model_path(car.model) %></li>
       <% end %>
       </ul>
     </div>
