@@ -12,7 +12,7 @@
   <%= f.input :submodel, label: '車款名（例：VTi-S。不包含排氣量）' %>
   <%= f.input :displacement, label: '排氣量 （<span style="color:red">單位：L</span>）（例：1.8）'.html_safe, input_html: { step: 0.1 } %>
   <%= f.input :year, label: '販售年份（例：2014）', collection: 2014..(Time.now.year+1) %>
-  <%= f.input :made_in, label: '產地', collection: Car.made_in_list %>
+  <%= f.input :made_in, label: '產地（若不在列表中請選 "進口"）', collection: Car.made_in_list %>
   <%= f.input :door_num, label: '車門數', collection: 2..9 %>
   <%= f.input :engine_fuel, label: '引擎燃油', collection: Car.engine_fuel_list, as: :radio_buttons, checked: Car.engine_fuel_list[0] %>
   <%= f.input :retail_price, label: '官方建議售價（<span style="color:red">單位：萬</span>。請勿填特價）'.html_safe, input_html: { step: 0.1 } %>
@@ -21,7 +21,7 @@
   <%= f.input :spec_url, label: '官方規格表連結', input_html: { style: 'width: 300px'} %>
   <hr>
   <p style="margin-bottom: 20px; width: 500px"><b>顯示名稱</b> 此欄原則上請留空白。設定此欄位將會強迫使車款名直接顯示為此欄位的名稱。</p>
-  <p style="margin-bottom: 20px; width: 500px">說明：使用者看到的車款名稱是由 "[車系] [排氣量] [款式]" (ex: "civic 1.8 VTi-S") 所構成，若此排列方式無法準確表示此款車時再考慮使用此欄位。<span style="color: #ff0033">如果您不確定是否該填此欄位，那麼此欄請留空白不要填</span>。</p>
+  <p style="margin-bottom: 20px; width: 500px">說明：使用者看到的車款名稱是由 "[排氣量] [款式]" (ex: "1.8 VTi-S") 所構成（車系名稱會獨立顯示於表格上方，不需另外填入），若此排列方式無法準確表示此款車時再考慮使用此欄位。<span style="color: #ff0033">如果您不確定是否該填此欄位，那麼此欄請留空白不要填</span>。</p>
   <%= f.input :display_name, label: '顯示名稱' %>
   <hr>
   <h4 style="margin-bottom: 20px">氣囊資料（若有該種氣囊者請打勾）：</h4 style="margin-bottom: 20px">

@@ -24,5 +24,9 @@ module SafetyCar
 
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    # Time Zone
+    config.time_zone = 'Taipei'
+    config.active_record.default_timezone = :local
   end
 end
