@@ -1,37 +1,73 @@
 <% unless user_signed_in? %>
-
-  <!-- <h3>請先 <%#= link_to '登入', new_user_session_path %> 或 <%#= link_to '註冊', new_user_registration_path %></h3> -->
-  <h4>歡迎編輯資料。請先使用 <%= link_to 'Facebook 登入', user_omniauth_authorize_path(:facebook)  %></h4>
+  <div style="float: left; width: 50%">
+    <h4>歡迎編輯資料。請先使用 <%= link_to 'Facebook 登入', user_omniauth_authorize_path(:facebook)  %></h4>
+  </div>
 <% else %>
 
-  <h3 style="margin-bottom: 20px"><%= current_user.name %> 您好，歡迎編輯資料！</h3>
+  <div style="float: left; width: 50%">
 
-  <h4>本頁為<span style="color: #3300ff"><b>車系</b></span>列表。若您想新增<span style="color: #cc0000"><b>車款</b></span>，請先進入對應的<span style="color: #3300ff"><b>車系</b></span></h4>
-  <h4>若不存在您想新增或編輯的車系，請再新增車系</h4>
-  <h5>舉例說明：</h5>
-  <h5>1：Altis 為<span style="color: #3300ff"><b>車系</b></span>，此<span style="color: #3300ff"><b>車系</b></span>底下之<span style="color: #cc0000"><b>車款</b></span>有 雅緻 / 經典 / 豪華 / 尊爵 / Z 共五款</h5>
-  <h5>2：Civic 為<span style="color: #3300ff"><b>車系</b></span>，此<span style="color: #3300ff"><b>車系</b></span>底下之<span style="color: #cc0000"><b>車款</b></span>有 VTi / VTi-S / S 共三款</h5>
+    <h3 style="margin-bottom: 20px"><%= current_user.name %> 您好，歡迎編輯資料！</h3>
 
-  <ul>
+    <h4>本頁為<span style="color: #3300ff"><b>車系</b></span>列表。若您想新增<span style="color: #cc0000"><b>車款</b></span>，請先進入對應的<span style="color: #3300ff"><b>車系</b></span></h4>
+    <h4>若不存在您想新增或編輯的車系，請再新增車系</h4>
+    <h5>舉例說明：</h5>
+    <h5>1：Altis 為<span style="color: #3300ff"><b>車系</b></span>，此<span style="color: #3300ff"><b>車系</b></span>底下之<span style="color: #cc0000"><b>車款</b></span>有 雅緻 / 經典 / 豪華 / 尊爵 / Z 共五款</h5>
+    <h5>2：Civic 為<span style="color: #3300ff"><b>車系</b></span>，此<span style="color: #3300ff"><b>車系</b></span>底下之<span style="color: #cc0000"><b>車款</b></span>有 VTi / VTi-S / S 共三款</h5>
 
-    <% @brands.each do |brand| %>
-      <hr>
-      <li><h4><%= brand.name %></h4>
+    <ul>
 
-        <ul>
+      <% @brands.each do |brand| %>
+        <hr>
+        <li><h4><%= brand.name %></h4>
 
-        <% brand.models.order(:name).each do |model| %>
-          <li><%= link_to "#{model.name}", contributions_brand_model_path(brand, model) %> <%= render_unpublished_data(model) %> </li>
+          <ul>
+
+          <% brand.models.order(:name).each do |model| %>
+            <li><%= link_to "#{model.name}", contributions_brand_model_path(brand, model) %> <%= render_unpublished_data(model) %> </li>
+          <% end %>
+            <li><%= link_to '點我增加新車系', new_contributions_brand_model_path(brand) %></li>
+
+          </ul>
+
+        </li>
+
+      <% end %>
+
+    </ul>
+  </div>
+
+  <!-- comment area -->
+  <div style="float: right; width: 50%">
+
+    <!-- comment writting area -->
+    <div style='margin: 40px 40px 40px 40px'>
+      <div>
+        <%= simple_form_for([:contributions, @new_comment]) do |f| %>
+          <%= f.input :content, label: false, input_html: { class: 'form-control', rows: '3', placeholder: '我想說...', maxlength: 1000 } %>
+          <%= f.submit "留言", disable_with: "送出中...", class: 'btn btn-default', style: 'float: right; margin: 10px 0' %>
         <% end %>
-          <li><%= link_to '點我增加新車系', new_contributions_brand_model_path(brand) %></li>
+      </div>
 
-        </ul>
+      <!-- flashes for success/fail comment -->
+      <div class='contributions-comment-flashes'>
+        <% if flash[:success] %><div class='alert alert-success'><%= flash[:success] %></div><% end %>
+        <% if flash[:warning] %><div class='alert alert-wanring'><%= flash[:warning] %></div><% end %>
+      </div>
 
-      </li>
+      <!-- existing comments -->
+      <div id='contributions-existing-comments'>
+      <% @comments.each do |c| %>
+        <div class='contribution-comment'>
+          <span class='comment-user-name'><%= c.user.name %></span> <span class='comment-time'><%= c.created_at.to_s(:db) %></span><span style='color: gray'> 說：</span>
+          <p>
+            <%= simple_format(c.content) %>
+          </p>
+        </div>
+      <% end %>
+      </div>
+    </div>
 
-    <% end %>
-
-  </ul>
+  </div>
 
 <% end %>
 

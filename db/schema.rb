@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140908070103) do
+ActiveRecord::Schema.define(version: 20140909154747) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -134,6 +134,22 @@ ActiveRecord::Schema.define(version: 20140908070103) do
   add_index "cars", ["retail_price"], name: "index_cars_on_retail_price"
   add_index "cars", ["submodel"], name: "index_cars_on_submodel"
   add_index "cars", ["year"], name: "index_cars_on_year"
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "parent_comment_id"
+    t.text     "content"
+    t.string   "comment_on"
+    t.integer  "like_count"
+    t.boolean  "is_hidden"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["comment_on"], name: "index_comments_on_comment_on"
+  add_index "comments", ["is_hidden"], name: "index_comments_on_is_hidden"
+  add_index "comments", ["like_count"], name: "index_comments_on_like_count"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "contribution_comments", force: true do |t|
     t.text     "content",           null: false
