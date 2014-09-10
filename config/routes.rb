@@ -19,6 +19,8 @@
         end
       end
     end
+
+    resources :comments
   end
 
   mount RailsAdmin::Engine => '/adminqq', as: 'rails_admin'
