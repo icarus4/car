@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
 
   has_many :car_editions
   has_many :cars, through: :car_editions
+  has_many :comments
 
   validates :name, presence: true
 
