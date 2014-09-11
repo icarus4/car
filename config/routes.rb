@@ -4,7 +4,7 @@
   resources :models, only: [:index, :show]
 
   get 'search' => 'search#index'
-  post 'search/results' => 'search#results'
+  get 'search/results' => 'search#results'
 
   resources :contributions, only: [:index]
 
