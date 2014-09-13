@@ -11,12 +11,17 @@
     <%= link_to "協助編輯車款資料", contributions_path, class: 'btn btn-default btn-lg float-right' %>
   </div>
 
-  <div style='width: 240px; margin: 0 auto auto;'>
+  <div style='float: right;'>
     <div>
       <h4>最近新增車款：</h4>
       <ul style="padding-left: 0px; list-style: none">
       <% @new_cars.each do |car| %>
-        <li><%= link_to render_car_name(car, true, false), model_path(car.model) %></li>
+        <li>
+          <%= link_to render_car_name(car, true, false), model_path(car.model) %>
+          <span style='color: lightgray; padding-left: 10px'>
+            <%= time_ago_in_words(car.created_at) %> ago
+          </span>
+        </li>
       <% end %>
       </ul>
     </div>

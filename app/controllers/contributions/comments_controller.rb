@@ -6,7 +6,7 @@ class Contributions::CommentsController < ApplicationController
       c.comment_on = "CONTRIBUTIONS"
 
       if c.save
-        flash[:info] = '留言成功'
+        flash[:success] = '留言成功!'
       else
         flash[:warning] = '留言失敗'
       end
@@ -17,6 +17,12 @@ class Contributions::CommentsController < ApplicationController
     redirect_to contributions_path
   end
 
+  def destroy
+    c = Comment.find(params[:id])
+    c.destroy
+
+    redirect_to contributions_path
+  end
 
   private
 

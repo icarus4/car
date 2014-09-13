@@ -13,6 +13,7 @@
 class Model < ActiveRecord::Base
   belongs_to :brand
   has_many :cars
+  has_many :comments
 
   validates :name, presence: true
   validates :brand_id, presence: true

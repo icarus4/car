@@ -5,8 +5,10 @@ class Contributions::CarsController < ApplicationController
 
   def new
     @model = Model.find params[:model_id]
-    if @model.cars.where(is_published: [true, false]).present?
-      @car = @model.cars.unscoped.order(updated_at: :desc).first.dup
+
+    @last_car = @model.cars.where(is_published: [true, false]).order(updated_at: :desc).first
+    if @last_car.present?
+      @car = @last_car
     else
       @car = @model.cars.build(@model.cars.first)
     end

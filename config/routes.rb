@@ -1,10 +1,13 @@
   SafetyCar::Application.routes.draw do
 
   root "welcome#index"
-  resources :models, only: [:index, :show]
+
+  resources :models, only: [:index, :show] do
+    resources :comments
+  end
 
   get 'search' => 'search#index'
-  post 'search/results' => 'search#results'
+  get 'search/results' => 'search#results'
 
   resources :contributions, only: [:index]
 

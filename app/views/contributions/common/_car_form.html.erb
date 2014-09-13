@@ -1,6 +1,10 @@
 
 <div class='contribution_form' style="margin: 30px 0 40px 0">
-<p>說明：<br>1. 有 * 號的欄位不可以留空白<br>2. 車款不可重複。重複的定義：（除了建議售價以外）所有 * 號的欄位皆一模一樣</p>
+<p>說明：<br>
+  1. 有 * 號的欄位不可以留空白<br>
+  2. 車款不可重複。重複的定義：（除了建議售價以外）所有 * 號的欄位皆一模一樣<br>
+  3. 年底改款的車，款式年份請填隔年（ex: 2014 年底改款的 Yaris，款式年份請填 2015）
+</p>
 <hr>
 
 <% if flash[:warning] %>
@@ -11,7 +15,7 @@
   <h4 style="margin-bottom: 20px">基本資料：</h4 style="margin-bottom: 20px">
   <%= f.input :submodel, label: '車款名（例：VTi-S。不包含排氣量）' %>
   <%= f.input :displacement, label: '排氣量 （<span style="color:red">單位：L</span>）（例：1.8）'.html_safe, input_html: { step: 0.1 } %>
-  <%= f.input :year, label: '販售年份（例：2014）', collection: 2014..(Time.now.year+1) %>
+  <%= f.input :year, label: '款式年份（例：2014）', collection: 2014..(Time.now.year+1) %>
   <%= f.input :made_in, label: '產地（若不在列表中請選 "進口"）', collection: Car.made_in_list %>
   <%= f.input :door_num, label: '車門數', collection: 2..9 %>
   <%= f.input :engine_fuel, label: '引擎燃油', collection: Car.engine_fuel_list, as: :radio_buttons, checked: Car.engine_fuel_list[0] %>
