@@ -3,6 +3,46 @@
   <div id="car-data-table-div">
     <h4 style='text-align: center'><%= "#{@model.brand.name} #{@model.name}" %> 安全配備一覽表</h4>
     <%= render partial: 'common/cars_data_table', locals: {cars: @cars, table_class: 'model-data-table', editable: false, render_full_name: false, line_break_after_brand_and_model_name: false} %>
+  </div>
+
+  <div style="display: inline-block; width: 400px;">
+      <h4 style='margin-bottom: 20px'>大家覺得 <%= @model.name %> ...</h4>
+
+      <div>
+
+        <%= simple_form_for([@model, @new_comment]) do |f| %>
+
+          <div>
+            <% if user_signed_in? %>
+
+              <%= f.input :content, label: false, input_html: { class: 'form-control', rows: '3', placeholder: '我覺得...', maxlength: 1000, style: 'resize: none' } %>
+              <div align='right'><%= f.submit "留言", disable_with: "送出中...", class: 'btn btn-default', style: 'margin: 10px 0' %></div>
+
+            <% else %>
+
+              <h5 style='color: #AAAAAA;'><%= link_to '臉書登入', user_omniauth_authorize_path(:facebook) %>發表意見</h5>
+
+            <% end %>
+          </div>
+
+        <% end %>
+
+      </div>
+
+      <div style="margin: 20px 0; text-align: left">
+
+        <% if @comments.present? %>
+
+          <%= render partial: 'common/posted_comments', locals: {comments: @comments, model: @model} %>
+
+        <% else %>
+
+          <div style='text-align: center'>
+            <h4 style='color: #aaaaaa'>還沒有人留言哦~來當第一個留言的人吧！</h4>
+          </div>
+
+        <% end %>
+      </div>
 
   </div>
 

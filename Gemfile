@@ -82,3 +82,5 @@ gem 'meta-tags', '~> 2.0.0'
 gem 'omniauth-facebook'
 
 gem 'settingslogic'
+
+gem 'auto_html'
