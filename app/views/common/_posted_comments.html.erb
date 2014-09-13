@@ -1,8 +1,23 @@
 <div class='posted-comments-wrapper'>
   <%= div_for(comments, class: 'each-comment') do |c| %>
+
     <span class='comment-user-name'><%= c.user.name %></span> <span class='comment-time'><%= time_ago_in_words(c.created_at.localtime) %> ago</span><span style='color: gray'> 說：</span>
     <p>
       <%= simple_format(c.content) %>
     </p>
+
+    <div class='actions-to-reply'>
+      <div class='pull-right'>
+        <ul>
+          <li>回覆</li>
+          <li>like</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class='reply-text-area'>
+      <textarea class="text required form-control" id="comment_content" maxlength="1000" name="comment[content]" placeholder="我想說..." rows="3"></textarea>
+    </div>
+
   <% end %>
 </div>
