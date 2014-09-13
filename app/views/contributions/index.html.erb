@@ -55,16 +55,7 @@
       </div>
 
       <!-- existing comments -->
-      <div id='contributions-existing-comments'>
-      <% @comments.each do |c| %>
-        <div class='contribution-comment'>
-          <span class='comment-user-name'><%= c.user.name %></span> <span class='comment-time'><%= c.created_at.to_s(:db) %></span><span style='color: gray'> 說：</span>
-          <p>
-            <%= simple_format(c.content) %>
-          </p>
-        </div>
-      <% end %>
-      </div>
+      <%= render partial: 'common/posted_comments', locals: { comments: @comments } %>
     </div>
 
   </div>
