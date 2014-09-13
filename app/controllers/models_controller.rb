@@ -8,6 +8,9 @@ class ModelsController < ApplicationController
   def index
     @model = Model.random
     @cars = @model.cars.order_for_display
+    @comments = @model.comments.order(created_at: :desc)
+    @new_comment = Comment.new
+
     render :show
   end
 
@@ -15,17 +18,14 @@ class ModelsController < ApplicationController
   def show
     @model = Model.find(params[:id])
     @cars = @model.cars.order_for_display
+    @comments = @model.comments.order(created_at: :desc)
+    @new_comment = Comment.new
   end
 
 
   private
 
-  def get_brand_name_id(show_brands_has_no_car = false)
-    # if show_brands_has_no_car
-    #   @brands = Brand.select(:name, :id).order(:name).all
-    # else
-    #   @brands = Brand.includes(:models).select('brands.id, brands.name').group('brands.id').having('count(models.id) > ?', 0)
-    # end
+  def get_brand_name_id
     @brands = Brand.select(:name, :id).order(:name).all
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909154747) do
+ActiveRecord::Schema.define(version: 20140913033018) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -144,11 +144,13 @@ ActiveRecord::Schema.define(version: 20140909154747) do
     t.boolean  "is_hidden"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "model_id"
   end
 
   add_index "comments", ["comment_on"], name: "index_comments_on_comment_on"
   add_index "comments", ["is_hidden"], name: "index_comments_on_is_hidden"
   add_index "comments", ["like_count"], name: "index_comments_on_like_count"
+  add_index "comments", ["model_id"], name: "index_comments_on_model_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "contribution_comments", force: true do |t|

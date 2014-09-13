@@ -5,6 +5,6 @@ class ContributionsController < ApplicationController
       @brands = Brand.all.order(:name)
       @new_comment = Comment.new
     end
-    @comments = Comment.all.limit(100).order(created_at: :desc)
+    @comments = Comment.where(comment_on: 'CONTRIBUTIONS').limit(100).order(created_at: :desc)
   end
 end
