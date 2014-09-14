@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   def create
     if current_user
       c = Comment.new(comment_params)
