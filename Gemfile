@@ -61,6 +61,7 @@ group :development do
   gem "annotate"
   gem 'hirb-unicode'
   gem 'awesome_print'
+  gem 'xray-rails'
 end
 
 group :production do
