@@ -26,6 +26,14 @@ module ModelsHelper
     return car_name
   end
 
+  def render_car_name_with_year(car)
+    car_name = if car.display_name.present?
+      "#{car.year} #{car.model.brand.name} #{car.display_name}"
+    else
+      "#{car.year} #{car.model.brand.name} #{car.model.name} #{car.displacement} #{car.submodel}"
+    end
+  end
+
   def render_to_yes_no_with_color(value)
     label = value ? 'label-success' : 'label-danger'
     _value = value ? 'Yes' : 'No'

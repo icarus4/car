@@ -13,16 +13,20 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <!-- admin area -->
         <% if current_user && current_user.admin? %>
           <li><%= link_to 'admin panel', rails_admin_path , class: 'pull-right' %></li>
         <% end %>
+
         <li><%= link_to '協助編輯車款資料', contributions_path, class: 'pull-right' %></li>
+
+        <!-- signed in -->
         <% if user_signed_in? %>
-  <!--       <li><%#= link_to 'Edit Profile', edit_user_registration_path %></li> -->
-          <li><%= link_to '登出', destroy_user_session_path %></li>
+          <li><%= link_to '登出', destroy_user_session_path, class: 'pull-right' %></li>
+
+        <!-- not signed in -->
         <% else %>
-          <li><%#= link_to 'Login', new_user_session_path %></li>
-          <li><%#= link_to 'Sign Up', new_user_registration_path %></li>
+          <li><%= link_to '臉書登入', user_omniauth_authorize_path(:facebook), class: 'pull-right' %></li>
         <% end %>
       </ul>
 

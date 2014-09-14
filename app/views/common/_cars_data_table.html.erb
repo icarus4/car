@@ -132,12 +132,12 @@
   </tr> -->
 
   <tr>
-    <th class='data-name'>BOS 煞車優先系統</th>
+    <th class='data-name'>煞車優先系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_brake_override_system)} %>
   </tr>
 
   <tr>
-    <th class='data-name'>ESP 車身動態穩定系統</th>
+    <th class='data-name'>車身動態穩定系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_esp)} %>
   </tr>
 
@@ -152,7 +152,7 @@
   </tr>
 
   <tr>
-    <th class='data-name'>AFS 主動式轉向頭燈</th>
+    <th class='data-name'>主動式轉向頭燈</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_afs)} %>
   </tr>
 
@@ -192,7 +192,7 @@
   </tr>
 
   <tr>
-    <th class='data-name'>TPMS 胎壓偵測系統</th>
+    <th class='data-name'>胎壓偵測系統</th>
     <% cars.each {|c| concat render_to_yes_no_with_color(c.has_tpms)} %>
   </tr>
 

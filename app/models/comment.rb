@@ -19,5 +19,10 @@ class Comment < ActiveRecord::Base
     simple_format
   end
 
+  def self.recently_comments_on_model(last_n_days = 7, max_number = 20)
+    raise 'last_n_days should be integer' unless last_n_days.is_a?(Integer)
+    raise 'max_number should be integer' unless max_number.is_a?(Integer)
+    Comment.where(comment_on: 'MODEL').where.not(model_id: nil).where("created_at >= :last_n_days", :last_n_days => Time.now - last_n_days.days).order(created_at: :desc).limit(max_number)
+  end
 
 end
