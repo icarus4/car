@@ -20,6 +20,9 @@
         <li>
           <%= link_to render_car_name_with_year(car), model_path(car.model) %>
           <span style='color: lightgray; padding-left: 10px'>
+            <% if car.users.first.present? %>
+              by <%= "#{car.users.first.name}" %> on
+            <% end %>
             <%= time_ago_in_words(car.created_at) %> ago
           </span>
         </li>
