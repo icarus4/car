@@ -8,7 +8,7 @@ class Contributions::CarsController < ApplicationController
 
     @last_car = @model.cars.where(is_published: [true, false]).order(updated_at: :desc).first
     if @last_car.present?
-      @car = @last_car
+      @car = @last_car.dup
     else
       @car = @model.cars.build(@model.cars.first)
     end
