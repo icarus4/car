@@ -34,7 +34,7 @@
     <% @recently_user_comments.each do |comment| %>
       <li>
         <%= link_to "#{comment.user.name} 覺得 #{comment.model.name}", model_path(comment.model), target: '_blank' %>：
-        <%= render_user_comment_preview(comment) %>
+        <%= render_user_comment_preview(comment, max_comment = 25) %>
       </li>
     <% end %>
   </div>
