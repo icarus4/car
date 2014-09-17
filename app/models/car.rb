@@ -104,11 +104,11 @@ class Car < ActiveRecord::Base
                                           message: '有一模一樣的車子已經存在了哦！'
 
   scope :published, -> { where(is_published: true) }
-  scope :not_published, -> { where(is_published: false) }
+  scope :unpublished, -> { where(is_published: false) }
   scope :locked, -> { where(is_locked: true) }
-  scope :not_locked, -> { where(is_locked: false) }
+  scope :unlocked, -> { where(is_locked: false) }
   scope :order_for_display, -> { order(:engine_fuel => :desc).order(:displacement, :door_num, :retail_price) }
-  default_scope { where(is_published: true) }
+  # default_scope { where(is_published: true) }
 
   # Pick a random car
   def self.random

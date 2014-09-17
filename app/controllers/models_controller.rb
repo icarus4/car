@@ -7,7 +7,7 @@ class ModelsController < ApplicationController
 
   def index
     @model = Model.random
-    @cars = @model.cars.order_for_display
+    @cars = @model.cars.published.order_for_display
     @comments = @model.comments.order(created_at: :desc)
     @new_comment = Comment.new
 
@@ -17,7 +17,7 @@ class ModelsController < ApplicationController
 
   def show
     @model = Model.find(params[:id])
-    @cars = @model.cars.order_for_display
+    @cars = @model.cars.published.order_for_display
     @comments = @model.comments.order(created_at: :desc)
     @new_comment = Comment.new
   end
