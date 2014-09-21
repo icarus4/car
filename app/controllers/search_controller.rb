@@ -33,8 +33,8 @@ class SearchController < ApplicationController
     _cars = _cars.where.not(made_in: '台灣') if params[:made_in] == 'not_tw'
     _cars = _cars.where('retail_price <= ? OR retail_price IS NULL', params[:max_price].to_f) if params[:max_price].to_f > 0
 
-    # Ordered by price, max result: 60
-    _cars = _cars.order(:retail_price).limit(60)
+    # Show only published cars, ordered by price, max result: 60
+    _cars = _cars.published.order(:retail_price).limit(60)
 
     if _cars.empty?
       flash[:warning] = '沒有符合條件的車子哦！請減少一些條件再試試看'

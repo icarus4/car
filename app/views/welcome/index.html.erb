@@ -1,10 +1,8 @@
 <div class="container">
   <div class="jumbotron">
     <h2>您知道嗎...</h2>
-    <p>在許多國家，即使是低價的車款，一輛汽車要上市的最低條件是擁有至少六顆安全氣囊、以及具備動態車身穩定系統。然而台灣的法規卻沒有類似的規範，導致市面上甚至連ABS（防鎖死煞車系統）如此基本的安全配備都缺少的車輛也能販售</p>
-    <p>我們希望不久的將來，所有在台灣販售的新車，不管是高級車還是平價車款都能擁有同樣齊全的安全設備<br>
-    在此之前，希望這個網站能夠幫助大家為自己及家人挑選出一台安全的汽車
-    </p>
+    <p>在許多國家，即使是低價的車款，一輛汽車要上市的最低條件是擁有至少六顆安全氣囊、以及具備動態車身穩定系統。然而台灣的法規卻沒有類似的規範，導致市面上甚至連ABS（防鎖死煞車系統）如此基本的安全配備都缺少的車輛也能販售。</p>
+    <p>我們希望不久的將來，所有在台灣販售的新車，不管是高級車還是平價車款都能擁有同樣齊全的安全設備。在此之前，希望這個網站能夠幫助大家為自己及家人挑選出一台安全的汽車。</p>
     <hr>
     <%= link_to "查看各車款配備", models_path, class: 'btn btn-warning btn-lg' %>
     <%= link_to "篩選安全好車", { controller: 'search', action: 'index' }, class: 'btn btn-warning btn-lg' %>
@@ -30,9 +28,7 @@
         <li>
           <%= link_to render_car_name_with_year(car), model_path(car.model) %>
           <span style='color: lightgray; padding-left: 10px'>
-            <% if car.users.first.present? %>
-              by <%= "#{car.users.first.name}" %>,
-            <% end %>
+            by <%= render_creator_name(car) %>,
             <%= time_ago_in_words(car.created_at) %> ago
           </span>
         </li>

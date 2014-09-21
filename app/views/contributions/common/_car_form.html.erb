@@ -3,7 +3,7 @@
 <p>說明：<br>
   1. 有 * 號的欄位不可以留空白<br>
   2. 車款不可重複。重複的定義：（除了建議售價以外）所有 * 號的欄位皆一模一樣<br>
-  3. 年底改款的車，款式年份請填隔年（ex: 2014 年底改款的 Yaris，款式年份請填 2015）
+  3. <span style='color: red'>有任何欄位不清楚怎麼填或待查詢的話可先跳過不用填（前七項有 * 號的欄位例外，不可跳過），即使沒填齊全也隨時可以先儲存但不公開車款，等查清楚了補齊資料後再公開。</span>不確定的資料可以在討論區與大家討論~
 </p>
 <hr>
 
@@ -16,6 +16,9 @@
   <%= f.input :submodel, label: '車款名（例：VTi-S。不包含排氣量）' %>
   <%= f.input :displacement, label: '排氣量 （<span style="color:red">單位：L</span>）（例：1.8）'.html_safe, input_html: { step: 0.1 } %>
   <%= f.input :year, label: '款式年份（例：2014）', collection: 2014..(Time.now.year+1) %>
+  <div style='margin: 0px 0px 20px 10px; color: gray'>
+    <span>註：若為明年之款式但提前發售，請填明年。例：2014 9月推出的新改款 TOYOTA Yaris，此欄請填 2015 年</span>
+  </div>
   <%= f.input :made_in, label: '產地（若不在列表中請選 "進口"）', collection: Car.made_in_list %>
   <%= f.input :door_num, label: '車門數', collection: 2..9 %>
   <%= f.input :engine_fuel, label: '引擎燃油', collection: Car.engine_fuel_list, as: :radio_buttons, checked: Car.engine_fuel_list[0] %>
@@ -24,9 +27,11 @@
   <%= f.input :is_electric_vehicle, label: '純電動車請打勾（排氣量請填0）' %>
   <%= f.input :spec_url, label: '官方規格表連結', input_html: { style: 'width: 300px'} %>
   <hr>
-  <p style="margin-bottom: 20px; width: 500px"><b>顯示名稱</b> 此欄原則上請留空白。設定此欄位將會強迫使車款名直接顯示為此欄位的名稱。</p>
-  <p style="margin-bottom: 20px; width: 500px">說明：使用者看到的車款名稱是由 "[排氣量] [款式]" (ex: "1.8 VTi-S") 所構成（車系名稱會獨立顯示於表格上方，不需另外填入），若此排列方式無法準確表示此款車時再考慮使用此欄位。<span style="color: #ff0033">如果您不確定是否該填此欄位，那麼此欄請留空白不要填</span>。</p>
   <%= f.input :display_name, label: '顯示名稱' %>
+  <div style="margin-left: 10px; color: gray">
+    <p style="margin-bottom: 20px; width: 500px">註：<b>顯示名稱</b> 此欄原則上不須填寫。設定此欄位將會強迫使車款名直接顯示為此欄位的名稱。</p>
+    <p style="margin-bottom: 20px; width: 500px">說明：使用者看到的車款名稱是由 "[排氣量] [款式]" (ex: "1.8 VTi-S") 所構成（車系名稱會獨立顯示於表格上方，不需另外填入），若此排列方式無法準確表示此款車時再考慮使用此欄位。<span style="color: #ff0033">如果您不確定是否該填此欄位，那麼此欄請留空白不要填</span>，或在討論區與其他編輯者討論再決定。</p>
+  </div>
   <hr>
   <h4 style="margin-bottom: 20px">氣囊資料（若有該種氣囊者請打勾）：</h4 style="margin-bottom: 20px">
   <p style="margin-bottom: 20px; width: 500px">有以下氣囊者請打勾：</p>
@@ -48,6 +53,15 @@
   <h4 style="margin-bottom: 20px">其他（若有該配備請打勾）：</h4 style="margin-bottom: 20px">
   <%= f.input :has_isofix, label: 'ISOFIX 兒童安全座椅固定裝置' %>
   <%= f.input :has_esp, label: '動態車身穩定系統' %>
+  <div style='margin: 0 0 20px 10px; color: gray'>
+    <p>
+      註：循跡防滑控制系統屬於動態車身穩定系統的子系統，不另闢欄位紀錄。也就是說：
+      <ol>
+        <li>含動態車身穩定系統，也含循跡防滑控制系統 => 此欄打勾</li>
+        <li>不含動態車身穩定系統，僅含循跡防滑控制系統 => 此欄不打勾</li>
+      </ol>
+    </p>
+  </div>
   <%= f.input :esp_name, label: '動態車身穩定系統英文名稱', collection: Car.esp_name_list %>
   <%= f.input :has_cruise_control, label: '定速巡航系統' %>
   <%= f.input :has_adaptive_cruise_control, label: '主動車距控制巡航系統' %>
@@ -62,7 +76,7 @@
   <%= f.input :has_tpms, label: '胎壓偵測系統' %>
   <hr>
   <h4 style="margin-bottom: 20px">備註欄（若含有其他上述沒有列出的特殊配備，請填寫於此）：</h4 style="margin-bottom: 20px">
-  <%= f.input :note, label: '備註欄' %>
+  <%= f.input :note, label: '備註欄', input_html: {cols: 30, rows: 4} %>
   <hr style="margin: 80px 0 30px 0">
 <!--   <h4 style="margin: 0 0 30px; width: 500px"><span style="color: red;">注意！</span>儲存資料後瀏覽網站者<span style="color: red">並不會立刻看到結果</span>，儲存後請先到車系列表確認資料正確後，再點選車款名稱下方的 <span class="label label-warning">公開此車款</span> 按鈕，瀏覽網站的人才看得到此車款。</h4>
  -->

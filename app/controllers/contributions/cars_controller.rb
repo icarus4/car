@@ -6,7 +6,7 @@ class Contributions::CarsController < ApplicationController
   def new
     @model = Model.find params[:model_id]
 
-    @last_car = @model.cars.where(is_published: [true, false]).order(updated_at: :desc).first
+    @last_car = @model.cars.order(updated_at: :desc).first
     if @last_car.present?
       @car = @last_car.dup
     else
@@ -71,7 +71,7 @@ class Contributions::CarsController < ApplicationController
   private
 
   def get_current_car
-    @car = Car.unscoped.find params[:id]
+    @car = Car.find params[:id]
   end
 
   def car_params

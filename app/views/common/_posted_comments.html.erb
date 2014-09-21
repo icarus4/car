@@ -2,7 +2,6 @@
   <%= div_for(comments, class: 'each-comment') do |c| %>
     <span class='comment-user-name'><%= c.user.name %></span> <span class='comment-time'><%= time_ago_in_words(c.created_at.localtime) %> ago</span><span style='color: gray'> 說：</span>
     <p>
-      <%#= simple_format(c.content) %>
       <%= c.content_html %>
     </p>
     <% if current_user && current_user.admin? %>

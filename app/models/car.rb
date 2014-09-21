@@ -104,11 +104,11 @@ class Car < ActiveRecord::Base
                                           message: '有一模一樣的車子已經存在了哦！'
 
   scope :published, -> { where(is_published: true) }
-  scope :not_published, -> { where(is_published: false) }
+  scope :unpublished, -> { where(is_published: false) }
   scope :locked, -> { where(is_locked: true) }
-  scope :not_locked, -> { where(is_locked: false) }
+  scope :unlocked, -> { where(is_locked: false) }
   scope :order_for_display, -> { order(:engine_fuel => :desc).order(:displacement, :door_num, :retail_price) }
-  default_scope { where(is_published: true) }
+  # default_scope { where(is_published: true) }
 
   # Pick a random car
   def self.random
@@ -162,6 +162,19 @@ class Car < ActiveRecord::Base
     ENGINE_FUEL_LIST.each_slice(1).to_a
   end
 
+  def creator
+    results = User.joins(:car_editions).where(car_editions: {is_creation: true, car_id: self.id})
+    raise "should return only one result" if results.size > 1
+    return results.first
+  end
+
+  def modifiers
+    User.joins(:car_editions).where(car_editions: {is_creation: false, car_id: self.id})
+  end
+
+  def editors
+    User.joins(:car_editions).where(car_editions: {car_id: self.id})
+  end
 
   private
 
