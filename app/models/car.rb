@@ -162,6 +162,19 @@ class Car < ActiveRecord::Base
     ENGINE_FUEL_LIST.each_slice(1).to_a
   end
 
+  def creator
+    results = User.joins(:car_editions).where(car_editions: {is_creation: true, car_id: self.id})
+    raise "should return only one result" if results.size > 1
+    return results.first
+  end
+
+  def modifiers
+    User.joins(:car_editions).where(car_editions: {is_creation: false, car_id: self.id})
+  end
+
+  def editors
+    User.joins(:car_editions).where(car_editions: {car_id: self.id})
+  end
 
   private
 
