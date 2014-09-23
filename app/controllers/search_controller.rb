@@ -37,8 +37,7 @@ class SearchController < ApplicationController
     _cars = _cars.published.order(:retail_price).limit(60)
 
     if _cars.empty?
-      flash[:warning] = '沒有符合條件的車子哦！請減少一些條件再試試看'
-      redirect_to action: 'index'
+      flash.now[:warning] = '沒有符合條件的車子哦！請減少一些條件再試試看'
     else
       flash.now[:success] = "符合條件的車子共 #{_cars.size} 輛（按照售價排序）："
       @cars_group = _cars.each_slice(6).to_a
