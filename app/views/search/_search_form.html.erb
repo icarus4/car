@@ -42,7 +42,7 @@
   </div>
 
   <div class="form-group">
-    <label>售價低於：<%= number_field_tag(:max_price, 100, in: 50..1000, step: 10) %> 萬</label>
+    <label>售價低於：<%= number_field_tag(:max_price, params[:max_price].present? ? params[:max_price] : 100, in: 50..1000, step: 10) %> 萬</label>
   </div>
 
   <%= submit_tag('搜尋', class: 'btn btn-default btn-sm') %>
