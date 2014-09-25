@@ -1,5 +1,6 @@
 <%= form_tag({controller: 'search', action: 'results'}, method: 'get', id: 'search-form') do %>
 
+
   <div class="form-group radio">
     <span class='control-label'>最低氣囊數：</span>
     <label class="radio-inline"><%= radio_button_with_default_value(:min_airbag_num, '0', params, '6') %>不限</label>
@@ -39,6 +40,13 @@
     <label class="radio-inline"><%= radio_button_with_default_value(:made_in, 'all', params, 'all') %>不限</label>
     <label class="radio-inline"><%= radio_button_with_default_value(:made_in, 'tw', params, 'all') %>國產</label>
     <label class="radio-inline"><%= radio_button_with_default_value(:made_in, 'not_tw', params, 'all') %>進口</label>
+  </div>
+
+  <div class="form-group radio">
+    <span class="control-label">車門數：</span>
+    <label class="radio-inline"><%= radio_button_with_default_value(:door_num, 'all', params, 'all') %>不限</label>
+    <label class="radio-inline"><%= radio_button_with_default_value(:door_num, '4', params, 'all') %>4門</label>
+    <label class="radio-inline"><%= radio_button_with_default_value(:door_num, '5', params, 'all') %>5門</label>
   </div>
 
   <div class="form-group">
