@@ -10,14 +10,22 @@
   </div>
 
   <div style='float: left; margin: 0 20px 0 20px'>
-    <h4>最新討論：</h4>
-    <ul style="padding-left: 0px; list-style: none">
-    <% @recently_user_comments.each do |comment| %>
-      <li>
-        <%= link_to "#{comment.user.name} 覺得 #{comment.model.name}", model_path(comment.model), target: '_blank' %>：
-        <%= render_user_comment_preview(comment, max_comment = 25) %>
-      </li>
-    <% end %>
+    <div style='margin-bottom: 40px'>
+      <h4>最新公告：</h4>
+      <p><%= link_to '篩選', controller: '/search', action: 'index' %>功能現在會記住搜尋的設定了，快來試試看！</p>
+    </div>
+    <div>
+      <% if @recently_user_comments.present? %>
+      <h4>最新討論：</h4>
+      <ul style="padding-left: 0px; list-style: none">
+        <% @recently_user_comments.each do |comment| %>
+          <li>
+            <%= link_to "#{comment.user.name} 覺得 #{comment.model.name}", model_path(comment.model), target: '_blank' %>：
+            <%= render_user_comment_preview(comment, max_comment = 25) %>
+          </li>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <div style='float: left; margin: 0 20px 20px 20px'>
