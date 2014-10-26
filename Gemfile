@@ -62,6 +62,7 @@ group :development do
   gem 'hirb-unicode'
   gem 'awesome_print'
   gem 'xray-rails'
+  gem 'traceroute'
 end
 
 group :production do

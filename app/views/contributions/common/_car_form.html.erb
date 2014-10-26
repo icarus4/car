@@ -21,7 +21,7 @@
   </div>
   <%= f.input :made_in, label: '產地（若不在列表中請選 "進口"）', collection: Car.made_in_list %>
   <%= f.input :door_num, label: '車門數', collection: 2..9 %>
-  <%= f.input :engine_fuel, label: '引擎燃油', collection: Car.engine_fuel_list, as: :radio_buttons, checked: Car.engine_fuel_list[0] %>
+  <%= f.input :engine_fuel, label: '引擎燃油', collection: Car.engine_fuel_list, as: :radio_buttons, checked: @car.engine_fuel || Car.engine_fuel_list[0] %>
   <%= f.input :retail_price, label: '官方建議售價（<span style="color:red">單位：萬</span>。請勿填特價）'.html_safe, input_html: { step: 0.1 } %>
   <%= f.input :is_hybrid, label: '油電車請打勾' %>
   <%= f.input :is_electric_vehicle, label: '純電動車請打勾（排氣量請填0）' %>

@@ -11,7 +11,6 @@ class SearchController < ApplicationController
     _cars = _cars.where('airbag_num >= ?', params[:min_airbag_num]) if ['0','2','4','6'].include?(params[:min_airbag_num])
     _cars = _cars.where(has_airbags_at_side_curtain: true) if params[:has_airbags_at_side_curtain] == '1'
     _cars = _cars.where(has_airbag_at_driver_knee: true) if params[:has_airbag_at_driver_knee] == '1'
-    # _cars = _cars.where(has_pretension_seat_belt: true) if params[:has_pretension_seat_belt] == '1'
     _cars = _cars.where(has_isofix: true) if params[:has_isofix] == '1'
     _cars = _cars.where(has_abs: true) if params[:has_abs] == '1'
     _cars = _cars.where(has_ebd: true) if params[:has_ebd] == '1'
@@ -31,14 +30,14 @@ class SearchController < ApplicationController
     _cars = _cars.where(has_attention_assist: true) if params[:has_attention_assist] == '1'
     _cars = _cars.where(made_in: '台灣') if params[:made_in] == 'tw'
     _cars = _cars.where.not(made_in: '台灣') if params[:made_in] == 'not_tw'
+    _cars = _cars.where('door_num = ?', params[:door_num]) if ['4','5'].include?(params[:door_num])
     _cars = _cars.where('retail_price <= ? OR retail_price IS NULL', params[:max_price].to_f) if params[:max_price].to_f > 0
 
-    # Show only published cars, ordered by price, max result: 60
-    _cars = _cars.published.order(:retail_price).limit(60)
+    # Show only published cars, ordered by price, max result: 100
+    _cars = _cars.published.order(:retail_price).limit(100)
 
     if _cars.empty?
-      flash[:warning] = '沒有符合條件的車子哦！請減少一些條件再試試看'
-      redirect_to action: 'index'
+      flash.now[:warning] = '沒有符合條件的車子哦！請減少一些條件再試試看'
     else
       flash.now[:success] = "符合條件的車子共 #{_cars.size} 輛（按照售價排序）："
       @cars_group = _cars.each_slice(6).to_a
