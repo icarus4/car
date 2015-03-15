@@ -32,6 +32,3 @@ config/database.yml
 *.sublime-*
 
 *.TODO
-
-config/deploy.rb
-

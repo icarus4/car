@@ -62,6 +62,11 @@ group :development do
   gem 'awesome_print'
   gem 'xray-rails'
   gem 'traceroute'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'capistrano-rbenv-install', '~> 1.2.0'
+  gem 'capistrano-passenger'
+  gem 'capistrano-secrets-yml', '~> 1.0.0'
 end
 
 group :production do
