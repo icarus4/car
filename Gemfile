@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.5'
+gem 'rails', '4.1.9'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
@@ -43,7 +43,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass', '~> 3.3.3'
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.13.1'
@@ -59,14 +59,13 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "annotate"
-  gem 'hirb-unicode'
   gem 'awesome_print'
   gem 'xray-rails'
   gem 'traceroute'
 end
 
 group :production do
-  gem 'pg', '~> 0.17.1'
+  gem 'pg', '~> 0.18.1'
 end
 
 # gem 'autoprefixer-rails'
@@ -75,7 +74,7 @@ gem 'rails_admin', '~> 0.6.2'
 
 gem 'font-awesome-sass', '~> 4.1.0'
 
-gem 'devise', '~> 3.2.4'
+gem 'devise', '~> 3.4.1'
 
 # gem 'squeel', '~> 1.2.1'
 
@@ -86,3 +85,6 @@ gem 'omniauth-facebook'
 gem 'settingslogic'
 
 gem 'auto_html'
+
+gem 'hirb-unicode'
+
